@@ -1,32 +1,31 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Một Chút Về Bản Thân</title>
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
       background: linear-gradient(135deg, #74ebd5, #9face6);
       margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      padding: 40px 20px;
     }
 
-    .card {
+    .section {
       background-color: white;
       padding: 30px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
       text-align: center;
-      width: 350px;
-      max-width: 90%;
     }
 
-    .card img {
+    .section img {
       border-radius: 50%;
       width: 120px;
       height: 120px;
@@ -57,42 +56,95 @@
       font-size: 14px;
       color: #888;
     }
-    body.dark {
-  background: #1a1a1a;
-  color: #eee;
-}
-    
-body.dark .card {
-  background-color: #2a2a2a;
-}
 
-body.dark h1,
-body.dark h2,
-body.dark p,
-body.dark a {
-  color: #eee;
-}
+    ul {
+      text-align: left;
+      padding-left: 20px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    /* Dark mode */
+    body.dark {
+      background: #1a1a1a;
+      color: #eee;
+    }
+
+    body.dark .section {
+      background-color: #2a2a2a;
+    }
+
+    body.dark h1,
+    body.dark h2,
+    body.dark p,
+    body.dark ul,
+    body.dark a {
+      color: #eee;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: none;
+      background: #ddd;
+      cursor: pointer;
+    }
+
+    body.dark .toggle-btn {
+      background: #444;
+      color: #fff;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    body.dark a {
+      color: #eee;
+    }
   </style>
 </head>
 <body>
-  <button onclick="toggleMode()" style="position: absolute; top: 20px; right: 20px; padding: 8px 16px; border-radius: 20px; border: none; background: #ddd; cursor: pointer;">🌞/🌙</button>
-  <div class="card">
+  <!-- Nút chuyển chế độ -->
+  <button onclick="toggleMode()" class="toggle-btn">🌞/🌙</button>
+
+  <!-- Mục 1: Giới thiệu bản thân -->
+  <div class="section">
     <h1>Đồng Quang Đức</h1>
     <h2>Web Developer</h2>
-    <p>Xin chào! Mình là sinh viên công nghệ thông tin đam mê công nghệ và thiết kế web. Mình thích học hỏi những điều mới và chia sẻ kiến thức với mọi người.</p>
+    <p>Xin chào! Mình là một lập trình viên trẻ đam mê công nghệ và thiết kế web. Mình thích học hỏi những điều mới và chia sẻ kiến thức với mọi người.</p>
     <div class="contact">
       <p><strong>Hãy kết nối với mình!</strong></p>
       <p>
-      📧 Email: ducyeuemm12@gmail.com<br>
-      ☎️ SĐT: 0796 032 313
-         🔗 Facebook: <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">facebook.com/Mbbank22222006666666DQD</a>
+        📧 Email: ducyeuemm12@gmail.com<br />
+        ☎️ SĐT: 0796 032 313<br />
+        🔗 Facebook: <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">facebook.com/Mbbank22222006666666DQD</a>
       </p>
     </div>
   </div>
+
+  <!-- Mục 2: Cập nhật công nghệ -->
+  <div class="section">
+    <h2>📰 Cập nhật công nghệ</h2>
+    <ul>
+      <li><strong>24/06/2025:</strong> OpenAI ra mắt GPT-5 hỗ trợ video thời gian thực.</li>
+      <li><strong>20/06/2025:</strong> Apple giới thiệu iOS 19 với AI thông minh hơn.</li>
+      <li><strong>15/06/2025:</strong> Google tích hợp Gemini AI vào Android 15.</li>
+    </ul>
+  </div>
+
   <script>
-  function toggleMode() {
-    document.body.classList.toggle("dark");
-  }
-</script>
+    function toggleMode() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
 </body>
 </html>
