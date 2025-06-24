@@ -1,160 +1,65 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Duck Soft</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: "Segoe UI", sans-serif;
       background: #f3f8fc;
       color: #333;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: background 0.3s, color 0.3s;
     }
-
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
       padding: 20px;
     }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #3b3b9d;
-    }
-
-    .controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
+    .logo { font-size: 24px; font-weight: bold; color: #3b3b9d; }
+    .controls { display: flex; gap: 10px; }
     .toggle-btn, .lang-btn {
-      padding: 6px 12px;
-      border: none;
-      border-radius: 20px;
-      background: #eee;
-      cursor: pointer;
-      font-weight: bold;
+      padding: 6px 12px; border: none; border-radius: 20px;
+      background: #eee; cursor: pointer; font-weight: bold;
     }
-
-    .menu-icon {
-      font-size: 24px;
-      cursor: pointer;
-    }
-
+    .menu-icon { font-size: 24px; cursor: pointer; }
     .menu {
-      position: fixed;
-      top: 0;
-      right: -250px;
-      width: 250px;
-      height: 100%;
-      background: #fff;
-      box-shadow: -2px 0 10px rgba(0,0,0,0.2);
-      padding: 20px;
-      transition: right 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      z-index: 999;
+      position: fixed; top: 0; right: -250px; width: 250px; height: 100%;
+      background: #fff; box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+      padding: 20px; transition: right 0.3s; display: flex;
+      flex-direction: column; gap: 20px; z-index: 999;
     }
-
-    .menu.show {
-      right: 0;
-    }
-
+    .menu.show { right: 0; }
     .menu a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      font-size: 18px;
+      text-decoration: none; color: #333; font-size: 18px; font-weight: bold;
     }
-
     .section {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-      text-align: center;
+      padding: 40px 20px; max-width: 800px; margin: auto; text-align: center;
     }
-
-    .section h1 {
-      font-size: 28px;
-      margin-bottom: 15px;
-    }
-
-    .section p {
-      font-size: 16px;
-      line-height: 1.6;
-      color: #444;
-    }
-
+    .section h1 { font-size: 28px; margin-bottom: 15px; }
+    .section p { font-size: 16px; line-height: 1.6; color: #444; }
     .facebook-contact a {
-      display: inline-block;
-      margin-top: 20px;
-      background-color: #1877f2;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
+      display: inline-block; margin-top: 20px;
+      background: #1877f2; color: #fff; padding: 10px 20px;
+      border-radius: 30px; text-decoration: none; font-weight: bold;
     }
-
-    .facebook-contact a:hover {
-      background-color: #0e5ad4;
-    }
-
-    .news-item {
-      text-align: left;
-      margin-bottom: 20px;
-    }
-
-    .news-item h3 {
-      margin-bottom: 5px;
-    }
-
-    .news-item a {
-      color: #1a0dab;
-      text-decoration: none;
-    }
-
-    .news-item a:hover {
-      text-decoration: underline;
-    }
-
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-    }
+    .facebook-contact a:hover { background: #0e5ad4; }
+    .news-item { text-align: left; margin-bottom: 20px; }
+    .news-item h3 { margin-bottom: 5px; }
+    .news-item a { color: #1a0dab; text-decoration: none; }
+    .news-item a:hover { text-decoration: underline; }
+    iframe { width: 100%; height: 500px; border: none; margin-top: 20px; }
 
     /* Dark Mode */
     body.dark {
-      background: #1a1a1a;
+      background: #1a1a1a; color: #eee;
+    }
+    body.dark .menu { background: #2a2a2a; }
+    body.dark .menu a, body.dark .section h1, body.dark .section p {
       color: #eee;
     }
-
-    body.dark .menu {
-      background: #2a2a2a;
-    }
-
-    body.dark .menu a,
-    body.dark .section p,
-    body.dark .section h1 {
-      color: #eee;
-    }
-
-    body.dark .toggle-btn,
-    body.dark .lang-btn {
-      background: #444;
-      color: #fff;
+    body.dark .toggle-btn, body.dark .lang-btn {
+      background: #444; color: #fff;
     }
   </style>
 </head>
@@ -168,16 +73,18 @@
     </div>
   </header>
 
-  <div class="menu" id="menu">
+  <nav class="menu" id="menu">
     <a href="#intro" data-i18n="menu_intro">Giới thiệu</a>
     <a href="#news" data-i18n="menu_news">Tin tức</a>
     <a href="#schedule" data-i18n="menu_schedule">Lịch học</a>
     <a href="#contact" data-i18n="menu_contact">Liên hệ</a>
-  </div>
+  </nav>
 
   <section class="section" id="intro">
     <h1 id="intro-title">Tin tức và dịch vụ công nghệ chất lượng cao</h1>
-    <p id="intro-desc">Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.</p>
+    <p id="intro-desc">
+      Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.
+    </p>
     <div class="facebook-contact">
       <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 Gửi tin nhắn</a>
     </div>
@@ -195,7 +102,7 @@
 
   <section class="section" id="contact" style="display:none">
     <h1 id="contact-title">Liên hệ & Dịch vụ</h1>
-    <ul style="list-style: none; padding: 0;">
+    <ul style="list-style: none; padding: 0; text-align: left;">
       <li>• Grok</li><li>• Drive</li><li>• GPT</li><li>• Meitu</li>
       <li>• Elsa</li><li>• Capcut</li><li>• Spotify</li><li>• Monica</li>
       <li>• Poe</li><li>• Kling</li><li>• Hailou</li><li>• Heygen</li>
@@ -206,83 +113,86 @@
   </section>
 
   <script>
+    const i18nData = {
+      vi: {
+        "intro-title": "Tin tức và dịch vụ công nghệ chất lượng cao",
+        "intro-desc": "Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.",
+        "news-title": "Tin tức công nghệ",
+        "schedule-title": "Lịch học",
+        "contact-title": "Liên hệ & Dịch vụ",
+        "menu_intro": "Giới thiệu",
+        "menu_news": "Tin tức",
+        "menu_schedule": "Lịch học",
+        "menu_contact": "Liên hệ"
+      },
+      en: {
+        "intro-title": "High-Quality Tech News & Services",
+        "intro-desc": "We help you solve technology problems and explore new innovations.",
+        "news-title": "Technology News",
+        "schedule-title": "Study Schedule",
+        "contact-title": "Contact & Services",
+        "menu_intro": "Introduction",
+        "menu_news": "News",
+        "menu_schedule": "Schedule",
+        "menu_contact": "Contact"
+      }
+    };
+
+    let currentLang = "vi";
+
     function toggleMode() {
-      document.body.classList.toggle('dark');
+      document.body.classList.toggle("dark");
     }
 
     function toggleMenu() {
-      document.getElementById('menu').classList.toggle('show');
+      document.getElementById("menu").classList.toggle("show");
     }
 
     function toggleLanguage() {
-      const isVN = document.documentElement.lang === "vi";
-      document.documentElement.lang = isVN ? "en" : "vi";
-
-      const i18n = {
-        vi: {
-          "intro-title": "Tin tức và dịch vụ công nghệ chất lượng cao",
-          "intro-desc": "Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.",
-          "news-title": "Tin tức công nghệ",
-          "contact-title": "Liên hệ & Dịch vụ",
-          "schedule-title": "Lịch học",
-          "menu_intro": "Giới thiệu",
-          "menu_news": "Tin tức",
-          "menu_contact": "Liên hệ",
-          "menu_schedule": "Lịch học"
-        },
-        en: {
-          "intro-title": "High-quality tech news and services",
-          "intro-desc": "We help you solve technology problems and explore new innovations.",
-          "news-title": "Technology News",
-          "contact-title": "Contact & Services",
-          "schedule-title": "Study Schedule",
-          "menu_intro": "Introduction",
-          "menu_news": "News",
-          "menu_contact": "Contact",
-          "menu_schedule": "Schedule"
-        }
-      };
-
-      const lang = isVN ? "en" : "vi";
-      for (const key in i18n[lang]) {
+      currentLang = currentLang === "vi" ? "en" : "vi";
+      document.documentElement.lang = currentLang;
+      const dict = i18nData[currentLang];
+      for (let key in dict) {
         const el = document.querySelector(`[id="${key}"], [data-i18n="${key}"]`);
-        if (el) el.textContent = i18n[lang][key];
+        if (el) el.textContent = dict[key];
       }
     }
 
-    document.querySelectorAll('.menu a').forEach(link => {
-      link.addEventListener('click', e => {
+    document.querySelectorAll(".menu a").forEach(link =>
+      link.addEventListener("click", e => {
         e.preventDefault();
-        document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) target.style.display = 'block';
-        document.getElementById('menu').classList.remove('show');
-      });
-    });
+        document.querySelectorAll(".section").forEach(s => (s.style.display = "none"));
+        const sec = document.querySelector(link.getAttribute("href"));
+        if (sec) sec.style.display = "block";
+        document.getElementById("menu").classList.remove("show");
+      })
+    );
 
+    // Fetch news via NewsAPI with language=en
     async function fetchNews() {
-      const res = await fetch(`https://newsapi.org/v2/top-headlines?category=technology&language=vi&pageSize=5&apiKey=58b46914e3ac4a308220f370504b6c15`);
+      const res = await fetch(
+        "https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=5&apiKey=58b46914e3ac4a308220f370504b6c15"
+      );
       const data = await res.json();
-      const container = document.getElementById('news-content');
-      container.innerHTML = '';
-
+      const container = document.getElementById("news-content");
+      container.innerHTML = "";
       if (!data.articles) {
-        container.textContent = 'Không thể tải tin tức.';
+        container.textContent = currentLang === "vi" ? "Không thể tải tin tức." : "Unable to load news.";
         return;
       }
-
-      data.articles.forEach(article => {
-        const item = document.createElement('div');
-        item.className = 'news-item';
-        item.innerHTML = `
-          <h3>${article.title}</h3>
-          <p>${article.description || ''}</p>
-          <a href="${article.url}" target="_blank">Xem chi tiết</a>
+      data.articles.forEach(a => {
+        const div = document.createElement("div");
+        div.className = "news-item";
+        div.innerHTML = `
+          <h3>${a.title}</h3>
+          <p>${a.description || ""}</p>
+          <a href="${a.url}" target="_blank">${currentLang==="vi"?"Xem chi tiết":"Read More"}</a>
         `;
-        container.appendChild(item);
+        container.appendChild(div);
       });
     }
 
+    // Load news at startup
     fetchNews();
   </script>
 </body>
