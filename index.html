@@ -13,9 +13,9 @@
 
     body {
       font-family: "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #74ebd5, #9face6);
+      background: #f0f4f8;
       color: #333;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: background 0.4s ease, color 0.3s ease;
     }
 
     header {
@@ -23,12 +23,15 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px;
+      background: #005792;
+      color: #fff;
+      transition: background 0.4s;
     }
 
     .logo {
       font-size: 24px;
       font-weight: bold;
-      color: #663399;
+      color: #ffffff;
     }
 
     .controls {
@@ -41,14 +44,22 @@
       padding: 6px 12px;
       border: none;
       border-radius: 20px;
-      background: #eee;
-      cursor: pointer;
+      background: #ffffff;
+      color: #005792;
       font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .toggle-btn:hover, .lang-btn:hover {
+      background: #005792;
+      color: white;
     }
 
     .menu-icon {
       font-size: 24px;
       cursor: pointer;
+      color: #fff;
     }
 
     .menu {
@@ -57,8 +68,8 @@
       right: -250px;
       width: 250px;
       height: 100%;
-      background: #fff;
-      box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+      background: #ffffff;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
       padding: 20px;
       transition: right 0.3s ease;
       display: flex;
@@ -72,27 +83,29 @@
 
     .menu a {
       text-decoration: none;
-      color: #333;
+      color: #005792;
       font-weight: bold;
       font-size: 18px;
     }
 
     .section {
-      padding: 40px 20px;
-      max-width: 600px;
+      padding: 50px 20px;
+      max-width: 700px;
       margin: auto;
       text-align: center;
+      transition: background 0.3s ease;
     }
 
     .section h1 {
-      font-size: 32px;
+      font-size: 30px;
+      color: #003f63;
       margin-bottom: 20px;
     }
 
     .section p {
       font-size: 16px;
       line-height: 1.6;
-      color: #555;
+      color: #444;
     }
 
     .facebook-contact a {
@@ -113,28 +126,39 @@
 
     /* Dark mode */
     body.dark {
-      background: #1a1a1a;
+      background: #1e1e1e;
       color: #eee;
+    }
+
+    body.dark header {
+      background: #121212;
     }
 
     body.dark .menu {
       background: #2a2a2a;
     }
 
-    body.dark .menu a {
+    body.dark .menu a,
+    body.dark .logo,
+    body.dark .menu-icon {
       color: #eee;
     }
 
-    body.dark .toggle-btn, body.dark .lang-btn {
+    body.dark .toggle-btn,
+    body.dark .lang-btn {
       background: #444;
       color: #fff;
+    }
+
+    body.dark .toggle-btn:hover,
+    body.dark .lang-btn:hover {
+      background: #666;
     }
 
     .news {
       margin-top: 20px;
       font-style: italic;
     }
-
   </style>
 </head>
 <body>
@@ -148,9 +172,9 @@
   </header>
 
   <div class="menu" id="menu">
-    <a href="#intro">Giới thiệu</a>
-    <a href="#news">Tin tức</a>
-    <a href="#contact">Liên hệ</a>
+    <a href="#intro" id="menu-intro">Giới thiệu</a>
+    <a href="#news" id="menu-news">Tin tức</a>
+    <a href="#contact" id="menu-contact">Liên hệ</a>
   </div>
 
   <section class="section" id="intro">
@@ -159,17 +183,17 @@
       Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.
     </p>
     <div class="facebook-contact">
-      <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 Gửi tin nhắn</a>
+      <a id="fb-msg" href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 Gửi tin nhắn</a>
     </div>
   </section>
 
   <section class="section" id="news" style="display:none">
-    <h1>Tin tức công nghệ</h1>
-    <p class="news">[Cập nhật mới mỗi ngày tại đây: bạn có thể dán nội dung hoặc sử dụng API tin tức sau]</p>
+    <h1 id="news-title">Tin tức công nghệ</h1>
+    <p class="news" id="news-desc">[Cập nhật mới mỗi ngày tại đây: bạn có thể dán nội dung hoặc sử dụng API tin tức sau]</p>
   </section>
 
   <section class="section" id="contact" style="display:none">
-    <h1>Liên hệ & Dịch vụ</h1>
+    <h1 id="contact-title">Liên hệ & Dịch vụ</h1>
     <p><strong>Dịch vụ:</strong></p>
     <ul style="list-style: none; padding: 0;">
       <li>• Grok</li>
@@ -209,14 +233,28 @@
       document.documentElement.lang = isVN ? "en" : "vi";
 
       document.getElementById("intro-title").textContent = isVN
-        ? "Duck Soft Technology Ecosystem"
-        : "Hệ sinh thái công nghệ Duck Soft";
+        ? "High-Quality Technology News & Services"
+        : "Tin tức và dịch vụ công nghệ chất lượng cao";
+
       document.getElementById("intro-desc").textContent = isVN
-        ? "Explore advanced digital solutions designed to enhance your experience."
-        : "Khám phá các dịch vụ và giải pháp công nghệ tiên tiến, được thiết kế để nâng cao trải nghiệm số của bạn.";
+        ? "We help you solve digital tech problems and explore the latest innovations."
+        : "Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.";
+
+      document.getElementById("news-title").textContent = isVN ? "Technology News" : "Tin tức công nghệ";
+      document.getElementById("news-desc").textContent = isVN
+        ? "[Updated daily here: you can paste content or use a news API]"
+        : "[Cập nhật mới mỗi ngày tại đây: bạn có thể dán nội dung hoặc sử dụng API tin tức sau]";
+
+      document.getElementById("contact-title").textContent = isVN ? "Contact & Services" : "Liên hệ & Dịch vụ";
+
+      document.getElementById("menu-intro").textContent = isVN ? "Introduction" : "Giới thiệu";
+      document.getElementById("menu-news").textContent = isVN ? "News" : "Tin tức";
+      document.getElementById("menu-contact").textContent = isVN ? "Contact" : "Liên hệ";
+
+      document.getElementById("fb-msg").textContent = isVN ? "💬 Message us" : "💬 Gửi tin nhắn";
     }
 
-    // Ẩn/hiện mục khi menu được bấm
+    // Hiện mục khi bấm menu
     document.querySelectorAll('.menu a').forEach(link => {
       link.addEventListener('click', e => {
         document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
