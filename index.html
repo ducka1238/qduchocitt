@@ -120,7 +120,6 @@
       margin-top: 20px;
     }
 
-    /* Dark mode */
     body.dark {
       background: #1a1a1a;
       color: #eee;
@@ -130,7 +129,9 @@
       background: #2a2a2a;
     }
 
-    body.dark .menu a {
+    body.dark .menu a,
+    body.dark .section p,
+    body.dark .section h1 {
       color: #eee;
     }
 
@@ -141,29 +142,20 @@
       border: none;
     }
 
-    body.dark .section p,
-    body.dark .section h1 {
-      color: #eee;
-    }
-
     @media (max-width: 600px) {
       .section h1 {
         font-size: 24px;
       }
-
       .section p {
         font-size: 14px;
       }
-
       .toggle-btn, .lang-btn {
         font-size: 12px;
         padding: 5px 10px;
       }
-
       .menu a {
         font-size: 16px;
       }
-
       iframe {
         height: 400px;
       }
@@ -200,7 +192,6 @@
   <section class="section" id="news" style="display:none">
     <h1 id="news-title">Tin tức công nghệ</h1>
     <p id="news-desc">Đang tải tin tức...</p>
-    <!-- Bạn có thể tích hợp API tin tức ở đây -->
   </section>
 
   <section class="section" id="schedule" style="display:none">
@@ -235,35 +226,27 @@
       const isVN = document.documentElement.lang === "vi";
       document.documentElement.lang = isVN ? "en" : "vi";
 
-      // Giới thiệu
+      document.querySelector(".menu a[href='#intro']").textContent = isVN ? "Introduction" : "Giới thiệu";
+      document.querySelector(".menu a[href='#news']").textContent = isVN ? "News" : "Tin tức";
+      document.querySelector(".menu a[href='#schedule']").textContent = isVN ? "Schedule" : "Lịch học";
+      document.querySelector(".menu a[href='#contact']").textContent = isVN ? "Contact" : "Liên hệ";
+
       document.getElementById("intro-title").textContent = isVN
-        ? "High-Quality Tech News & Services"
+        ? "High-Quality Tech News and Services"
         : "Tin tức và dịch vụ công nghệ chất lượng cao";
 
       document.getElementById("intro-desc").textContent = isVN
-        ? "We help solve your digital technology issues and explore new innovations."
+        ? "Here we can help you solve digital technology problems and explore new technologies."
         : "Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.";
 
-      // Tin tức
-      document.getElementById("news-title").textContent = isVN
-        ? "Technology News"
-        : "Tin tức công nghệ";
-      document.getElementById("news-desc").textContent = isVN
-        ? "Loading latest news..."
-        : "Đang tải tin tức...";
+      document.getElementById("news-title").textContent = isVN ? "Technology News" : "Tin tức công nghệ";
+      document.getElementById("news-desc").textContent = isVN ? "Loading news..." : "Đang tải tin tức...";
 
-      // Lịch học
-      document.getElementById("schedule-title").textContent = isVN
-        ? "Study Schedule"
-        : "Lịch học";
+      document.getElementById("schedule-title").textContent = isVN ? "Study Schedule" : "Lịch học";
 
-      // Liên hệ
-      document.getElementById("contact-title").textContent = isVN
-        ? "Contact & Services"
-        : "Liên hệ & Dịch vụ";
+      document.getElementById("contact-title").textContent = isVN ? "Contact & Services" : "Liên hệ & Dịch vụ";
     }
 
-    // Khi nhấn vào menu
     document.querySelectorAll('.menu a').forEach(link => {
       link.addEventListener('click', e => {
         document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
