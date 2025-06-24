@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Một Chút Về Bản Thân</title>
   <style>
     body {
@@ -13,36 +13,20 @@
       padding: 40px 20px;
     }
 
-    .section {
+    .card {
       background-color: white;
       padding: 30px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      margin-bottom: 30px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
       text-align: center;
+      width: 100%;
+      max-width: 500px;
+      margin: 50px auto;
     }
 
-    .section img {
-      border-radius: 50%;
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      margin-bottom: 20px;
-    }
-
-    h1 {
+    h1, h2 {
       margin: 10px 0;
-      font-size: 24px;
       color: #333;
-    }
-
-    h2 {
-      margin: 5px 0;
-      font-size: 18px;
-      color: #555;
     }
 
     p {
@@ -57,36 +41,8 @@
       color: #888;
     }
 
-    ul {
-      text-align: left;
-      padding-left: 20px;
-      color: #555;
-      font-size: 14px;
-    }
-
-    ul li {
-      margin-bottom: 8px;
-    }
-
-    /* Dark mode */
-    body.dark {
-      background: #1a1a1a;
-      color: #eee;
-    }
-
-    body.dark .section {
-      background-color: #2a2a2a;
-    }
-
-    body.dark h1,
-    body.dark h2,
-    body.dark p,
-    body.dark ul,
-    body.dark a {
-      color: #eee;
-    }
-
-    .toggle-btn {
+    /* Nút chế độ sáng/tối */
+    .mode-btn {
       position: fixed;
       top: 20px;
       right: 20px;
@@ -95,56 +51,129 @@
       border: none;
       background: #ddd;
       cursor: pointer;
+      z-index: 1001;
     }
 
-    body.dark .toggle-btn {
-      background: #444;
-      color: #fff;
+    /* Menu trượt */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      background-color: #fff;
+      overflow-x: hidden;
+      transition: 0.4s;
+      padding-top: 60px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.3);
     }
 
-    a {
-      color: #000;
+    .sidebar a {
+      padding: 10px 30px;
       text-decoration: none;
+      font-size: 18px;
+      color: #333;
+      display: block;
+      transition: 0.3s;
     }
 
+    .sidebar a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 36px;
+      cursor: pointer;
+    }
+
+    .openbtn {
+      font-size: 24px;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+    }
+
+    /* Dark mode */
+    body.dark {
+      background: #1a1a1a;
+      color: #eee;
+    }
+
+    body.dark .card {
+      background-color: #2a2a2a;
+    }
+
+    body.dark h1,
+    body.dark h2,
+    body.dark p,
     body.dark a {
+      color: #eee;
+    }
+
+    body.dark .sidebar {
+      background-color: #2a2a2a;
+    }
+
+    body.dark .sidebar a {
       color: #eee;
     }
   </style>
 </head>
 <body>
-  <!-- Nút chuyển chế độ -->
-  <button onclick="toggleMode()" class="toggle-btn">🌞/🌙</button>
 
-  <!-- Mục 1: Giới thiệu bản thân -->
-  <div class="section">
+  <!-- Nút mở menu -->
+  <button class="openbtn" onclick="toggleSidebar()">☰</button>
+
+  <!-- Nút sáng/tối -->
+  <button class="mode-btn" onclick="toggleMode()">🌞/🌙</button>
+
+  <!-- Sidebar menu -->
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
+    <a href="#about">Giới thiệu</a>
+    <a href="#tech">Công nghệ</a>
+    <a href="#contact">Liên hệ</a>
+  </div>
+
+  <!-- Phần Giới thiệu -->
+  <div class="card" id="about">
     <h1>Đồng Quang Đức</h1>
     <h2>Web Developer</h2>
     <p>Xin chào! Mình là một lập trình viên trẻ đam mê công nghệ và thiết kế web. Mình thích học hỏi những điều mới và chia sẻ kiến thức với mọi người.</p>
-    <div class="contact">
+    <div class="contact" id="contact">
       <p><strong>Hãy kết nối với mình!</strong></p>
-      <p>
-        📧 Email: ducyeuemm12@gmail.com<br />
-        ☎️ SĐT: 0796 032 313<br />
-        🔗 Facebook: <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">facebook.com/Mbbank22222006666666DQD</a>
-      </p>
+      📧 Email: ducyeuemm12@gmail.com<br>
+      ☎️ SĐT: 0796 032 313<br>
+      🔗 Facebook: <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">facebook.com/Mbbank22222006666666DQD</a>
     </div>
   </div>
 
-  <!-- Mục 2: Cập nhật công nghệ -->
-  <div class="section">
-    <h2>📰 Cập nhật công nghệ</h2>
-    <ul>
-      <li><strong>24/06/2025:</strong> OpenAI ra mắt GPT-5 hỗ trợ video thời gian thực.</li>
-      <li><strong>20/06/2025:</strong> Apple giới thiệu iOS 19 với AI thông minh hơn.</li>
-      <li><strong>15/06/2025:</strong> Google tích hợp Gemini AI vào Android 15.</li>
-    </ul>
+  <!-- Phần Công nghệ -->
+  <div class="card" id="tech">
+    <h2>Tin tức công nghệ</h2>
+    <p>📱 Apple ra mắt iOS mới với nhiều cải tiến mạnh mẽ về hiệu suất và giao diện.</p>
+    <p>🤖 AI đang trở thành xu hướng chủ đạo trong phát triển phần mềm hiện đại.</p>
+    <p>🌐 Web 3.0 và blockchain đang định hình tương lai của Internet.</p>
   </div>
 
   <script>
     function toggleMode() {
       document.body.classList.toggle("dark");
     }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
   </script>
 </body>
 </html>
+
