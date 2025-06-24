@@ -5,109 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Duck Soft</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: "Segoe UI", sans-serif;
-      background: #f0f4f8;
+      background: linear-gradient(135deg, #f0f4ff, #dbeafe);
       color: #333;
-      transition: background 0.4s ease, color 0.3s ease;
+      transition: background 0.3s ease, color 0.3s ease;
     }
-
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px;
-      background: #005792;
-      color: #fff;
-      transition: background 0.4s;
     }
-
     .logo {
       font-size: 24px;
       font-weight: bold;
-      color: #ffffff;
+      color: #663399;
     }
-
     .controls {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-
     .toggle-btn, .lang-btn {
       padding: 6px 12px;
       border: none;
       border-radius: 20px;
-      background: #ffffff;
-      color: #005792;
-      font-weight: bold;
+      background: #eee;
       cursor: pointer;
-      transition: background 0.3s, color 0.3s;
+      font-weight: bold;
     }
-
-    .toggle-btn:hover, .lang-btn:hover {
-      background: #005792;
-      color: white;
-    }
-
     .menu-icon {
       font-size: 24px;
       cursor: pointer;
-      color: #fff;
     }
-
     .menu {
       position: fixed;
       top: 0;
       right: -250px;
       width: 250px;
       height: 100%;
-      background: #ffffff;
-      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+      background: #fff;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.2);
       padding: 20px;
       transition: right 0.3s ease;
       display: flex;
       flex-direction: column;
       gap: 20px;
+      z-index: 999;
     }
-
-    .menu.show {
-      right: 0;
-    }
-
+    .menu.show { right: 0; }
     .menu a {
       text-decoration: none;
-      color: #005792;
+      color: #333;
       font-weight: bold;
       font-size: 18px;
     }
-
     .section {
-      padding: 50px 20px;
-      max-width: 700px;
+      padding: 40px 20px;
+      max-width: 800px;
       margin: auto;
       text-align: center;
-      transition: background 0.3s ease;
+      display: none;
     }
+    .section.active { display: block; }
 
     .section h1 {
-      font-size: 30px;
-      color: #003f63;
+      font-size: 32px;
       margin-bottom: 20px;
     }
-
     .section p {
       font-size: 16px;
       line-height: 1.6;
-      color: #444;
+      color: #555;
     }
-
     .facebook-contact a {
       display: inline-block;
       margin-top: 20px;
@@ -119,45 +91,23 @@
       font-weight: bold;
       transition: background 0.3s ease;
     }
-
     .facebook-contact a:hover {
       background-color: #0e5ad4;
     }
-
-    /* Dark mode */
     body.dark {
-      background: #1e1e1e;
+      background: #1a1a1a;
       color: #eee;
     }
-
-    body.dark header {
-      background: #121212;
+    body.dark .menu { background: #2a2a2a; }
+    body.dark .menu a, body.dark .toggle-btn, body.dark .lang-btn {
+      color: #eee; background: #444;
     }
-
-    body.dark .menu {
-      background: #2a2a2a;
-    }
-
-    body.dark .menu a,
-    body.dark .logo,
-    body.dark .menu-icon {
-      color: #eee;
-    }
-
-    body.dark .toggle-btn,
-    body.dark .lang-btn {
-      background: #444;
-      color: #fff;
-    }
-
-    body.dark .toggle-btn:hover,
-    body.dark .lang-btn:hover {
-      background: #666;
-    }
-
-    .news {
-      margin-top: 20px;
-      font-style: italic;
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -172,51 +122,43 @@
   </header>
 
   <div class="menu" id="menu">
-    <a href="#intro" id="menu-intro">Giới thiệu</a>
-    <a href="#news" id="menu-news">Tin tức</a>
-    <a href="#contact" id="menu-contact">Liên hệ</a>
+    <a href="#intro">Giới thiệu</a>
+    <a href="#news">Tin tức</a>
+    <a href="#contact">Liên hệ</a>
+    <a href="#schedule">Lịch học</a>
   </div>
 
-  <section class="section" id="intro">
+  <section class="section active" id="intro">
     <h1 id="intro-title">Tin tức và dịch vụ công nghệ chất lượng cao</h1>
-    <p id="intro-desc">
-      Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.
-    </p>
+    <p id="intro-desc">Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.</p>
     <div class="facebook-contact">
-      <a id="fb-msg" href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 Gửi tin nhắn</a>
+      <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 Gửi tin nhắn</a>
     </div>
   </section>
 
-  <section class="section" id="news" style="display:none">
-    <h1 id="news-title">Tin tức công nghệ</h1>
-    <p class="news" id="news-desc">[Cập nhật mới mỗi ngày tại đây: bạn có thể dán nội dung hoặc sử dụng API tin tức sau]</p>
+  <section class="section" id="news">
+    <h1>Tin tức công nghệ</h1>
+    <p class="news">[Cập nhật mới mỗi ngày tại đây: bạn có thể dán nội dung hoặc sử dụng API tin tức sau]</p>
   </section>
 
-  <section class="section" id="contact" style="display:none">
-    <h1 id="contact-title">Liên hệ & Dịch vụ</h1>
+  <section class="section" id="contact">
+    <h1>Liên hệ & Dịch vụ</h1>
     <p><strong>Dịch vụ:</strong></p>
     <ul style="list-style: none; padding: 0;">
-      <li>• Grok</li>
-      <li>• Drive</li>
-      <li>• GPT</li>
-      <li>• Meitu</li>
-      <li>• Elsa</li>
-      <li>• Capcut</li>
-      <li>• Spotify</li>
-      <li>• Monica</li>
-      <li>• Poe</li>
-      <li>• Kling</li>
-      <li>• Hailou</li>
-      <li>• Heygen</li>
-      <li>• Runway</li>
-      <li>• Minimax</li>
-      <li>• Cursor</li>
-      <li>• v0</li>
+      <li>• Grok</li> <li>• Drive</li> <li>• GPT</li> <li>• Meitu</li>
+      <li>• Elsa</li> <li>• Capcut</li> <li>• Spotify</li> <li>• Monica</li>
+      <li>• Poe</li> <li>• Kling</li> <li>• Hailou</li> <li>• Heygen</li>
+      <li>• Runway</li> <li>• Minimax</li> <li>• Cursor</li> <li>• v0</li>
       <li>• Bolt</li>
     </ul>
     <p><strong>Thông tin liên hệ:</strong></p>
     <p>Email: ducyeuemm12@gmail.com</p>
     <p>SĐT: 0796 032 313</p>
+  </section>
+
+  <section class="section" id="schedule">
+    <h1>Lịch học</h1>
+    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQXR-6gIkWqGeimvb-RGAO5iBPKrUvdpoZlN1mnlKExONtXY6UYRXZFIxv39edWbQ/pubhtml?widget=true&amp;headers=false"></iframe>
   </section>
 
   <script>
@@ -233,33 +175,18 @@
       document.documentElement.lang = isVN ? "en" : "vi";
 
       document.getElementById("intro-title").textContent = isVN
-        ? "High-Quality Technology News & Services"
+        ? "High-Quality Tech News and Services"
         : "Tin tức và dịch vụ công nghệ chất lượng cao";
-
       document.getElementById("intro-desc").textContent = isVN
-        ? "We help you solve digital tech problems and explore the latest innovations."
+        ? "We help you solve digital tech problems and explore new innovations."
         : "Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.";
-
-      document.getElementById("news-title").textContent = isVN ? "Technology News" : "Tin tức công nghệ";
-      document.getElementById("news-desc").textContent = isVN
-        ? "[Updated daily here: you can paste content or use a news API]"
-        : "[Cập nhật mới mỗi ngày tại đây: bạn có thể dán nội dung hoặc sử dụng API tin tức sau]";
-
-      document.getElementById("contact-title").textContent = isVN ? "Contact & Services" : "Liên hệ & Dịch vụ";
-
-      document.getElementById("menu-intro").textContent = isVN ? "Introduction" : "Giới thiệu";
-      document.getElementById("menu-news").textContent = isVN ? "News" : "Tin tức";
-      document.getElementById("menu-contact").textContent = isVN ? "Contact" : "Liên hệ";
-
-      document.getElementById("fb-msg").textContent = isVN ? "💬 Message us" : "💬 Gửi tin nhắn";
     }
 
-    // Hiện mục khi bấm menu
     document.querySelectorAll('.menu a').forEach(link => {
       link.addEventListener('click', e => {
-        document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         const target = document.querySelector(e.target.getAttribute('href'));
-        if (target) target.style.display = 'block';
+        if (target) target.classList.add('active');
         document.getElementById('menu').classList.remove('show');
         e.preventDefault();
       });
