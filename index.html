@@ -1,297 +1,229 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Duck Soft - Giới Thiệu</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Duck Soft</title>
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: "Segoe UI", sans-serif;
       background: linear-gradient(135deg, #74ebd5, #9face6);
-      margin: 0;
-      padding: 0;
-      transition: background 0.4s;
+      color: #333;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 32px;
-      background: #ffffffcc;
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      padding: 20px;
     }
 
     .logo {
       font-size: 24px;
       font-weight: bold;
-      background: linear-gradient(to right, #667eea, #764ba2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .menu {
-      position: relative;
-    }
-
-    .menu-btn {
-      background: #ddd;
-      border: none;
-      border-radius: 6px;
-      padding: 6px 12px;
-      cursor: pointer;
-    }
-
-    .submenu {
-      display: none;
-      position: absolute;
-      right: 0;
-      background: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      padding: 10px;
-      border-radius: 8px;
-    }
-
-    .submenu a {
-      display: block;
-      margin: 6px 0;
-      text-decoration: none;
-      color: #333;
-    }
-
-    .menu:hover .submenu {
-      display: block;
+      color: #663399;
     }
 
     .controls {
       display: flex;
-      gap: 10px;
       align-items: center;
+      gap: 10px;
     }
 
     .toggle-btn, .lang-btn {
-      padding: 6px 14px;
-      border-radius: 18px;
+      padding: 6px 12px;
       border: none;
+      border-radius: 20px;
+      background: #eee;
       cursor: pointer;
-      background: #ddd;
-      transition: 0.3s;
+      font-weight: bold;
     }
 
-    section {
-      max-width: 800px;
-      margin: 60px auto;
-      padding: 0 20px;
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+      padding: 20px;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .menu.show {
+      right: 0;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 600px;
+      margin: auto;
       text-align: center;
     }
 
-    h1 {
+    .section h1 {
       font-size: 32px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
-    p {
+    .section p {
       font-size: 16px;
-      color: #444;
+      line-height: 1.6;
+      color: #555;
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    .facebook-contact a {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #1877f2;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
     }
 
-    .fade-in.show {
-      opacity: 1;
-      transform: none;
+    .facebook-contact a:hover {
+      background-color: #0e5ad4;
     }
 
-    .services ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .services li {
-      padding: 6px 0;
-      font-weight: 500;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 14px;
-      padding: 30px 10px;
-      color: #666;
-    }
-
+    /* Dark mode */
     body.dark {
       background: #1a1a1a;
       color: #eee;
     }
 
-    body.dark header {
+    body.dark .menu {
       background: #2a2a2a;
     }
 
-    .lang-vi, .lang-en {
-      display: none;
+    body.dark .menu a {
+      color: #eee;
     }
 
-    .lang-vi.active, .lang-en.active {
-      display: block;
+    body.dark .toggle-btn, body.dark .lang-btn {
+      background: #444;
+      color: #fff;
     }
 
-    .hidden-section {
-      display: none;
+    .news {
+      margin-top: 20px;
+      font-style: italic;
     }
+
   </style>
 </head>
 <body>
   <header>
     <div class="logo">Duck Soft</div>
-    <div class="menu">
-      <button class="menu-btn">Menu</button>
-      <div class="submenu">
-        <a href="#about" onclick="showSection('about')">Giới thiệu</a>
-        <a href="#news" onclick="showSection('news')">Tin tức</a>
-        <a href="#contact" onclick="showSection('contact')">Liên hệ</a>
-      </div>
-    </div>
     <div class="controls">
-      <button class="lang-btn" onclick="switchLanguage('vi')">VI</button>
-      <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
-      <button onclick="toggleMode()" class="toggle-btn">🌞 / 🌙</button>
+      <button class="lang-btn" onclick="toggleLanguage()">🌐 VN/EN</button>
+      <button class="toggle-btn" onclick="toggleMode()">🌞 / 🌙</button>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
     </div>
   </header>
 
-  <section id="about" class="fade-in">
-    <div class="lang-vi active">
-      <h1>Tin tức và Dịch vụ Công nghệ Chất lượng Cao</h1>
-      <p>Ở đây, chúng tôi có thể giúp bạn giải quyết những vấn đề về công nghệ số và khám phá những công nghệ mới.</p>
-    </div>
-    <div class="lang-en">
-      <h1>High-Quality Tech News and Services</h1>
-      <p>Here, we can help you solve digital technology problems and explore new innovations.</p>
+  <div class="menu" id="menu">
+    <a href="#intro">Giới thiệu</a>
+    <a href="#news">Tin tức</a>
+    <a href="#contact">Liên hệ</a>
+  </div>
+
+  <section class="section" id="intro">
+    <h1 id="intro-title">Hệ sinh thái công nghệ Duck Soft</h1>
+    <p id="intro-desc">
+      Khám phá các dịch vụ và giải pháp công nghệ tiên tiến, được thiết kế để nâng cao trải nghiệm số của bạn.
+    </p>
+    <div class="facebook-contact">
+      <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 Gửi tin nhắn</a>
     </div>
   </section>
 
-  <section id="news" class="fade-in hidden-section">
-    <div class="lang-vi active">
-      <h1>Tin tức công nghệ</h1>
-      <p>Cập nhật mỗi ngày các thông tin mới về trí tuệ nhân tạo, phần mềm, thiết bị, xu hướng số hoá...</p>
-    </div>
-    <div class="lang-en">
-      <h1>Technology News</h1>
-      <p>Daily updates on artificial intelligence, software, devices, and digital trends...</p>
-    </div>
+  <section class="section" id="news" style="display:none">
+    <h1>Tin tức công nghệ</h1>
+    <p class="news">[Cập nhật mới mỗi ngày tại đây: bạn có thể dán nội dung hoặc sử dụng API tin tức sau]</p>
   </section>
 
-  <section id="contact" class="fade-in hidden-section">
-    <div class="lang-vi active">
-      <h1>Liên hệ và Dịch vụ</h1>
-      <p><strong>Email:</strong> ducyeuemm12@gmail.com</p>
-      <p><strong>Điện thoại:</strong> 0796 032 313</p>
-      <p><strong>Facebook:</strong> <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">facebook.com/Mbbank22222006666666DQD</a></p>
-      <div class="services">
-        <h2>Dịch vụ AI:</h2>
-        <ul>
-          <li>Grok</li>
-          <li>Drive</li>
-          <li>GPT</li>
-          <li>Meitu</li>
-          <li>Elsa</li>
-          <li>Capcut</li>
-          <li>Spotify</li>
-          <li>Monica</li>
-          <li>Poe</li>
-          <li>Kling</li>
-          <li>Hailou</li>
-          <li>Heygen</li>
-          <li>Runway</li>
-          <li>Minimax</li>
-          <li>Cursor</li>
-          <li>v0</li>
-          <li>Bolt</li>
-        </ul>
-      </div>
-    </div>
-    <div class="lang-en">
-      <h1>Contact and Services</h1>
-      <p><strong>Email:</strong> ducyeuemm12@gmail.com</p>
-      <p><strong>Phone:</strong> 0796 032 313</p>
-      <p><strong>Facebook:</strong> <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">facebook.com/Mbbank22222006666666DQD</a></p>
-      <div class="services">
-        <h2>AI Services:</h2>
-        <ul>
-          <li>Grok</li>
-          <li>Drive</li>
-          <li>GPT</li>
-          <li>Meitu</li>
-          <li>Elsa</li>
-          <li>Capcut</li>
-          <li>Spotify</li>
-          <li>Monica</li>
-          <li>Poe</li>
-          <li>Kling</li>
-          <li>Hailou</li>
-          <li>Heygen</li>
-          <li>Runway</li>
-          <li>Minimax</li>
-          <li>Cursor</li>
-          <li>v0</li>
-          <li>Bolt</li>
-        </ul>
-      </div>
-    </div>
+  <section class="section" id="contact" style="display:none">
+    <h1>Liên hệ & Dịch vụ</h1>
+    <p><strong>Dịch vụ:</strong></p>
+    <ul style="list-style: none; padding: 0;">
+      <li>• Grok</li>
+      <li>• Drive</li>
+      <li>• GPT</li>
+      <li>• Meitu</li>
+      <li>• Elsa</li>
+      <li>• Capcut</li>
+      <li>• Spotify</li>
+      <li>• Monica</li>
+      <li>• Poe</li>
+      <li>• Kling</li>
+      <li>• Hailou</li>
+      <li>• Heygen</li>
+      <li>• Runway</li>
+      <li>• Minimax</li>
+      <li>• Cursor</li>
+      <li>• v0</li>
+      <li>• Bolt</li>
+    </ul>
+    <p><strong>Thông tin cá nhân:</strong></p>
+    <p>Email: ducyeuemm12@gmail.com</p>
+    <p>SĐT: 0796 032 313</p>
   </section>
-
-  <footer>
-    &copy; 2025 Duck Soft. All rights reserved.
-  </footer>
 
   <script>
     function toggleMode() {
-      document.body.classList.toggle("dark");
+      document.body.classList.toggle('dark');
     }
 
-    function switchLanguage(lang) {
-      const vi = document.querySelectorAll('.lang-vi');
-      const en = document.querySelectorAll('.lang-en');
-
-      vi.forEach(el => el.classList.remove('active'));
-      en.forEach(el => el.classList.remove('active'));
-
-      if (lang === 'vi') {
-        vi.forEach(el => el.classList.add('active'));
-      } else {
-        en.forEach(el => el.classList.add('active'));
-      }
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('show');
     }
 
-    function showSection(id) {
-      const sections = document.querySelectorAll("section");
-      sections.forEach(sec => {
-        if (sec.id === id) {
-          sec.classList.remove("hidden-section");
-        } else {
-          sec.classList.add("hidden-section");
-        }
-      });
+    function toggleLanguage() {
+      const isVN = document.documentElement.lang === "vi";
+      document.documentElement.lang = isVN ? "en" : "vi";
+
+      document.getElementById("intro-title").textContent = isVN
+        ? "Duck Soft Technology Ecosystem"
+        : "Hệ sinh thái công nghệ Duck Soft";
+      document.getElementById("intro-desc").textContent = isVN
+        ? "Explore advanced digital solutions designed to enhance your experience."
+        : "Khám phá các dịch vụ và giải pháp công nghệ tiên tiến, được thiết kế để nâng cao trải nghiệm số của bạn.";
     }
 
-    const faders = document.querySelectorAll(".fade-in");
-    window.addEventListener("scroll", () => {
-      faders.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          el.classList.add("show");
-        }
+    // Ẩn/hiện mục khi menu được bấm
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', e => {
+        document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+        const target = document.querySelector(e.target.getAttribute('href'));
+        if (target) target.style.display = 'block';
+        document.getElementById('menu').classList.remove('show');
+        e.preventDefault();
       });
     });
   </script>
