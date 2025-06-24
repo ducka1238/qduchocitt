@@ -13,8 +13,8 @@
 
     body {
       font-family: "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #f0f4ff, #dbeafe);
-      color: #222;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      color: #333;
       transition: background 0.3s ease, color 0.3s ease;
     }
 
@@ -64,10 +64,12 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      z-index: 999;
+      z-index: 1000;
     }
 
-    .menu.show { right: 0; }
+    .menu.show {
+      right: 0;
+    }
 
     .menu a {
       text-decoration: none;
@@ -81,10 +83,7 @@
       max-width: 800px;
       margin: auto;
       text-align: center;
-      display: none;
     }
-
-    .section.active { display: block; }
 
     .section h1 {
       font-size: 32px;
@@ -115,16 +114,15 @@
 
     iframe {
       width: 100%;
-      height: 600px;
+      height: 500px;
       border: none;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
     }
 
-    /* Chế độ tối */
+    /* Dark mode */
     body.dark {
       background: #1a1a1a;
-      color: #f0f0f0;
+      color: #eee;
     }
 
     body.dark .menu {
@@ -132,18 +130,13 @@
     }
 
     body.dark .menu a {
-      color: #f0f0f0;
+      color: #eee;
     }
 
     body.dark .toggle-btn,
     body.dark .lang-btn {
       background: #444;
       color: #fff;
-    }
-
-    body.dark .section p,
-    body.dark .section h1 {
-      color: #f0f0f0;
     }
   </style>
 </head>
@@ -158,13 +151,13 @@
   </header>
 
   <div class="menu" id="menu">
-    <a href="#intro">Giới thiệu</a>
-    <a href="#news">Tin tức</a>
-    <a href="#contact">Liên hệ</a>
-    <a href="#schedule">Lịch học</a>
+    <a href="#intro" id="menu-intro">Giới thiệu</a>
+    <a href="#news" id="menu-news">Tin tức</a>
+    <a href="#contact" id="menu-contact">Liên hệ</a>
+    <a href="#schedule" id="menu-schedule">Lịch học</a>
   </div>
 
-  <section class="section active" id="intro">
+  <section class="section" id="intro">
     <h1 id="intro-title">Tin tức và dịch vụ công nghệ chất lượng cao</h1>
     <p id="intro-desc">
       Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.
@@ -174,28 +167,27 @@
     </div>
   </section>
 
-  <section class="section" id="news">
-    <h1>Tin tức công nghệ</h1>
-    <p class="news">[Cập nhật mỗi ngày tại đây – bạn có thể dán tin tức hoặc tích hợp API]</p>
+  <section class="section" id="news" style="display:none">
+    <h1 id="news-title">Tin tức công nghệ</h1>
+    <p id="news-desc">[Cập nhật mỗi ngày tại đây hoặc dùng API để tự động hiển thị]</p>
   </section>
 
-  <section class="section" id="contact">
-    <h1>Liên hệ & Dịch vụ</h1>
-    <p><strong>Dịch vụ:</strong></p>
+  <section class="section" id="contact" style="display:none">
+    <h1 id="contact-title">Liên hệ & Dịch vụ</h1>
+    <p id="service-label"><strong>Dịch vụ cung cấp:</strong></p>
     <ul style="list-style: none; padding: 0;">
-      <li>• Grok</li> <li>• Drive</li> <li>• GPT</li> <li>• Meitu</li>
-      <li>• Elsa</li> <li>• Capcut</li> <li>• Spotify</li> <li>• Monica</li>
-      <li>• Poe</li> <li>• Kling</li> <li>• Hailou</li> <li>• Heygen</li>
-      <li>• Runway</li> <li>• Minimax</li> <li>• Cursor</li> <li>• v0</li>
-      <li>• Bolt</li>
+      <li>• Grok</li><li>• Drive</li><li>• GPT</li><li>• Meitu</li><li>• Elsa</li>
+      <li>• Capcut</li><li>• Spotify</li><li>• Monica</li><li>• Poe</li>
+      <li>• Kling</li><li>• Hailou</li><li>• Heygen</li><li>• Runway</li>
+      <li>• Minimax</li><li>• Cursor</li><li>• v0</li><li>• Bolt</li>
     </ul>
-    <p><strong>Thông tin liên hệ:</strong></p>
-    <p>Email: ducyeuemm12@gmail.com</p>
-    <p>SĐT: 0796 032 313</p>
+    <p id="contact-info-label"><strong>Thông tin cá nhân:</strong></p>
+    <p id="contact-email">Email: ducyeuemm12@gmail.com</p>
+    <p id="contact-phone">SĐT: 0796 032 313</p>
   </section>
 
-  <section class="section" id="schedule">
-    <h1>Lịch học</h1>
+  <section class="section" id="schedule" style="display:none">
+    <h1 id="schedule-title">Lịch học</h1>
     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQXR-6gIkWqGeimvb-RGAO5iBPKrUvdpoZlN1mnlKExONtXY6UYRXZFIxv39edWbQ/pubhtml?widget=true&amp;headers=false"></iframe>
   </section>
 
@@ -212,20 +204,34 @@
       const isVN = document.documentElement.lang === "vi";
       document.documentElement.lang = isVN ? "en" : "vi";
 
-      document.getElementById("intro-title").textContent = isVN
-        ? "High-Quality Tech News and Services"
-        : "Tin tức và dịch vụ công nghệ chất lượng cao";
+      document.getElementById("menu-intro").textContent = isVN ? "Introduction" : "Giới thiệu";
+      document.getElementById("menu-news").textContent = isVN ? "News" : "Tin tức";
+      document.getElementById("menu-contact").textContent = isVN ? "Contact" : "Liên hệ";
+      document.getElementById("menu-schedule").textContent = isVN ? "Schedule" : "Lịch học";
 
+      document.getElementById("intro-title").textContent = isVN
+        ? "High-quality Technology News & Services"
+        : "Tin tức và dịch vụ công nghệ chất lượng cao";
       document.getElementById("intro-desc").textContent = isVN
-        ? "We assist you with solving technology-related problems and discovering new innovations."
+        ? "We help solve your technology challenges and explore the latest innovations."
         : "Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.";
+      document.getElementById("news-title").textContent = isVN ? "Technology News" : "Tin tức công nghệ";
+      document.getElementById("news-desc").textContent = isVN
+        ? "[Updated daily here or use an API to display tech news automatically]"
+        : "[Cập nhật mỗi ngày tại đây hoặc dùng API để tự động hiển thị]";
+      document.getElementById("contact-title").textContent = isVN ? "Contact & Services" : "Liên hệ & Dịch vụ";
+      document.getElementById("service-label").textContent = isVN ? "Provided Services:" : "Dịch vụ cung cấp:";
+      document.getElementById("contact-info-label").textContent = isVN ? "Personal Info:" : "Thông tin cá nhân:";
+      document.getElementById("contact-email").textContent = isVN ? "Email: ducyeuemm12@gmail.com" : "Email: ducyeuemm12@gmail.com";
+      document.getElementById("contact-phone").textContent = isVN ? "Phone: 0796 032 313" : "SĐT: 0796 032 313";
+      document.getElementById("schedule-title").textContent = isVN ? "Schedule" : "Lịch học";
     }
 
     document.querySelectorAll('.menu a').forEach(link => {
       link.addEventListener('click', e => {
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
         const target = document.querySelector(e.target.getAttribute('href'));
-        if (target) target.classList.add('active');
+        if (target) target.style.display = 'block';
         document.getElementById('menu').classList.remove('show');
         e.preventDefault();
       });
