@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Duck Soft</title>
+  <meta name="theme-color" content="#f3f8fc"/>
+  <title>Duck Soft - Công nghệ dễ hiểu</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5968/5968705.png"/>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: "Segoe UI", sans-serif;
-      background: #f3f8fc;
-      color: #333;
+      background: #f3f8fc; color: #333;
       transition: background 0.3s, color 0.3s;
     }
     header {
@@ -33,9 +34,14 @@
     .menu a {
       text-decoration: none; color: #333; font-size: 18px; font-weight: bold;
     }
+    .menu a.active {
+      color: #3b3b9d; text-decoration: underline;
+    }
     .section {
       padding: 40px 20px; max-width: 800px; margin: auto; text-align: center;
+      display: none;
     }
+    .section.active-section { display: block; }
     .section h1 { font-size: 28px; margin-bottom: 15px; }
     .section p { font-size: 16px; line-height: 1.6; color: #444; }
     .facebook-contact a {
@@ -50,17 +56,21 @@
     .news-item a:hover { text-decoration: underline; }
     iframe { width: 100%; height: 500px; border: none; margin-top: 20px; }
 
+    /* Responsive */
+    @media (max-width: 600px) {
+      .section { padding: 20px 10px; }
+      .logo { font-size: 20px; }
+      .toggle-btn, .lang-btn { font-size: 14px; padding: 4px 8px; }
+    }
+
     /* Dark Mode */
-    body.dark {
-      background: #1a1a1a; color: #eee;
-    }
+    body.dark { background: #1a1a1a; color: #eee; }
     body.dark .menu { background: #2a2a2a; }
-    body.dark .menu a, body.dark .section h1, body.dark .section p {
-      color: #eee;
-    }
-    body.dark .toggle-btn, body.dark .lang-btn {
-      background: #444; color: #fff;
-    }
+    body.dark .menu a,
+    body.dark .section h1,
+    body.dark .section p { color: #eee; }
+    body.dark .toggle-btn,
+    body.dark .lang-btn { background: #444; color: #fff; }
   </style>
 </head>
 <body>
@@ -80,27 +90,25 @@
     <a href="#contact" data-i18n="menu_contact">Liên hệ</a>
   </nav>
 
-  <section class="section" id="intro">
+  <section class="section active-section" id="intro">
     <h1 id="intro-title">Tin tức và dịch vụ công nghệ chất lượng cao</h1>
-    <p id="intro-desc">
-      Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.
-    </p>
+    <p id="intro-desc">Ở đây chúng tôi có thể giúp bạn giải quyết những vấn đề liên quan đến công nghệ và khám phá các công nghệ mới.</p>
     <div class="facebook-contact">
       <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 Gửi tin nhắn</a>
     </div>
   </section>
 
-  <section class="section" id="news" style="display:none">
+  <section class="section" id="news">
     <h1 id="news-title">Tin tức công nghệ</h1>
     <div id="news-content">Đang tải tin tức...</div>
   </section>
 
-  <section class="section" id="schedule" style="display:none">
+  <section class="section" id="schedule">
     <h1 id="schedule-title">Lịch học</h1>
     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQXR-6gIkWqGeimvb-RGAO5iBPKrUvdpoZlN1mnlKExONtXY6UYRXZFIxv39edWbQ/pubhtml?widget=true&amp;headers=false"></iframe>
   </section>
 
-  <section class="section" id="contact" style="display:none">
+  <section class="section" id="contact">
     <h1 id="contact-title">Liên hệ & Dịch vụ</h1>
     <ul style="list-style: none; padding: 0; text-align: left;">
       <li>• Grok</li><li>• Drive</li><li>• GPT</li><li>• Meitu</li>
@@ -123,7 +131,10 @@
         "menu_intro": "Giới thiệu",
         "menu_news": "Tin tức",
         "menu_schedule": "Lịch học",
-        "menu_contact": "Liên hệ"
+        "menu_contact": "Liên hệ",
+        "loading_news": "Đang tải tin tức...",
+        "news_error": "Không thể tải tin tức.",
+        "read_more": "Xem chi tiết"
       },
       en: {
         "intro-title": "High-Quality Tech News & Services",
@@ -134,7 +145,10 @@
         "menu_intro": "Introduction",
         "menu_news": "News",
         "menu_schedule": "Schedule",
-        "menu_contact": "Contact"
+        "menu_contact": "Contact",
+        "loading_news": "Loading news...",
+        "news_error": "Unable to load news.",
+        "read_more": "Read More"
       }
     };
 
@@ -156,43 +170,47 @@
         const el = document.querySelector(`[id="${key}"], [data-i18n="${key}"]`);
         if (el) el.textContent = dict[key];
       }
+      fetchNews();
     }
 
     document.querySelectorAll(".menu a").forEach(link =>
       link.addEventListener("click", e => {
         e.preventDefault();
-        document.querySelectorAll(".section").forEach(s => (s.style.display = "none"));
-        const sec = document.querySelector(link.getAttribute("href"));
-        if (sec) sec.style.display = "block";
+        document.querySelectorAll(".section").forEach(s => s.classList.remove("active-section"));
+        document.querySelectorAll(".menu a").forEach(a => a.classList.remove("active"));
+        const target = link.getAttribute("href");
+        document.querySelector(target)?.classList.add("active-section");
+        link.classList.add("active");
         document.getElementById("menu").classList.remove("show");
       })
     );
 
-    // Fetch news via NewsAPI with language=en
     async function fetchNews() {
-      const res = await fetch(
-        "https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=5&apiKey=58b46914e3ac4a308220f370504b6c15"
-      );
-      const data = await res.json();
       const container = document.getElementById("news-content");
-      container.innerHTML = "";
-      if (!data.articles) {
-        container.textContent = currentLang === "vi" ? "Không thể tải tin tức." : "Unable to load news.";
-        return;
+      container.textContent = i18nData[currentLang]["loading_news"];
+      try {
+        const res = await fetch("https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=5&apiKey=58b46914e3ac4a308220f370504b6c15");
+        const data = await res.json();
+        container.innerHTML = "";
+        if (!data.articles) {
+          container.textContent = i18nData[currentLang]["news_error"];
+          return;
+        }
+        data.articles.forEach(a => {
+          const div = document.createElement("div");
+          div.className = "news-item";
+          div.innerHTML = `
+            <h3>${a.title}</h3>
+            <p>${a.description || ""}</p>
+            <a href="${a.url}" target="_blank">${i18nData[currentLang]["read_more"]}</a>
+          `;
+          container.appendChild(div);
+        });
+      } catch (err) {
+        container.textContent = i18nData[currentLang]["news_error"];
       }
-      data.articles.forEach(a => {
-        const div = document.createElement("div");
-        div.className = "news-item";
-        div.innerHTML = `
-          <h3>${a.title}</h3>
-          <p>${a.description || ""}</p>
-          <a href="${a.url}" target="_blank">${currentLang==="vi"?"Xem chi tiết":"Read More"}</a>
-        `;
-        container.appendChild(div);
-      });
     }
 
-    // Load news at startup
     fetchNews();
   </script>
 </body>
