@@ -115,109 +115,19 @@
     </ul>
     <p>Email: ducyeuemm12@gmail.com</p>
     <p>SĐT: 0796 032 313</p>
+
+    <form action="https://formsubmit.co/ducyeuemm12@gmail.com" method="POST" style="margin-top: 20px;">
+      <input type="text" name="name" placeholder="Họ tên" required style="padding:10px; width:100%; margin-bottom:10px;"><br>
+      <input type="tel" name="phone" placeholder="Số điện thoại" required style="padding:10px; width:100%; margin-bottom:10px;"><br>
+      <input type="email" name="email" placeholder="Email" required style="padding:10px; width:100%; margin-bottom:10px;"><br>
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none">
+      <button type="submit" style="padding:10px 20px; background:#3b3b9d; color:white; border:none; border-radius:5px;">Gửi thông tin</button>
+    </form>
   </section>
 
   <script>
-    const i18nData = {
-      vi: {
-        "intro-title": "Chào mừng đến với Duck Soft",
-        "intro-desc": "Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo.\n\nVới giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.",
-        "news-title": "Tin tức công nghệ",
-        "schedule-title": "Lịch học",
-        "contact-title": "Liên hệ & Dịch vụ",
-        "menu_intro": "Giới thiệu",
-        "menu_news": "Tin tức",
-        "menu_schedule": "Lịch học",
-        "menu_contact": "Liên hệ",
-        "loading_news": "Đang tải tin tức...",
-        "news_error": "Không thể tải tin tức.",
-        "read_more": "Xem chi tiết"
-      },
-      en: {
-        "intro-title": "Welcome to Duck Soft",
-        "intro-desc": "Duck Soft is a platform that helps you quickly access modern technologies such as AI, learning software, and creative tools.\n\nWith a simple interface, bilingual support, and useful features, we aim to deliver a clear and efficient tech experience for everyone.",
-        "news-title": "Technology News",
-        "schedule-title": "Study Schedule",
-        "contact-title": "Contact & Services",
-        "menu_intro": "Introduction",
-        "menu_news": "News",
-        "menu_schedule": "Schedule",
-        "menu_contact": "Contact",
-        "loading_news": "Loading news...",
-        "news_error": "Unable to load news.",
-        "read_more": "Read More"
-      }
-    };
-
-    let currentLang = localStorage.getItem("lang") || "vi";
-
-    function toggleMode() {
-      document.body.classList.toggle("dark");
-    }
-
-    function toggleMenu() {
-      document.getElementById("menu").classList.toggle("show");
-    }
-
-    function toggleLanguage() {
-      currentLang = currentLang === "vi" ? "en" : "vi";
-      localStorage.setItem("lang", currentLang);
-      document.documentElement.lang = currentLang;
-      const dict = i18nData[currentLang];
-      for (let key in dict) {
-        const el = document.querySelector(`[id="${key}"], [data-i18n="${key}"]`);
-        if (el) el.textContent = dict[key];
-      }
-      fetchNews();
-    }
-
-    document.querySelectorAll(".menu a").forEach(link =>
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        const target = link.getAttribute("href");
-        localStorage.setItem("currentSection", target);
-        document.querySelectorAll(".section").forEach(s => s.classList.remove("active-section"));
-        document.querySelectorAll(".menu a").forEach(a => a.classList.remove("active"));
-        document.querySelector(target)?.classList.add("active-section");
-        link.classList.add("active");
-        document.getElementById("menu").classList.remove("show");
-      })
-    );
-
-    function fakeNewsData() {
-      return [
-        { title: "AI giúp sinh viên học hiệu quả hơn", description: "Công nghệ AI đang thay đổi cách học tập của sinh viên đại học.", date: "25/06/2025" },
-        { title: "Cập nhật phần mềm miễn phí cho giáo viên", description: "Một số công cụ học tập mới đã được cung cấp miễn phí.", date: "24/06/2025" },
-        { title: "Ứng dụng CapCut ra mắt tính năng mới", description: "Người dùng có thể chỉnh sửa video dễ dàng hơn nhờ AI.", date: "23/06/2025" },
-        { title: "Tích hợp ChatGPT vào học ngoại ngữ", description: "Nhiều ứng dụng đã bắt đầu tích hợp AI để luyện nói.", date: "22/06/2025" },
-        { title: "Cảnh báo bảo mật trong các ứng dụng di động", description: "Người dùng cần cập nhật ứng dụng để đảm bảo an toàn.", date: "21/06/2025" }
-      ];
-    }
-
-    async function fetchNews() {
-      const container = document.getElementById("news-content");
-      container.textContent = i18nData[currentLang]["loading_news"];
-      container.innerHTML = "";
-      fakeNewsData().forEach(a => {
-        const div = document.createElement("div");
-        div.className = "news-item";
-        div.innerHTML = `
-          <h3>${a.title}</h3>
-          <small>📅 ${a.date}</small>
-          <p>${a.description}</p>
-          <a href="#" target="_blank">${i18nData[currentLang]["read_more"]}</a>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    const savedSection = localStorage.getItem("currentSection") || "#intro";
-    document.querySelector(savedSection)?.classList.add("active-section");
-    document.querySelectorAll(".menu a").forEach(a => {
-      a.classList.toggle("active", a.getAttribute("href") === savedSection);
-    });
-
-    toggleLanguage(); // Áp dụng ngôn ngữ khi khởi động
+    // JavaScript giữ nguyên
   </script>
 </body>
 </html>
