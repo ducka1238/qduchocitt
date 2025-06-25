@@ -89,7 +89,7 @@
 
   <section class="section" id="intro">
     <h1 id="intro-title">Chào mừng đến với Duck Soft</h1>
-    <p id="intro-desc">Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo.\n\nVới giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.</p>
+    <p id="intro-desc">Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo. Với giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.</p>
     <div class="facebook-contact">
       <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 Gửi tin nhắn</a>
     </div>
@@ -115,19 +115,84 @@
     </ul>
     <p>Email: ducyeuemm12@gmail.com</p>
     <p>SĐT: 0796 032 313</p>
-
-    <form action="https://formsubmit.co/ducyeuemm12@gmail.com" method="POST" style="margin-top: 20px;">
-      <input type="text" name="name" placeholder="Họ tên" required style="padding:10px; width:100%; margin-bottom:10px;"><br>
-      <input type="tel" name="phone" placeholder="Số điện thoại" required style="padding:10px; width:100%; margin-bottom:10px;"><br>
-      <input type="email" name="email" placeholder="Email" required style="padding:10px; width:100%; margin-bottom:10px;"><br>
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="_honey" style="display:none">
-      <button type="submit" style="padding:10px 20px; background:#3b3b9d; color:white; border:none; border-radius:5px;">Gửi thông tin</button>
-    </form>
   </section>
 
   <script>
-    // JavaScript giữ nguyên
+    const i18nData = { /* ... (không thay đổi) */ };
+    let currentLang = localStorage.getItem("lang") || "vi";
+
+    function applyLanguage() {
+      document.documentElement.lang = currentLang;
+      const dict = i18nData[currentLang];
+      for (let key in dict) {
+        const el = document.querySelector(`[id="${key}"], [data-i18n="${key}"]`);
+        if (el) el.textContent = dict[key];
+      }
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === "vi" ? "en" : "vi";
+      localStorage.setItem("lang", currentLang);
+      applyLanguage();
+      fetchNews();
+    }
+
+    function toggleMode() {
+      document.body.classList.toggle("dark");
+    }
+
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+
+    document.querySelectorAll(".menu a").forEach(link =>
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const target = link.getAttribute("href");
+        localStorage.setItem("currentSection", target);
+        document.querySelectorAll(".section").forEach(s => s.classList.remove("active-section"));
+        document.querySelectorAll(".menu a").forEach(a => a.classList.remove("active"));
+        document.querySelector(target)?.classList.add("active-section");
+        link.classList.add("active");
+        document.getElementById("menu").classList.remove("show");
+      })
+    );
+
+    function fakeNewsData() {
+      return [
+        { title: "AI giúp sinh viên học hiệu quả hơn", description: "Công nghệ AI đang thay đổi cách học tập của sinh viên đại học.", date: "25/06/2025" },
+        { title: "Cập nhật phần mềm miễn phí cho giáo viên", description: "Một số công cụ học tập mới đã được cung cấp miễn phí.", date: "24/06/2025" },
+        { title: "Ứng dụng CapCut ra mắt tính năng mới", description: "Người dùng có thể chỉnh sửa video dễ dàng hơn nhờ AI.", date: "23/06/2025" },
+        { title: "Tích hợp ChatGPT vào học ngoại ngữ", description: "Nhiều ứng dụng đã bắt đầu tích hợp AI để luyện nói.", date: "22/06/2025" },
+        { title: "Cảnh báo bảo mật trong các ứng dụng di động", description: "Người dùng cần cập nhật ứng dụng để đảm bảo an toàn.", date: "21/06/2025" }
+      ];
+    }
+
+    async function fetchNews() {
+      const container = document.getElementById("news-content");
+      container.textContent = i18nData[currentLang]["loading_news"];
+      container.innerHTML = "";
+      fakeNewsData().forEach(a => {
+        const div = document.createElement("div");
+        div.className = "news-item";
+        div.innerHTML = `
+          <h3>${a.title}</h3>
+          <small>📅 ${a.date}</small>
+          <p>${a.description}</p>
+          <a href="#" target="_blank">${i18nData[currentLang]["read_more"]}</a>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    const savedSection = localStorage.getItem("currentSection") || "#intro";
+    document.querySelector(savedSection)?.classList.add("active-section");
+    document.querySelectorAll(".menu a").forEach(a => {
+      a.classList.toggle("active", a.getAttribute("href") === savedSection);
+    });
+
+    applyLanguage();
+    fetchNews();
   </script>
 </body>
 </html>
