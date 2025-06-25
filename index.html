@@ -50,6 +50,7 @@
     .facebook-contact a:hover { background: #0e5ad4; }
     .news-item { text-align: left; margin-bottom: 20px; }
     .news-item h3 { margin-bottom: 5px; }
+    .news-item small { display: block; color: #777; margin-bottom: 5px; }
     .news-item a { color: #1a0dab; text-decoration: none; }
     .news-item a:hover { text-decoration: underline; }
     iframe { width: 100%; height: 500px; border: none; margin-top: 20px; }
@@ -87,25 +88,25 @@
   </nav>
 
   <section class="section" id="intro">
-    <h1 id="intro-title"></h1>
-    <p id="intro-desc"></p>
+    <h1 id="intro-title">Chào mừng đến với Duck Soft</h1>
+    <p id="intro-desc">Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo.\n\nVới giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.</p>
     <div class="facebook-contact">
-      <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 <span data-i18n="send_message">Gửi tin nhắn</span></a>
+      <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 Gửi tin nhắn</a>
     </div>
   </section>
 
   <section class="section" id="news">
-    <h1 id="news-title"></h1>
-    <div id="news-content"></div>
+    <h1 id="news-title">Tin tức công nghệ</h1>
+    <div id="news-content">Đang tải tin tức...</div>
   </section>
 
   <section class="section" id="schedule">
-    <h1 id="schedule-title"></h1>
+    <h1 id="schedule-title">Lịch học</h1>
     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQXR-6gIkWqGeimvb-RGAO5iBPKrUvdpoZlN1mnlKExONtXY6UYRXZFIxv39edWbQ/pubhtml?widget=true&amp;headers=false"></iframe>
   </section>
 
   <section class="section" id="contact">
-    <h1 id="contact-title"></h1>
+    <h1 id="contact-title">Liên hệ & Dịch vụ</h1>
     <ul style="list-style: none; padding: 0; text-align: left;">
       <li>• Grok</li><li>• Drive</li><li>• GPT</li><li>• Meitu</li>
       <li>• Elsa</li><li>• Capcut</li><li>• Spotify</li><li>• Monica</li>
@@ -130,8 +131,7 @@
         "menu_contact": "Liên hệ",
         "loading_news": "Đang tải tin tức...",
         "news_error": "Không thể tải tin tức.",
-        "read_more": "Xem chi tiết",
-        "send_message": "Gửi tin nhắn"
+        "read_more": "Xem chi tiết"
       },
       en: {
         "intro-title": "Welcome to Duck Soft",
@@ -145,12 +145,11 @@
         "menu_contact": "Contact",
         "loading_news": "Loading news...",
         "news_error": "Unable to load news.",
-        "read_more": "Read More",
-        "send_message": "Send Message"
+        "read_more": "Read More"
       }
     };
 
-    let currentLang = "vi";
+    let currentLang = localStorage.getItem("lang") || "vi";
 
     function toggleMode() {
       document.body.classList.toggle("dark");
@@ -162,6 +161,7 @@
 
     function toggleLanguage() {
       currentLang = currentLang === "vi" ? "en" : "vi";
+      localStorage.setItem("lang", currentLang);
       document.documentElement.lang = currentLang;
       const dict = i18nData[currentLang];
       for (let key in dict) {
@@ -184,33 +184,28 @@
       })
     );
 
-    function fetchNews() {
+    function fakeNewsData() {
+      return [
+        { title: "AI giúp sinh viên học hiệu quả hơn", description: "Công nghệ AI đang thay đổi cách học tập của sinh viên đại học.", date: "25/06/2025" },
+        { title: "Cập nhật phần mềm miễn phí cho giáo viên", description: "Một số công cụ học tập mới đã được cung cấp miễn phí.", date: "24/06/2025" },
+        { title: "Ứng dụng CapCut ra mắt tính năng mới", description: "Người dùng có thể chỉnh sửa video dễ dàng hơn nhờ AI.", date: "23/06/2025" },
+        { title: "Tích hợp ChatGPT vào học ngoại ngữ", description: "Nhiều ứng dụng đã bắt đầu tích hợp AI để luyện nói.", date: "22/06/2025" },
+        { title: "Cảnh báo bảo mật trong các ứng dụng di động", description: "Người dùng cần cập nhật ứng dụng để đảm bảo an toàn.", date: "21/06/2025" }
+      ];
+    }
+
+    async function fetchNews() {
       const container = document.getElementById("news-content");
       container.textContent = i18nData[currentLang]["loading_news"];
-      const fakeNews = {
-        vi: [
-          {
-            title: "AI đang thay đổi thế giới",
-            description: "Trí tuệ nhân tạo đang được ứng dụng rộng rãi trong giáo dục và công nghệ.",
-            url: "https://example.com/ai"
-          }
-        ],
-        en: [
-          {
-            title: "AI is transforming the world",
-            description: "Artificial intelligence is widely used in education and technology.",
-            url: "https://example.com/ai"
-          }
-        ]
-      };
       container.innerHTML = "";
-      fakeNews[currentLang].forEach(a => {
+      fakeNewsData().forEach(a => {
         const div = document.createElement("div");
         div.className = "news-item";
         div.innerHTML = `
           <h3>${a.title}</h3>
+          <small>📅 ${a.date}</small>
           <p>${a.description}</p>
-          <a href="${a.url}" target="_blank">${i18nData[currentLang]["read_more"]}</a>
+          <a href="#" target="_blank">${i18nData[currentLang]["read_more"]}</a>
         `;
         container.appendChild(div);
       });
@@ -222,7 +217,7 @@
       a.classList.toggle("active", a.getAttribute("href") === savedSection);
     });
 
-    toggleLanguage(); // Tải đúng nội dung khi vào lần đầu
+    toggleLanguage(); // Áp dụng ngôn ngữ khi khởi động
   </script>
 </body>
 </html>
