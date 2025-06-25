@@ -87,28 +87,25 @@
   </nav>
 
   <section class="section" id="intro">
-    <h1 id="intro-title">Chào mừng đến với Duck Soft</h1>
-    <p id="intro-desc">
-      Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo.<br><br>
-      Với giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.
-    </p>
+    <h1 id="intro-title"></h1>
+    <p id="intro-desc"></p>
     <div class="facebook-contact">
-      <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 Gửi tin nhắn</a>
+      <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 <span data-i18n="send_message">Gửi tin nhắn</span></a>
     </div>
   </section>
 
   <section class="section" id="news">
-    <h1 id="news-title">Tin tức công nghệ</h1>
-    <div id="news-content">Đang tải tin tức...</div>
+    <h1 id="news-title"></h1>
+    <div id="news-content"></div>
   </section>
 
   <section class="section" id="schedule">
-    <h1 id="schedule-title">Lịch học</h1>
+    <h1 id="schedule-title"></h1>
     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQXR-6gIkWqGeimvb-RGAO5iBPKrUvdpoZlN1mnlKExONtXY6UYRXZFIxv39edWbQ/pubhtml?widget=true&amp;headers=false"></iframe>
   </section>
 
   <section class="section" id="contact">
-    <h1 id="contact-title">Liên hệ & Dịch vụ</h1>
+    <h1 id="contact-title"></h1>
     <ul style="list-style: none; padding: 0; text-align: left;">
       <li>• Grok</li><li>• Drive</li><li>• GPT</li><li>• Meitu</li>
       <li>• Elsa</li><li>• Capcut</li><li>• Spotify</li><li>• Monica</li>
@@ -133,7 +130,8 @@
         "menu_contact": "Liên hệ",
         "loading_news": "Đang tải tin tức...",
         "news_error": "Không thể tải tin tức.",
-        "read_more": "Xem chi tiết"
+        "read_more": "Xem chi tiết",
+        "send_message": "Gửi tin nhắn"
       },
       en: {
         "intro-title": "Welcome to Duck Soft",
@@ -147,7 +145,8 @@
         "menu_contact": "Contact",
         "loading_news": "Loading news...",
         "news_error": "Unable to load news.",
-        "read_more": "Read More"
+        "read_more": "Read More",
+        "send_message": "Send Message"
       }
     };
 
@@ -185,30 +184,36 @@
       })
     );
 
-    async function fetchNews() {
+    function fetchNews() {
       const container = document.getElementById("news-content");
       container.textContent = i18nData[currentLang]["loading_news"];
-      try {
-        const res = await fetch("https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=5&apiKey=58b46914e3ac4a308220f370504b6c15");
-        const data = await res.json();
-        container.innerHTML = "";
-        if (!data.articles) {
-          container.textContent = i18nData[currentLang]["news_error"];
-          return;
-        }
-        data.articles.forEach(a => {
-          const div = document.createElement("div");
-          div.className = "news-item";
-          div.innerHTML = `
-            <h3>${a.title}</h3>
-            <p>${a.description || ""}</p>
-            <a href="${a.url}" target="_blank">${i18nData[currentLang]["read_more"]}</a>
-          `;
-          container.appendChild(div);
-        });
-      } catch {
-        container.textContent = i18nData[currentLang]["news_error"];
-      }
+      const fakeNews = {
+        vi: [
+          {
+            title: "AI đang thay đổi thế giới",
+            description: "Trí tuệ nhân tạo đang được ứng dụng rộng rãi trong giáo dục và công nghệ.",
+            url: "https://example.com/ai"
+          }
+        ],
+        en: [
+          {
+            title: "AI is transforming the world",
+            description: "Artificial intelligence is widely used in education and technology.",
+            url: "https://example.com/ai"
+          }
+        ]
+      };
+      container.innerHTML = "";
+      fakeNews[currentLang].forEach(a => {
+        const div = document.createElement("div");
+        div.className = "news-item";
+        div.innerHTML = `
+          <h3>${a.title}</h3>
+          <p>${a.description}</p>
+          <a href="${a.url}" target="_blank">${i18nData[currentLang]["read_more"]}</a>
+        `;
+        container.appendChild(div);
+      });
     }
 
     const savedSection = localStorage.getItem("currentSection") || "#intro";
@@ -217,7 +222,7 @@
       a.classList.toggle("active", a.getAttribute("href") === savedSection);
     });
 
-    fetchNews();
+    toggleLanguage(); // Tải đúng nội dung khi vào lần đầu
   </script>
 </body>
 </html>
