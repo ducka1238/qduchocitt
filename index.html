@@ -118,7 +118,37 @@
   </section>
 
   <script>
-    const i18nData = { /* ... (không thay đổi) */ };
+    const i18nData = {
+      vi: {
+        "intro-title": "Chào mừng đến với Duck Soft",
+        "intro-desc": "Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo. Với giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.",
+        "news-title": "Tin tức công nghệ",
+        "schedule-title": "Lịch học",
+        "contact-title": "Liên hệ & Dịch vụ",
+        "menu_intro": "Giới thiệu",
+        "menu_news": "Tin tức",
+        "menu_schedule": "Lịch học",
+        "menu_contact": "Liên hệ",
+        "loading_news": "Đang tải tin tức...",
+        "news_error": "Không thể tải tin tức.",
+        "read_more": "Xem chi tiết"
+      },
+      en: {
+        "intro-title": "Welcome to Duck Soft",
+        "intro-desc": "Duck Soft is a platform that helps you quickly access modern technologies such as AI, learning software, and creative tools. With a simple interface, bilingual support, and useful features, we aim to deliver a clear and efficient tech experience for everyone.",
+        "news-title": "Technology News",
+        "schedule-title": "Study Schedule",
+        "contact-title": "Contact & Services",
+        "menu_intro": "Introduction",
+        "menu_news": "News",
+        "menu_schedule": "Schedule",
+        "menu_contact": "Contact",
+        "loading_news": "Loading news...",
+        "news_error": "Unable to load news.",
+        "read_more": "Read More"
+      }
+    };
+
     let currentLang = localStorage.getItem("lang") || "vi";
 
     function applyLanguage() {
@@ -130,19 +160,19 @@
       }
     }
 
-    function toggleLanguage() {
-      currentLang = currentLang === "vi" ? "en" : "vi";
-      localStorage.setItem("lang", currentLang);
-      applyLanguage();
-      fetchNews();
-    }
-
     function toggleMode() {
       document.body.classList.toggle("dark");
     }
 
     function toggleMenu() {
       document.getElementById("menu").classList.toggle("show");
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === "vi" ? "en" : "vi";
+      localStorage.setItem("lang", currentLang);
+      applyLanguage();
+      fetchNews();
     }
 
     document.querySelectorAll(".menu a").forEach(link =>
@@ -164,7 +194,8 @@
         { title: "Cập nhật phần mềm miễn phí cho giáo viên", description: "Một số công cụ học tập mới đã được cung cấp miễn phí.", date: "24/06/2025" },
         { title: "Ứng dụng CapCut ra mắt tính năng mới", description: "Người dùng có thể chỉnh sửa video dễ dàng hơn nhờ AI.", date: "23/06/2025" },
         { title: "Tích hợp ChatGPT vào học ngoại ngữ", description: "Nhiều ứng dụng đã bắt đầu tích hợp AI để luyện nói.", date: "22/06/2025" },
-        { title: "Cảnh báo bảo mật trong các ứng dụng di động", description: "Người dùng cần cập nhật ứng dụng để đảm bảo an toàn.", date: "21/06/2025" }
+        { title: "Cảnh báo bảo mật trong các ứng dụng di động", description: "Người dùng cần cập nhật ứng dụng để đảm bảo an toàn.", date: "21/06/2025" },
+        { title: "Elon Musk giới thiệu AI tự động dạy học", description: "Mô hình AI mới giúp cá nhân hóa việc học cho học sinh.", date: "20/06/2025" }
       ];
     }
 
