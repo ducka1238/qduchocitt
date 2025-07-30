@@ -73,9 +73,6 @@ header {
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   font-size: 28px;
   font-weight: 800;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -87,17 +84,6 @@ header {
 
 .logo:hover {
   transform: scale(1.05);
-}
-
-.logo-image {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  transition: var(--transition);
-}
-
-.logo:hover .logo-image {
-  transform: rotate(5deg);
 }
 
 .controls {
@@ -504,9 +490,6 @@ main {
 }
 
 .footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   font-size: 2rem;
   font-weight: 800;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -514,12 +497,6 @@ main {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 15px;
-}
-
-.footer-logo-image {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
 }
 
 .footer-description {
@@ -770,8 +747,7 @@ main {
 
   <header>
     <div class="logo">
-      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwY2VmZjtzdG9wLW9wYWNpdHk6MSIgLz4KPHN0b3Agb2Zmc2V0PSI1MCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNiYzk5OGY7c3RvcC1vcGFjaXR5OjEiIC8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2Y0N2E2MDtzdG9wLW9wYWNpdHk6MSIgLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8cGF0aCBkPSJNMTAwIDIwMGgyMDBjNTUuMjMgMCAxMDAgNDQuNzcgMTAwIDEwMHMtNDQuNzcgMTAwLTEwMCAxMDBIMTAwVjIwMFoiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxwYXRoIGQ9Ik0xMDAgMTAwaDUwdjMwMGgtNTBWMTAwWiIgZmlsbD0idXJsKCNncmFkaWVudCkiLz4KPHBhdGggZD0iTTE3NSAxMDBoNTB2MzAwSDE3NVYxMDBaIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8L3N2Zz4=" alt="Duck Soft Logo" class="logo-image">
-      Duck Soft
+      <i class="fas fa-code"></i> Duck Soft
     </div>
     <div class="controls">
       <button class="control-btn" onclick="toggleLanguage()">
@@ -905,8 +881,7 @@ main {
     <div class="footer-content">
       <div class="footer-section">
         <div class="footer-logo">
-          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwY2VmZjtzdG9wLW9wYWNpdHk6MSIgLz4KPHN0b3Agb2Zmc2V0PSI1MCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNiYzk5OGY7c3RvcC1vcGFjaXR5OjEiIC8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2Y0N2E2MDtzdG9wLW9wYWNpdHk6MSIgLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8cGF0aCBkPSJNMTAwIDIwMGgyMDBjNTUuMjMgMCAxMDAgNDQuNzcgMTAwIDEwMHMtNDQuNzcgMTAwLTEwMCAxMDBIMTAwVjIwMFoiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxwYXRoIGQ9Ik0xMDAgMTAwaDUwdjMwMGgtNTBWMTAwWiIgZmlsbD0idXJsKCNncmFkaWVudCkiLz4KPHBhdGggZD0iTTE3NSAxMDBoNTB2MzAwSDE3NVYxMDBaIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8L3N2Zz4=" alt="Duck Soft Logo" class="footer-logo-image">
-          Duck Soft
+          <i class="fas fa-code"></i> Duck Soft
         </div>
         <p class="footer-description" data-i18n="footer_description">
           Nền tảng công nghệ hiện đại, dễ tiếp cận cho mọi người
