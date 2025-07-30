@@ -914,5 +914,422 @@ main {
 
 <div class="footer-bottom">
   <div class="copyright">
-    <p>&copy; 2025 by <strong>Dong Quang Duc</strong>. <span data-i18n="
+    <p>&copy; 2025 by <strong>Dong Quang Duc</strong>. <span data-i18n="footer_rights">Bảo lưu mọi quyền.</span></p>
+  </div>
+</div>
 ```
+
+  </footer>
+
+  <script>
+    // Internationalization
+    const i18nData = {
+      vi: {
+        "intro_title": "Chào mừng đến với Duck Soft",
+        "intro_subtitle": "Nền tảng công nghệ hiện đại, dễ tiếp cận",
+        "intro_description": "Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo. Với giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.",
+        "news_title": "Tin tức công nghệ",
+        "news_subtitle": "Cập nhật những xu hướng công nghệ mới nhất",
+        "schedule_title": "Lịch học",
+        "schedule_subtitle": "Theo dõi lịch học và hoạt động",
+        "contact_title": "Liên hệ & Dịch vụ",
+        "contact_subtitle": "Khám phá các dịch vụ và công cụ của chúng tôi",
+        "menu_intro": "Giới thiệu",
+        "menu_news": "Tin tức",
+        "menu_schedule": "Lịch học",
+        "menu_contact": "Liên hệ",
+        "loading_news": "Đang tải tin tức...",
+        "contact_message": "Gửi tin nhắn",
+        "phone": "Điện thoại",
+        "visit_page": "Truy cập trang",
+        "read_more": "Xem chi tiết",
+        "footer_description": "Nền tảng công nghệ hiện đại, dễ tiếp cận cho mọi người",
+        "footer_connect": "Kết nối với chúng tôi",
+        "footer_contact": "Liên hệ",
+        "footer_rights": "Bảo lưu mọi quyền."
+      },
+      en: {
+        "intro_title": "Welcome to Duck Soft",
+        "intro_subtitle": "Modern, accessible technology platform",
+        "intro_description": "Duck Soft is a platform that helps you quickly access modern technologies such as AI, learning software, and creative tools. With a simple interface, bilingual support, and useful features, we aim to deliver a clear and efficient tech experience for everyone.",
+        "news_title": "Technology News",
+        "news_subtitle": "Stay updated with the latest tech trends",
+        "schedule_title": "Study Schedule",
+        "schedule_subtitle": "Track your learning schedule and activities",
+        "contact_title": "Contact & Services",
+        "contact_subtitle": "Explore our services and tools",
+        "menu_intro": "Introduction",
+        "menu_news": "News",
+        "menu_schedule": "Schedule",
+        "menu_contact": "Contact",
+        "loading_news": "Loading news...",
+        "contact_message": "Send Message",
+        "phone": "Phone",
+        "visit_page": "Visit Page",
+        "read_more": "Read More",
+        "footer_description": "Modern, accessible technology platform for everyone",
+        "footer_connect": "Connect with us",
+        "footer_contact": "Contact",
+        "footer_rights": "All rights reserved."
+      }
+    };
+
+    // Services data
+    const services = [
+      { name: "Grok", icon: "fas fa-robot", description: "AI Chatbot" },
+      { name: "Drive", icon: "fab fa-google-drive", description: "Cloud Storage" },
+      { name: "GPT", icon: "fas fa-brain", description: "AI Assistant" },
+      { name: "Meitu", icon: "fas fa-camera-retro", description: "Photo Editor" },
+      { name: "Elsa", icon: "fas fa-microphone-alt", description: "Speech Training" },
+      { name: "Capcut", icon: "fas fa-film", description: "Video Editor" },
+      { name: "Spotify", icon: "fab fa-spotify", description: "Music Streaming" },
+      { name: "Monica", icon: "fas fa-robot", description: "AI Assistant" },
+      { name: "Poe", icon: "fas fa-comments", description: "AI Chat Platform" },
+      { name: "Kling", icon: "fas fa-wand-magic-sparkles", description: "AI Video Generator" },
+      { name: "Hailou", icon: "fas fa-cloud-sun", description: "AI Platform" },
+      { name: "Heygen", icon: "fas fa-video", description: "AI Avatar Generator" },
+      { name: "Runway", icon: "fas fa-rocket", description: "AI Creative Suite" },
+      { name: "Minimax", icon: "fas fa-compress-arrows-alt", description: "AI Platform" },
+      { name: "Cursor", icon: "fas fa-code", description: "AI Code Editor" },
+      { name: "v0", icon: "fas fa-cube", description: "UI Generator" },
+      { name: "Bolt", icon: "fas fa-bolt", description: "Fast Development" }
+    ];
+
+    // State management
+    let currentLang = localStorage.getItem("lang") || "vi";
+    let currentTheme = localStorage.getItem("theme") || "light";
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      applyLanguage();
+      applyTheme();
+      renderServices();
+      fetchNews();
+      initNavigation();
+    });
+
+    // Language functions
+    function applyLanguage() {
+      document.documentElement.lang = currentLang;
+      const dict = i18nData[currentLang];
+      
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (dict[key]) {
+          element.textContent = dict[key];
+        }
+      });
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === "vi" ? "en" : "vi";
+      localStorage.setItem("lang", currentLang);
+      applyLanguage();
+      fetchNews();
+    }
+
+    // Theme functions
+    function applyTheme() {
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      const themeIcon = document.getElementById('theme-icon');
+      themeIcon.className = currentTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+    }
+
+    function toggleTheme() {
+      currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+      localStorage.setItem("theme", currentTheme);
+      applyTheme();
+    }
+
+    // Menu functions
+    function toggleMenu() {
+      const navMenu = document.getElementById('navMenu');
+      const overlay = document.getElementById('overlay');
+      
+      navMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    // Navigation
+    function initNavigation() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('.section');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const sectionId = link.getAttribute('data-section');
+          
+          // Remove active classes
+          sections.forEach(section => section.classList.remove('active'));
+          navLinks.forEach(navLink => navLink.classList.remove('active'));
+          
+          // Add active classes
+          document.getElementById(sectionId).classList.add('active');
+          link.classList.add('active');
+          
+          // Close menu
+          document.getElementById('navMenu').classList.remove('active');
+          document.getElementById('overlay').classList.remove('active');
+          
+          // Save current section
+          localStorage.setItem("currentSection", sectionId);
+        });
+      });
+
+      // Close menu when clicking overlay
+      document.getElementById('overlay').addEventListener('click', () => {
+        document.getElementById('navMenu').classList.remove('active');
+        document.getElementById('overlay').classList.remove('active');
+      });
+
+      // Restore saved section
+      const savedSection = localStorage.getItem("currentSection") || "intro";
+      const savedLink = document.querySelector(`[data-section="${savedSection}"]`);
+      if (savedLink) {
+        sections.forEach(section => section.classList.remove('active'));
+        navLinks.forEach(navLink => navLink.classList.remove('active'));
+        document.getElementById(savedSection).classList.add('active');
+        savedLink.classList.add('active');
+      }
+    }
+
+    // Services rendering
+    function renderServices() {
+      const serviceGrid = document.getElementById('serviceGrid');
+      serviceGrid.innerHTML = '';
+
+      services.forEach((service, index) => {
+        const serviceItem = document.createElement('div');
+        serviceItem.className = 'service-item';
+        serviceItem.style.animationDelay = `${index * 0.1}s`;
+        
+        serviceItem.innerHTML = `
+          <div class="service-icon">
+            <i class="${service.icon}"></i>
+          </div>
+          <h3>${service.name}</h3>
+          <p class="service-description">${service.description}</p>
+        `;
+        
+        serviceGrid.appendChild(serviceItem);
+      });
+    }
+
+    // News functions
+    function generateNewsData() {
+      const newsData = {
+        vi: [
+          {
+            title: "Cách AI đang thay đổi ngành giáo dục",
+            description: "Trí tuệ nhân tạo đang tạo ra những bước đột phá trong việc cá nhân hóa học tập và nâng cao hiệu quả giảng dạy.",
+            date: "2025-07-30",
+            category: "Giáo dục"
+          },
+          {
+            title: "Xu hướng phát triển ứng dụng di động 2025",
+            description: "Khám phá những công nghệ mới và xu hướng thiết kế ứng dụng di động sẽ thống trị trong năm 2025.",
+            date: "2025-07-29",
+            category: "Phát triển"
+          },
+          {
+            title: "Bảo mật dữ liệu trong kỷ nguyên số",
+            description: "Tầm quan trọng của việc bảo vệ thông tin cá nhân và dữ liệu doanh nghiệp trong thế giới kết nối.",
+            date: "2025-07-28",
+            category: "Bảo mật"
+          },
+          {
+            title: "Công nghệ blockchain và tương lai tài chính",
+            description: "Phân tích tác động của blockchain đối với hệ thống tài chính toàn cầu và tiền điện tử.",
+            date: "2025-07-27",
+            category: "Blockchain"
+          },
+          {
+            title: "Thiết kế UX/UI hiện đại: Xu hướng 2025",
+            description: "Những nguyên tắc thiết kế mới và xu hướng giao diện người dùng được ưa chuộng nhất hiện nay.",
+            date: "2025-07-26",
+            category: "Thiết kế"
+          },
+          {
+            title: "Internet of Things và nhà thông minh",
+            description: "Cách IoT đang biến đổi cuộc sống hàng ngày và tạo ra những ngôi nhà thông minh, tiện nghi.",
+            date: "2025-07-25",
+            category: "IoT"
+          }
+        ],
+        en: [
+          {
+            title: "How AI is Transforming Education",
+            description: "Artificial intelligence is creating breakthroughs in personalized learning and improving teaching effectiveness.",
+            date: "2025-07-30",
+            category: "Education"
+          },
+          {
+            title: "Mobile App Development Trends 2025",
+            description: "Explore new technologies and design trends that will dominate mobile app development in 2025.",
+            date: "2025-07-29",
+            category: "Development"
+          },
+          {
+            title: "Data Security in the Digital Age",
+            description: "The importance of protecting personal information and business data in our connected world.",
+            date: "2025-07-28",
+            category: "Security"
+          },
+          {
+            title: "Blockchain Technology and Financial Future",
+            description: "Analyzing blockchain's impact on the global financial system and cryptocurrency adoption.",
+            date: "2025-07-27",
+            category: "Blockchain"
+          },
+          {
+            title: "Modern UX/UI Design: 2025 Trends",
+            description: "New design principles and user interface trends that are most popular today.",
+            date: "2025-07-26",
+            category: "Design"
+          },
+          {
+            title: "Internet of Things and Smart Homes",
+            description: "How IoT is transforming daily life and creating smart, convenient homes.",
+            date: "2025-07-25",
+            category: "IoT"
+          }
+        ]
+      };
+
+      return newsData[currentLang];
+    }
+
+    function fetchNews() {
+      const newsContent = document.getElementById('newsContent');
+      
+      // Show loading
+      newsContent.innerHTML = `
+        <div class="loading">
+          <div class="loading-spinner"></div>
+          <span data-i18n="loading_news">${i18nData[currentLang]["loading_news"]}</span>
+        </div>
+      `;
+
+      // Simulate loading delay
+      setTimeout(() => {
+        const newsData = generateNewsData();
+        renderNews(newsData);
+      }, 1000);
+    }
+
+    function renderNews(newsData) {
+      const newsContent = document.getElementById('newsContent');
+      newsContent.innerHTML = '';
+      
+      const newsGrid = document.createElement('div');
+      newsGrid.className = 'news-grid';
+
+      newsData.forEach((article, index) => {
+        const newsCard = document.createElement('div');
+        newsCard.className = 'news-card animate-in';
+        newsCard.style.animationDelay = `${index * 0.2}s`;
+        
+        const formattedDate = new Date(article.date).toLocaleDateString(currentLang === 'vi' ? 'vi-VN' : 'en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+
+        newsCard.innerHTML = `
+          <div class="news-content">
+            <h3 class="news-title">${article.title}</h3>
+            <div class="news-meta">
+              <span><i class="fas fa-calendar"></i> ${formattedDate}</span>
+              <span><i class="fas fa-tag"></i> ${article.category}</span>
+            </div>
+            <p class="news-description">${article.description}</p>
+            <a href="#" class="news-link">
+              <span data-i18n="read_more">${i18nData[currentLang]["read_more"]}</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        `;
+        
+        newsGrid.appendChild(newsCard);
+      });
+
+      newsContent.appendChild(newsGrid);
+    }
+
+    // Smooth scrolling for better UX
+    function smoothScrollTo(element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    // Add scroll animations
+    function observeElements() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      document.querySelectorAll('.content-card, .service-item, .news-card, .contact-card').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    // Initialize animations after content loads
+    setTimeout(observeElements, 100);
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const navMenu = document.getElementById('navMenu');
+        const overlay = document.getElementById('overlay');
+        if (navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          overlay.classList.remove('active');
+        }
+      }
+    });
+
+    // Performance optimization: Debounce resize events
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        // Rerender elements if needed
+        renderServices();
+      }, 250);
+    });
+
+    // Add loading states for better UX
+    function showLoading(element) {
+      element.innerHTML = `
+        <div class="loading">
+          <div class="loading-spinner"></div>
+          <span>Loading...</span>
+        </div>
+      `;
+    }
+
+    // Error handling
+    window.addEventListener('error', (e) => {
+      console.error('Application error:', e.error);
+    });
+
+    // Service worker registration for offline functionality (optional)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        // Service worker can be added here for offline functionality
+      });
+    }
+  </script>
+
+</body>
+</html>
