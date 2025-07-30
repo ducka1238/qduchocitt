@@ -118,7 +118,6 @@
   </section>
 
   <script>
-    const i18nData = { /* ... (không thay đổi) */ };
     const i18nData = {
       vi: {
         "intro-title": "Chào mừng đến với Duck Soft",
@@ -153,21 +152,19 @@
     let currentLang = localStorage.getItem("lang") || "vi";
 
     function applyLanguage() {
-@@ -130,13 +160,6 @@
+      document.documentElement.lang = currentLang;
+      const dict = i18nData[currentLang];
+      for (let key in dict) {
+        const el = document.querySelector(`[id="${key}"], [data-i18n="${key}"]`);
+        if (el) el.textContent = dict[key];
       }
-    }
-
-    function toggleLanguage() {
-      currentLang = currentLang === "vi" ? "en" : "vi";
-      localStorage.setItem("lang", currentLang);
-      applyLanguage();
-      fetchNews();
     }
 
     function toggleMode() {
       document.body.classList.toggle("dark");
     }
-@@ -145,6 +168,13 @@
+
+    function toggleMenu() {
       document.getElementById("menu").classList.toggle("show");
     }
 
@@ -181,12 +178,52 @@
     document.querySelectorAll(".menu a").forEach(link =>
       link.addEventListener("click", e => {
         e.preventDefault();
-@@ -164,7 +194,8 @@
+        const target = link.getAttribute("href");
+        localStorage.setItem("currentSection", target);
+        document.querySelectorAll(".section").forEach(s => s.classList.remove("active-section"));
+        document.querySelectorAll(".menu a").forEach(a => a.classList.remove("active"));
+        document.querySelector(target)?.classList.add("active-section");
+        link.classList.add("active");
+        document.getElementById("menu").classList.remove("show");
+      })
+    );
+
+    function fakeNewsData() {
+      return [
+        { title: "AI giúp sinh viên học hiệu quả hơn", description: "Công nghệ AI đang thay đổi cách học tập của sinh viên đại học.", date: "25/06/2025" },
         { title: "Cập nhật phần mềm miễn phí cho giáo viên", description: "Một số công cụ học tập mới đã được cung cấp miễn phí.", date: "24/06/2025" },
         { title: "Ứng dụng CapCut ra mắt tính năng mới", description: "Người dùng có thể chỉnh sửa video dễ dàng hơn nhờ AI.", date: "23/06/2025" },
         { title: "Tích hợp ChatGPT vào học ngoại ngữ", description: "Nhiều ứng dụng đã bắt đầu tích hợp AI để luyện nói.", date: "22/06/2025" },
-        { title: "Cảnh báo bảo mật trong các ứng dụng di động", description: "Người dùng cần cập nhật ứng dụng để đảm bảo an toàn.", date: "21/06/2025" }
         { title: "Cảnh báo bảo mật trong các ứng dụng di động", description: "Người dùng cần cập nhật ứng dụng để đảm bảo an toàn.", date: "21/06/2025" },
         { title: "Elon Musk giới thiệu AI tự động dạy học", description: "Mô hình AI mới giúp cá nhân hóa việc học cho học sinh.", date: "20/06/2025" }
       ];
     }
+
+    async function fetchNews() {
+      const container = document.getElementById("news-content");
+      container.textContent = i18nData[currentLang]["loading_news"];
+      container.innerHTML = "";
+      fakeNewsData().forEach(a => {
+        const div = document.createElement("div");
+        div.className = "news-item";
+        div.innerHTML = `
+          <h3>${a.title}</h3>
+          <small>📅 ${a.date}</small>
+          <p>${a.description}</p>
+          <a href="#" target="_blank">${i18nData[currentLang]["read_more"]}</a>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    const savedSection = localStorage.getItem("currentSection") || "#intro";
+    document.querySelector(savedSection)?.classList.add("active-section");
+    document.querySelectorAll(".menu a").forEach(a => {
+      a.classList.toggle("active", a.getAttribute("href") === savedSection);
+    });
+
+    applyLanguage();
+    fetchNews();
+  </script>
+</body>
+</html>
