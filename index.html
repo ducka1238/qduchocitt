@@ -1,80 +1,192 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Duck Soft | About Me</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Duck Soft - Công nghệ dễ hiểu</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f3f8fc; color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px;
+    }
+    .logo { font-size: 24px; font-weight: bold; color: #3b3b9d; }
+    .controls { display: flex; gap: 10px; }
+    .toggle-btn, .lang-btn {
+      padding: 6px 12px; border: none; border-radius: 20px;
+      background: #eee; cursor: pointer; font-weight: bold;
+    }
+    .menu-icon { font-size: 24px; cursor: pointer; }
+    .menu {
+      position: fixed; top: 0; right: -250px; width: 250px; height: 100%;
+      background: #fff; box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+      padding: 20px; transition: right 0.3s; display: flex;
+      flex-direction: column; gap: 20px; z-index: 999;
+    }
+    .menu.show { right: 0; }
+    .menu a {
+      text-decoration: none; color: #333; font-size: 18px; font-weight: bold;
+    }
+    .menu a.active {
+      color: #3b3b9d; text-decoration: underline;
+    }
+    .section {
+      padding: 40px 20px; max-width: 800px; margin: auto; text-align: center;
+      display: none;
+    }
+    .section.active-section { display: block; }
+    .section h1 { font-size: 28px; margin-bottom: 15px; }
+    .section p { font-size: 16px; line-height: 1.6; color: #444; }
+    .facebook-contact a {
+      display: inline-block; margin-top: 20px;
+      background: #1877f2; color: #fff; padding: 10px 20px;
+      border-radius: 30px; text-decoration: none; font-weight: bold;
+    }
+    .facebook-contact a:hover { background: #0e5ad4; }
+    .news-item { text-align: left; margin-bottom: 20px; }
+    .news-item h3 { margin-bottom: 5px; }
+    .news-item small { display: block; color: #777; margin-bottom: 5px; }
+    .news-item a { color: #1a0dab; text-decoration: none; }
+    .news-item a:hover { text-decoration: underline; }
+    iframe { width: 100%; height: 500px; border: none; margin-top: 20px; }
+
+    @media (max-width: 600px) {
+      .section { padding: 20px 10px; }
+      .logo { font-size: 20px; }
+      .toggle-btn, .lang-btn { font-size: 14px; padding: 4px 8px; }
+    }
+
+    body.dark { background: #1a1a1a; color: #eee; }
+    body.dark .menu { background: #2a2a2a; }
+    body.dark .menu a,
+    body.dark .section h1,
+    body.dark .section p { color: #eee; }
+    body.dark .toggle-btn,
+    body.dark .lang-btn { background: #444; color: #fff; }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Duck Soft</h1>
+    <div class="logo">Duck Soft</div>
+    <div class="controls">
+      <button class="lang-btn" onclick="toggleLanguage()">🌐 VN/EN</button>
+      <button class="toggle-btn" onclick="toggleMode()">🌞 / 🌙</button>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    </div>
   </header>
 
-  <main>
-    <!-- === GIỚI THIỆU DUCK SOFT === -->
-    <section id="gioi-thieu">
-      <h2 data-vi>Giới thiệu</h2>
-      <h2 data-en style="display:none;">About</h2>
-      <p data-vi>
-        Duck Soft là nền tảng cá nhân nơi tôi chia sẻ các kiến thức về công nghệ, lập trình, AI, và các công cụ hỗ trợ học tập.
-        Với giao diện tối giản, song ngữ Việt – Anh và dễ sử dụng, mục tiêu của tôi là mang lại trải nghiệm học tập và sáng tạo công nghệ đơn giản – thực tiễn – hiệu quả.
-      </p>
-      <p data-en style="display:none;">
-        Duck Soft is my personal platform where I share knowledge in technology, programming, AI, and learning tools.
-        With a minimalist, bilingual (Vietnamese–English) and user-friendly interface, my goal is to deliver a simple, practical, and efficient tech experience.
-      </p>
-    </section>
+  <nav class="menu" id="menu">
+    <a href="#intro" data-i18n="menu_intro">Giới thiệu</a>
+    <a href="#news" data-i18n="menu_news">Tin tức</a>
+    <a href="#schedule" data-i18n="menu_schedule">Lịch học</a>
+    <a href="#contact" data-i18n="menu_contact">Liên hệ</a>
+  </nav>
 
-    <!-- === BLOG CÁ NHÂN THAY CHO TIN TỨC === -->
-    <section id="blog">
-      <h2 data-vi>Blog cá nhân</h2>
-      <h2 data-en style="display:none;">Personal Blog</h2>
-
-      <article>
-        <h3 data-vi>Tại sao tôi chọn theo học ngành CNTT?</h3>
-        <h3 data-en style="display:none;">Why did I choose to study IT?</h3>
-        <p data-vi>
-          Niềm đam mê với công nghệ, logic và khả năng sáng tạo không giới hạn đã đưa tôi đến với ngành Công nghệ Thông tin. 
-          Đây là lĩnh vực mở ra cơ hội cho tôi được học hỏi, phát triển, và tạo ra những sản phẩm có giá trị thực tiễn.
-        </p>
-        <p data-en style="display:none;">
-          My passion for technology, logic, and boundless creativity led me to Information Technology.
-          This field opens up opportunities for me to learn, grow, and build practical solutions that make an impact.
-        </p>
-      </article>
-    </section>
-
-    <!-- === LIÊN HỆ CHUYÊN NGHIỆP === -->
-    <section id="lien-he">
-      <h2 data-vi>Liên hệ</h2>
-      <h2 data-en style="display:none;">Contact</h2>
-      <p data-vi>Bạn có thể kết nối với tôi qua các nền tảng sau:</p>
-      <p data-en style="display:none;">You can reach me through the following platforms:</p>
-      <ul class="contact-list">
-        <li><strong>Email:</strong> <a href="mailto:quangducictu@gmail.com">quangducictu@gmail.com</a></li>
-        <li><strong>Facebook:</strong> <a href="https://facebook.com/duckkkg" target="_blank">facebook.com/duckkkg</a></li>
-        <li><strong>Instagram:</strong> <a href="https://www.instagram.com/_quagducc.14" target="_blank">@_quagducc.14</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <!-- === FOOTER CHUYÊN NGHIỆP === -->
-  <footer>
-    <div class="footer-content" data-vi>
-      <p>© 2025 by Dong Quang Duc</p>
-      <div class="social-links">
-        <a href="https://facebook.com/duckkkg" target="_blank">Facebook</a> |
-        <a href="https://www.instagram.com/_quagducc.14" target="_blank">Instagram</a>
-      </div>
+  <section class="section" id="intro">
+    <h1 id="intro-title">Chào mừng đến với Duck Soft</h1>
+    <p id="intro-desc">Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo. Với giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.</p>
+    <div class="facebook-contact">
+      <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 Gửi tin nhắn</a>
     </div>
-    <div class="footer-content" data-en style="display: none;">
-      <p>© 2025 by Dong Quang Duc</p>
-      <div class="social-links">
-        <a href="https://facebook.com/duckkkg" target="_blank">Facebook</a> |
-        <a href="https://www.instagram.com/_quagducc.14" target="_blank">Instagram</a>
-      </div>
-    </div>
-  </footer>
-</body>
-</html>
+  </section>
+
+  <section class="section" id="news">
+    <h1 id="news-title">Tin tức công nghệ</h1>
+    <div id="news-content">Đang tải tin tức...</div>
+  </section>
+
+  <section class="section" id="schedule">
+    <h1 id="schedule-title">Lịch học</h1>
+    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQXR-6gIkWqGeimvb-RGAO5iBPKrUvdpoZlN1mnlKExONtXY6UYRXZFIxv39edWbQ/pubhtml?widget=true&amp;headers=false"></iframe>
+  </section>
+
+  <section class="section" id="contact">
+    <h1 id="contact-title">Liên hệ & Dịch vụ</h1>
+    <ul style="list-style: none; padding: 0; text-align: left;">
+      <li>• Grok</li><li>• Drive</li><li>• GPT</li><li>• Meitu</li>
+      <li>• Elsa</li><li>• Capcut</li><li>• Spotify</li><li>• Monica</li>
+      <li>• Poe</li><li>• Kling</li><li>• Hailou</li><li>• Heygen</li>
+      <li>• Runway</li><li>• Minimax</li><li>• Cursor</li><li>• v0</li><li>• Bolt</li>
+    </ul>
+    <p>Email: ducyeuemm12@gmail.com</p>
+    <p>SĐT: 0796 032 313</p>
+  </section>
+
+  <script>
+    const i18nData = { /* ... (không thay đổi) */ };
+    const i18nData = {
+      vi: {
+        "intro-title": "Chào mừng đến với Duck Soft",
+        "intro-desc": "Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo. Với giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.",
+        "news-title": "Tin tức công nghệ",
+        "schedule-title": "Lịch học",
+        "contact-title": "Liên hệ & Dịch vụ",
+        "menu_intro": "Giới thiệu",
+        "menu_news": "Tin tức",
+        "menu_schedule": "Lịch học",
+        "menu_contact": "Liên hệ",
+        "loading_news": "Đang tải tin tức...",
+        "news_error": "Không thể tải tin tức.",
+        "read_more": "Xem chi tiết"
+      },
+      en: {
+        "intro-title": "Welcome to Duck Soft",
+        "intro-desc": "Duck Soft is a platform that helps you quickly access modern technologies such as AI, learning software, and creative tools. With a simple interface, bilingual support, and useful features, we aim to deliver a clear and efficient tech experience for everyone.",
+        "news-title": "Technology News",
+        "schedule-title": "Study Schedule",
+        "contact-title": "Contact & Services",
+        "menu_intro": "Introduction",
+        "menu_news": "News",
+        "menu_schedule": "Schedule",
+        "menu_contact": "Contact",
+        "loading_news": "Loading news...",
+        "news_error": "Unable to load news.",
+        "read_more": "Read More"
+      }
+    };
+
+    let currentLang = localStorage.getItem("lang") || "vi";
+
+    function applyLanguage() {
+@@ -130,13 +160,6 @@
+      }
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === "vi" ? "en" : "vi";
+      localStorage.setItem("lang", currentLang);
+      applyLanguage();
+      fetchNews();
+    }
+
+    function toggleMode() {
+      document.body.classList.toggle("dark");
+    }
+@@ -145,6 +168,13 @@
+      document.getElementById("menu").classList.toggle("show");
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === "vi" ? "en" : "vi";
+      localStorage.setItem("lang", currentLang);
+      applyLanguage();
+      fetchNews();
+    }
+
+    document.querySelectorAll(".menu a").forEach(link =>
+      link.addEventListener("click", e => {
+        e.preventDefault();
+@@ -164,7 +194,8 @@
+        { title: "Cập nhật phần mềm miễn phí cho giáo viên", description: "Một số công cụ học tập mới đã được cung cấp miễn phí.", date: "24/06/2025" },
+        { title: "Ứng dụng CapCut ra mắt tính năng mới", description: "Người dùng có thể chỉnh sửa video dễ dàng hơn nhờ AI.", date: "23/06/2025" },
+        { title: "Tích hợp ChatGPT vào học ngoại ngữ", description: "Nhiều ứng dụng đã bắt đầu tích hợp AI để luyện nói.", date: "22/06/2025" },
+        { title: "Cảnh báo bảo mật trong các ứng dụng di động", description: "Người dùng cần cập nhật ứng dụng để đảm bảo an toàn.", date: "21/06/2025" }
+        { title: "Cảnh báo bảo mật trong các ứng dụng di động", description: "Người dùng cần cập nhật ứng dụng để đảm bảo an toàn.", date: "21/06/2025" },
+        { title: "Elon Musk giới thiệu AI tự động dạy học", description: "Mô hình AI mới giúp cá nhân hóa việc học cho học sinh.", date: "20/06/2025" }
+      ];
+    }
