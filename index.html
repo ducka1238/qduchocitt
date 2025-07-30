@@ -1,229 +1,918 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Duck Soft - Công nghệ dễ hiểu</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: "Segoe UI", sans-serif;
-      background: #f3f8fc; color: #333;
-      transition: background 0.3s, color 0.3s;
-    }
-    header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 20px;
-    }
-    .logo { font-size: 24px; font-weight: bold; color: #3b3b9d; }
-    .controls { display: flex; gap: 10px; }
-    .toggle-btn, .lang-btn {
-      padding: 6px 12px; border: none; border-radius: 20px;
-      background: #eee; cursor: pointer; font-weight: bold;
-    }
-    .menu-icon { font-size: 24px; cursor: pointer; }
-    .menu {
-      position: fixed; top: 0; right: -250px; width: 250px; height: 100%;
-      background: #fff; box-shadow: -2px 0 10px rgba(0,0,0,0.2);
-      padding: 20px; transition: right 0.3s; display: flex;
-      flex-direction: column; gap: 20px; z-index: 999;
-    }
-    .menu.show { right: 0; }
-    .menu a {
-      text-decoration: none; color: #333; font-size: 18px; font-weight: bold;
-    }
-    .menu a.active {
-      color: #3b3b9d; text-decoration: underline;
-    }
-    .section {
-      padding: 40px 20px; max-width: 800px; margin: auto; text-align: center;
-      display: none;
-    }
-    .section.active-section { display: block; }
-    .section h1 { font-size: 28px; margin-bottom: 15px; }
-    .section p { font-size: 16px; line-height: 1.6; color: #444; }
-    .facebook-contact a {
-      display: inline-block; margin-top: 20px;
-      background: #1877f2; color: #fff; padding: 10px 20px;
-      border-radius: 30px; text-decoration: none; font-weight: bold;
-    }
-    .facebook-contact a:hover { background: #0e5ad4; }
-    .news-item { text-align: left; margin-bottom: 20px; }
-    .news-item h3 { margin-bottom: 5px; }
-    .news-item small { display: block; color: #777; margin-bottom: 5px; }
-    .news-item a { color: #1a0dab; text-decoration: none; }
-    .news-item a:hover { text-decoration: underline; }
-    iframe { width: 100%; height: 500px; border: none; margin-top: 20px; }
-
-    @media (max-width: 600px) {
-      .section { padding: 20px 10px; }
-      .logo { font-size: 20px; }
-      .toggle-btn, .lang-btn { font-size: 14px; padding: 4px 8px; }
+    :root {
+      --primary-color: #667eea;
+      --secondary-color: #764ba2;
+      --accent-color: #f093fb;
+      --text-primary: #2d3748;
+      --text-secondary: #4a5568;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-card: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.15), 0 4px 6px rgba(0,0,0,0.05);
+      --border-radius: 12px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    body.dark { background: #1a1a1a; color: #eee; }
-    body.dark .menu { background: #2a2a2a; }
-    body.dark .menu a,
-    body.dark .section h1,
-    body.dark .section p { color: #eee; }
-    body.dark .toggle-btn,
-    body.dark .lang-btn { background: #444; color: #fff; }
+```
+[data-theme="dark"] {
+  --text-primary: #f7fafc;
+  --text-secondary: #e2e8f0;
+  --bg-primary: #1a202c;
+  --bg-secondary: #2d3748;
+  --bg-card: #2d3748;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.4), 0 4px 6px rgba(0,0,0,0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  color: var(--text-primary);
+  transition: var(--transition);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Header Styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+[data-theme="dark"] header {
+  background: rgba(45, 55, 72, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: var(--transition);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.control-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 25px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.menu-toggle:hover {
+  background: var(--bg-secondary);
+  transform: rotate(90deg);
+}
+
+/* Navigation Menu */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 350px;
+  height: 100vh;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  padding: 80px 30px 30px;
+  transition: var(--transition);
+  z-index: 999;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-menu.active {
+  right: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 20px;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+  left: 0;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: white;
+  transform: translateX(5px);
+}
+
+.nav-link i {
+  font-size: 20px;
+  width: 24px;
+}
+
+/* Main Content */
+main {
+  margin-top: 80px;
+  min-height: calc(100vh - 80px);
+}
+
+.section {
+  padding: 60px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: none;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: var(--transition);
+}
+
+.section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Cards and Content */
+.content-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  margin-bottom: 30px;
+}
+
+.content-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.service-item {
+  background: var(--bg-card);
+  padding: 30px 25px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+
+.service-item:hover::before {
+  transform: scaleX(1);
+}
+
+.service-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  transition: var(--transition);
+}
+
+.service-item:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.service-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.news-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.news-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.news-content {
+  padding: 25px;
+}
+
+.news-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.news-meta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.news-description {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.news-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.news-link:hover {
+  gap: 12px;
+  color: var(--secondary-color);
+}
+
+/* Contact Section */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.contact-card {
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 30px;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  margin-top: 30px;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Schedule Iframe */
+.schedule-container {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-top: 40px;
+}
+
+.schedule-iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+/* Footer Styles */
+.footer {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 80px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 30px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.footer-section h3.footer-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  position: relative;
+}
+
+.footer-section h3.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
+}
+
+.footer-logo {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+}
+
+.footer-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border-radius: 12px;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  font-weight: 600;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.social-link.facebook:hover {
+  background: linear-gradient(135deg, #1877f2, #0e5ad4);
+  color: white;
+}
+
+.social-link.instagram:hover {
+  background: linear-gradient(135deg, #e4405f, #833ab4, #fd1d1d, #fcb045);
+  color: white;
+}
+
+.social-link i {
+  font-size: 1.2rem;
+  width: 20px;
+  text-align: center;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-contact p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.footer-contact i {
+  font-size: 1rem;
+  width: 18px;
+  color: var(--primary-color);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px 30px;
+  text-align: center;
+}
+
+[data-theme="dark"] .footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.copyright {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.copyright p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.copyright strong {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Footer Responsive */
+@media (max-width: 768px) {
+  .footer-content {
+    padding: 40px 20px 30px;
+    gap: 30px;
+  }
+  
+  .footer-section {
+    text-align: center;
+  }
+  
+  .social-links {
+    align-items: center;
+  }
+  
+  .footer-bottom {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .footer-logo {
+    font-size: 1.8rem;
+  }
+  
+  .social-link {
+    padding: 10px 14px;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Loading Animation */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 40px;
+  color: var(--text-secondary);
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--text-secondary);
+  border-top: 2px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+  }
+  
+  .logo {
+    font-size: 24px;
+  }
+  
+  .section {
+    padding: 40px 20px;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .nav-menu {
+    width: 300px;
+    right: -300px;
+  }
+  
+  .content-card {
+    padding: 30px 25px;
+  }
+  
+  .service-grid,
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .content-card {
+    padding: 25px 20px;
+  }
+  
+  .controls {
+    gap: 10px;
+  }
+  
+  .control-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 998;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+```
+
   </style>
 </head>
 <body>
+  <div class="overlay" id="overlay"></div>
+
   <header>
-    <div class="logo">Duck Soft</div>
+    <div class="logo">
+      <i class="fas fa-code"></i> Duck Soft
+    </div>
     <div class="controls">
-      <button class="lang-btn" onclick="toggleLanguage()">🌐 VN/EN</button>
-      <button class="toggle-btn" onclick="toggleMode()">🌞 / 🌙</button>
-      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <button class="control-btn" onclick="toggleLanguage()">
+        <i class="fas fa-globe"></i>
+        <span id="lang-text">VN/EN</span>
+      </button>
+      <button class="control-btn" onclick="toggleTheme()">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+      <button class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </header>
 
-  <nav class="menu" id="menu">
-    <a href="#intro" data-i18n="menu_intro">Giới thiệu</a>
-    <a href="#news" data-i18n="menu_news">Tin tức</a>
-    <a href="#schedule" data-i18n="menu_schedule">Lịch học</a>
-    <a href="#contact" data-i18n="menu_contact">Liên hệ</a>
+  <nav class="nav-menu" id="navMenu">
+    <a href="#intro" class="nav-link" data-section="intro">
+      <i class="fas fa-home"></i>
+      <span data-i18n="menu_intro">Giới thiệu</span>
+    </a>
+    <a href="#news" class="nav-link" data-section="news">
+      <i class="fas fa-newspaper"></i>
+      <span data-i18n="menu_news">Tin tức</span>
+    </a>
+    <a href="#schedule" class="nav-link" data-section="schedule">
+      <i class="fas fa-calendar"></i>
+      <span data-i18n="menu_schedule">Lịch học</span>
+    </a>
+    <a href="#contact" class="nav-link" data-section="contact">
+      <i class="fas fa-envelope"></i>
+      <span data-i18n="menu_contact">Liên hệ</span>
+    </a>
   </nav>
 
-  <section class="section" id="intro">
-    <h1 id="intro-title">Chào mừng đến với Duck Soft</h1>
-    <p id="intro-desc">Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo. Với giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.</p>
-    <div class="facebook-contact">
-      <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank">💬 Gửi tin nhắn</a>
+  <main>
+    <!-- Intro Section -->
+    <section class="section active" id="intro">
+      <div class="section-header">
+        <h1 class="section-title" data-i18n="intro_title">Chào mừng đến với Duck Soft</h1>
+        <p class="section-subtitle" data-i18n="intro_subtitle">Nền tảng công nghệ hiện đại, dễ tiếp cận</p>
+      </div>
+
+```
+  <div class="content-card">
+    <p data-i18n="intro_description">
+      Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo. Với giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.
+    </p>
+    
+    <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank" class="cta-button">
+      <i class="fab fa-facebook-messenger"></i>
+      <span data-i18n="contact_message">Gửi tin nhắn</span>
+    </a>
+  </div>
+</section>
+
+<!-- News Section -->
+<section class="section" id="news">
+  <div class="section-header">
+    <h1 class="section-title" data-i18n="news_title">Tin tức công nghệ</h1>
+    <p class="section-subtitle" data-i18n="news_subtitle">Cập nhật những xu hướng công nghệ mới nhất</p>
+  </div>
+  
+  <div id="newsContent" class="loading">
+    <div class="loading-spinner"></div>
+    <span data-i18n="loading_news">Đang tải tin tức...</span>
+  </div>
+</section>
+
+<!-- Schedule Section -->
+<section class="section" id="schedule">
+  <div class="section-header">
+    <h1 class="section-title" data-i18n="schedule_title">Lịch học</h1>
+    <p class="section-subtitle" data-i18n="schedule_subtitle">Theo dõi lịch học và hoạt động</p>
+  </div>
+  
+  <div class="schedule-container">
+    <iframe 
+      class="schedule-iframe"
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQXR-6gIkWqGeimvb-RGAO5iBPKrUvdpoZlN1mnlKExONtXY6UYRXZFIxv39edWbQ/pubhtml?widget=true&amp;headers=false">
+    </iframe>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section" id="contact">
+  <div class="section-header">
+    <h1 class="section-title" data-i18n="contact_title">Liên hệ & Dịch vụ</h1>
+    <p class="section-subtitle" data-i18n="contact_subtitle">Khám phá các dịch vụ và công cụ của chúng tôi</p>
+  </div>
+  
+  <div class="service-grid" id="serviceGrid">
+    <!-- Services will be populated by JavaScript -->
+  </div>
+  
+  <div class="contact-info">
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <h3>Email</h3>
+      <p>ducyeuemm12@gmail.com</p>
     </div>
-  </section>
+    
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fas fa-phone"></i>
+      </div>
+      <h3 data-i18n="phone">Điện thoại</h3>
+      <p>0796 032 313</p>
+    </div>
+    
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fab fa-facebook"></i>
+      </div>
+      <h3>Facebook</h3>
+      <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank" class="cta-button">
+        <i class="fab fa-facebook-messenger"></i>
+        <span data-i18n="visit_page">Truy cập trang</span>
+      </a>
+    </div>
+  </div>
+</section>
+```
 
-  <section class="section" id="news">
-    <h1 id="news-title">Tin tức công nghệ</h1>
-    <div id="news-content">Đang tải tin tức...</div>
-  </section>
+  </main>
 
-  <section class="section" id="schedule">
-    <h1 id="schedule-title">Lịch học</h1>
-    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQXR-6gIkWqGeimvb-RGAO5iBPKrUvdpoZlN1mnlKExONtXY6UYRXZFIxv39edWbQ/pubhtml?widget=true&amp;headers=false"></iframe>
-  </section>
+  <!-- Footer -->
 
-  <section class="section" id="contact">
-    <h1 id="contact-title">Liên hệ & Dịch vụ</h1>
-    <ul style="list-style: none; padding: 0; text-align: left;">
-      <li>• Grok</li><li>• Drive</li><li>• GPT</li><li>• Meitu</li>
-      <li>• Elsa</li><li>• Capcut</li><li>• Spotify</li><li>• Monica</li>
-      <li>• Poe</li><li>• Kling</li><li>• Hailou</li><li>• Heygen</li>
-      <li>• Runway</li><li>• Minimax</li><li>• Cursor</li><li>• v0</li><li>• Bolt</li>
-    </ul>
-    <p>Email: ducyeuemm12@gmail.com</p>
-    <p>SĐT: 0796 032 313</p>
-  </section>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <i class="fas fa-code"></i> Duck Soft
+        </div>
+        <p class="footer-description" data-i18n="footer_description">
+          Nền tảng công nghệ hiện đại, dễ tiếp cận cho mọi người
+        </p>
+      </div>
 
-  <script>
-    const i18nData = {
-      vi: {
-        "intro-title": "Chào mừng đến với Duck Soft",
-        "intro-desc": "Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo. Với giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.",
-        "news-title": "Tin tức công nghệ",
-        "schedule-title": "Lịch học",
-        "contact-title": "Liên hệ & Dịch vụ",
-        "menu_intro": "Giới thiệu",
-        "menu_news": "Tin tức",
-        "menu_schedule": "Lịch học",
-        "menu_contact": "Liên hệ",
-        "loading_news": "Đang tải tin tức...",
-        "news_error": "Không thể tải tin tức.",
-        "read_more": "Xem chi tiết"
-      },
-      en: {
-        "intro-title": "Welcome to Duck Soft",
-        "intro-desc": "Duck Soft is a platform that helps you quickly access modern technologies such as AI, learning software, and creative tools. With a simple interface, bilingual support, and useful features, we aim to deliver a clear and efficient tech experience for everyone.",
-        "news-title": "Technology News",
-        "schedule-title": "Study Schedule",
-        "contact-title": "Contact & Services",
-        "menu_intro": "Introduction",
-        "menu_news": "News",
-        "menu_schedule": "Schedule",
-        "menu_contact": "Contact",
-        "loading_news": "Loading news...",
-        "news_error": "Unable to load news.",
-        "read_more": "Read More"
-      }
-    };
+```
+  <div class="footer-section">
+    <h3 class="footer-title" data-i18n="footer_connect">Kết nối với chúng tôi</h3>
+    <div class="social-links">
+      <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank" class="social-link facebook">
+        <i class="fab fa-facebook-f"></i>
+        <span>Facebook</span>
+      </a>
+      <a href="https://www.instagram.com/_quagducc.14?igsh=bWIzc2lua3plbTVo&utm_source=qr" target="_blank" class="social-link instagram">
+        <i class="fab fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="footer-section">
+    <h3 class="footer-title" data-i18n="footer_contact">Liên hệ</h3>
+    <div class="footer-contact">
+      <p><i class="fas fa-envelope"></i> ducyeuemm12@gmail.com</p>
+      <p><i class="fas fa-phone"></i> 0796 032 313</p>
+    </div>
+  </div>
+</div>
 
-    let currentLang = localStorage.getItem("lang") || "vi";
-
-    function applyLanguage() {
-      document.documentElement.lang = currentLang;
-      const dict = i18nData[currentLang];
-      for (let key in dict) {
-        const el = document.querySelector(`[id="${key}"], [data-i18n="${key}"]`);
-        if (el) el.textContent = dict[key];
-      }
-    }
-
-    function toggleMode() {
-      document.body.classList.toggle("dark");
-    }
-
-    function toggleMenu() {
-      document.getElementById("menu").classList.toggle("show");
-    }
-
-    function toggleLanguage() {
-      currentLang = currentLang === "vi" ? "en" : "vi";
-      localStorage.setItem("lang", currentLang);
-      applyLanguage();
-      fetchNews();
-    }
-
-    document.querySelectorAll(".menu a").forEach(link =>
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        const target = link.getAttribute("href");
-        localStorage.setItem("currentSection", target);
-        document.querySelectorAll(".section").forEach(s => s.classList.remove("active-section"));
-        document.querySelectorAll(".menu a").forEach(a => a.classList.remove("active"));
-        document.querySelector(target)?.classList.add("active-section");
-        link.classList.add("active");
-        document.getElementById("menu").classList.remove("show");
-      })
-    );
-
-    function fakeNewsData() {
-      return [
-        { title: "AI giúp sinh viên học hiệu quả hơn", description: "Công nghệ AI đang thay đổi cách học tập của sinh viên đại học.", date: "25/06/2025" },
-        { title: "Cập nhật phần mềm miễn phí cho giáo viên", description: "Một số công cụ học tập mới đã được cung cấp miễn phí.", date: "24/06/2025" },
-        { title: "Ứng dụng CapCut ra mắt tính năng mới", description: "Người dùng có thể chỉnh sửa video dễ dàng hơn nhờ AI.", date: "23/06/2025" },
-        { title: "Tích hợp ChatGPT vào học ngoại ngữ", description: "Nhiều ứng dụng đã bắt đầu tích hợp AI để luyện nói.", date: "22/06/2025" },
-        { title: "Cảnh báo bảo mật trong các ứng dụng di động", description: "Người dùng cần cập nhật ứng dụng để đảm bảo an toàn.", date: "21/06/2025" },
-        { title: "Elon Musk giới thiệu AI tự động dạy học", description: "Mô hình AI mới giúp cá nhân hóa việc học cho học sinh.", date: "20/06/2025" }
-      ];
-    }
-
-    async function fetchNews() {
-      const container = document.getElementById("news-content");
-      container.textContent = i18nData[currentLang]["loading_news"];
-      container.innerHTML = "";
-      fakeNewsData().forEach(a => {
-        const div = document.createElement("div");
-        div.className = "news-item";
-        div.innerHTML = `
-          <h3>${a.title}</h3>
-          <small>📅 ${a.date}</small>
-          <p>${a.description}</p>
-          <a href="#" target="_blank">${i18nData[currentLang]["read_more"]}</a>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    const savedSection = localStorage.getItem("currentSection") || "#intro";
-    document.querySelector(savedSection)?.classList.add("active-section");
-    document.querySelectorAll(".menu a").forEach(a => {
-      a.classList.toggle("active", a.getAttribute("href") === savedSection);
-    });
-
-    applyLanguage();
-    fetchNews();
-  </script>
-</body>
-</html>
+<div class="footer-bottom">
+  <div class="copyright">
+    <p>&copy; 2025 by <strong>Dong Quang Duc</strong>. <span data-i18n="
+```
