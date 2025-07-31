@@ -4,104 +4,40 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Duck Soft - Enhanced News & Dark Mode</title>
+  <title>Duck Soft - Công nghệ dễ hiểu</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Light Theme Colors */
       --primary-color: #667eea;
       --secondary-color: #764ba2;
       --accent-color: #f093fb;
-      --success-color: #10b981;
-      --warning-color: #f59e0b;
-      --error-color: #ef4444;
+      --text-primary: #2d3748;
+      --text-secondary: #4a5568;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-card: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.15), 0 4px 6px rgba(0,0,0,0.05);
+      --border-radius: 12px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
 ```
-  /* Light Theme UI */
-  --text-primary: #1a202c;
-  --text-secondary: #4a5568;
-  --text-muted: #718096;
-  --bg-primary: #ffffff;
-  --bg-secondary: #f7fafc;
-  --bg-tertiary: #edf2f7;
-  --bg-card: #ffffff;
-  --bg-overlay: rgba(255, 255, 255, 0.95);
-  
-  /* Shadows & Effects */
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.06);
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
-  --shadow-xl: 0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04);
-  
-  /* Borders & Dividers */
-  --border-light: rgba(226, 232, 240, 0.8);
-  --border-medium: rgba(203, 213, 224, 0.9);
-  --border-heavy: rgba(160, 174, 192, 1);
-  
-  /* Design System */
-  --border-radius-sm: 8px;
-  --border-radius: 12px;
-  --border-radius-lg: 16px;
-  --border-radius-xl: 24px;
-  --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  
-  /* Typography Scale */
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-size-4xl: 2.25rem;
-  --font-size-5xl: 3rem;
-  
-  /* Spacing Scale */
-  --spacing-1: 0.25rem;
-  --spacing-2: 0.5rem;
-  --spacing-3: 0.75rem;
-  --spacing-4: 1rem;
-  --spacing-5: 1.25rem;
-  --spacing-6: 1.5rem;
-  --spacing-8: 2rem;
-  --spacing-10: 2.5rem;
-  --spacing-12: 3rem;
-  --spacing-16: 4rem;
-  --spacing-20: 5rem;
-}
-
-/* Dark Theme */
 [data-theme="dark"] {
-  /* Dark Theme Colors */
   --text-primary: #f7fafc;
   --text-secondary: #e2e8f0;
-  --text-muted: #a0aec0;
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
-  --bg-card: #1e293b;
-  --bg-overlay: rgba(15, 23, 42, 0.95);
-  
-  /* Dark Theme Shadows */
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.3);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.4), 0 4px 6px rgba(0,0,0,0.3);
-  --shadow-xl: 0 20px 25px rgba(0,0,0,0.5), 0 10px 10px rgba(0,0,0,0.4);
-  
-  /* Dark Theme Borders */
-  --border-light: rgba(71, 85, 105, 0.6);
-  --border-medium: rgba(100, 116, 139, 0.7);
-  --border-heavy: rgba(148, 163, 184, 0.8);
+  --bg-primary: #1a202c;
+  --bg-secondary: #2d3748;
+  --bg-card: #2d3748;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.4), 0 4px 6px rgba(0,0,0,0.2);
 }
 
-/* Base Styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -109,33 +45,41 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'sans-serif';
   background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   color: var(--text-primary);
   transition: var(--transition);
   line-height: 1.6;
   overflow-x: hidden;
-  min-height: 100vh;
 }
 
-/* Smooth theme transition */
-* {
-  transition: background-color var(--transition), 
-              color var(--transition), 
-              border-color var(--transition),
-              box-shadow var(--transition);
+/* Font Awesome Fallback */
+.fa, .fas, .fab {
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", sans-serif !important;
+  font-weight: 900;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
 }
 
-/* Header Enhanced */
-.header {
+.fab {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400;
+}
+
+/* Header Styles */
+header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: var(--bg-overlay);
-  backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid var(--border-light);
-  padding: var(--spacing-4) var(--spacing-6);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -143,11 +87,16 @@ body {
   transition: var(--transition);
 }
 
+[data-theme="dark"] header {
+  background: rgba(45, 55, 72, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--spacing-3);
-  font-size: var(--font-size-2xl);
+  gap: 12px;
+  font-size: 28px;
   font-weight: 800;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   -webkit-background-clip: text;
@@ -161,7 +110,7 @@ body {
 }
 
 .logo i {
-  font-size: var(--font-size-3xl);
+  font-size: 32px;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -169,31 +118,93 @@ body {
   transition: var(--transition);
 }
 
+.logo:hover i {
+  transform: rotate(10deg);
+}
+
 .controls {
   display: flex;
-  gap: var(--spacing-3);
+  gap: 15px;
   align-items: center;
 }
 
 .control-btn {
-  padding: var(--spacing-3) var(--spacing-4);
-  border: 1px solid var(--border-light);
-  border-radius: var(--border-radius-xl);
+  padding: 10px 16px;
+  border: none;
+  border-radius: 25px;
   background: var(--bg-card);
   color: var(--text-primary);
   cursor: pointer;
   font-weight: 600;
-  font-size: var(--font-size-sm);
+  font-size: 14px;
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
   display: flex;
   align-items: center;
-  gap: var(--spacing-2);
+  gap: 8px;
+}
+
+.control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.menu-toggle:hover {
+  background: var(--bg-secondary);
+  transform: rotate(90deg);
+}
+
+/* Navigation Menu */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 350px;
+  height: 100vh;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  padding: 80px 30px 30px;
+  transition: var(--transition);
+  z-index: 999;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-menu.active {
+  right: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 20px;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
   position: relative;
   overflow: hidden;
 }
 
-.control-btn::before {
+.nav-link::before {
   content: '';
   position: absolute;
   top: 0;
@@ -205,173 +216,102 @@ body {
   z-index: -1;
 }
 
-.control-btn:hover::before {
+.nav-link:hover::before,
+.nav-link.active::before {
   left: 0;
 }
 
-.control-btn:hover {
+.nav-link:hover,
+.nav-link.active {
   color: white;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  border-color: transparent;
+  transform: translateX(5px);
 }
 
-/* Theme Toggle Enhanced */
-.theme-toggle {
-  position: relative;
-  width: 60px;
-  height: 32px;
-  background: var(--bg-tertiary);
-  border-radius: 20px;
-  border: 2px solid var(--border-light);
-  cursor: pointer;
-  transition: var(--transition);
-  overflow: hidden;
-}
-
-.theme-toggle::before {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 2px;
+.nav-link i {
+  font-size: 20px;
   width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--bg-card);
-  box-shadow: var(--shadow-md);
-  transition: var(--transition);
-  z-index: 2;
-}
-
-[data-theme="dark"] .theme-toggle::before {
-  transform: translateX(26px);
-}
-
-.theme-toggle .theme-icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 14px;
-  transition: var(--transition);
-  z-index: 1;
-}
-
-.theme-toggle .sun-icon {
-  left: 6px;
-  color: var(--warning-color);
-  opacity: 1;
-}
-
-.theme-toggle .moon-icon {
-  right: 6px;
-  color: var(--primary-color);
-  opacity: 0;
-}
-
-[data-theme="dark"] .theme-toggle .sun-icon {
-  opacity: 0;
-}
-
-[data-theme="dark"] .theme-toggle .moon-icon {
-  opacity: 1;
 }
 
 /* Main Content */
-.main {
+main {
   margin-top: 80px;
   min-height: calc(100vh - 80px);
-  padding: var(--spacing-8) var(--spacing-6);
 }
 
-/* News Section Enhanced */
-.news-section {
-  max-width: 1400px;
+.section {
+  padding: 60px 30px;
+  max-width: 1200px;
   margin: 0 auto;
+  display: none;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: var(--transition);
+}
+
+.section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: var(--spacing-16);
-  padding: var(--spacing-8) 0;
+  margin-bottom: 50px;
 }
 
 .section-title {
-  font-size: var(--font-size-5xl);
-  font-weight: 900;
+  font-size: 3rem;
+  font-weight: 800;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: var(--spacing-5);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  line-height: 1.2;
 }
 
 .section-subtitle {
-  font-size: var(--font-size-xl);
+  font-size: 1.2rem;
   color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
-  font-weight: 400;
+  line-height: 1.6;
 }
 
-/* News Filter */
-.news-filter {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-3);
-  margin-bottom: var(--spacing-10);
-  flex-wrap: wrap;
-}
-
-.filter-btn {
-  padding: var(--spacing-3) var(--spacing-5);
-  border: 2px solid var(--border-light);
-  border-radius: var(--border-radius-xl);
+/* Cards and Content */
+.content-card {
   background: var(--bg-card);
-  color: var(--text-secondary);
-  cursor: pointer;
-  font-weight: 600;
-  font-size: var(--font-size-sm);
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.filter-btn.active,
-.filter-btn:hover {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
-  transform: translateY(-2px);
+  border-radius: var(--border-radius);
+  padding: 40px;
   box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  margin-bottom: 30px;
 }
 
-.filter-btn.active {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  color: white;
-  border-color: transparent;
+.content-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
 }
 
-/* News Grid Enhanced */
-.news-grid {
+.service-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: var(--spacing-8);
-  margin-top: var(--spacing-10);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
 }
 
-.news-card {
+.service-item {
   background: var(--bg-card);
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
+  padding: 30px 25px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
   transition: var(--transition);
   position: relative;
-  border: 1px solid var(--border-light);
-  cursor: pointer;
+  overflow: hidden;
 }
 
-.news-card::before {
+.service-item::before {
   content: '';
   position: absolute;
   top: 0;
@@ -383,153 +323,388 @@ body {
   transition: var(--transition);
 }
 
-.news-card:hover::before {
+.service-item:hover::before {
   transform: scaleX(1);
+}
+
+.service-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  transition: var(--transition);
+}
+
+.service-item:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.service-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.news-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
 }
 
 .news-card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--border-medium);
+  box-shadow: var(--shadow-lg);
 }
 
 .news-content {
-  padding: var(--spacing-6);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.news-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  color: white;
-  padding: var(--spacing-1) var(--spacing-3);
-  border-radius: var(--border-radius-xl);
-  font-size: var(--font-size-xs);
-  font-weight: 700;
-  margin-bottom: var(--spacing-4);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  width: fit-content;
-  box-shadow: var(--shadow-sm);
+  padding: 25px;
 }
 
 .news-title {
-  font-size: var(--font-size-xl);
+  font-size: 1.3rem;
   font-weight: 700;
-  margin-bottom: var(--spacing-4);
+  margin-bottom: 10px;
   color: var(--text-primary);
   line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .news-meta {
   display: flex;
   align-items: center;
-  gap: var(--spacing-4);
-  margin-bottom: var(--spacing-4);
-  font-size: var(--font-size-sm);
-  color: var(--text-muted);
-  flex-wrap: wrap;
-}
-
-.news-meta span {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-2);
-}
-
-.news-meta i {
-  width: 14px;
-  opacity: 0.8;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
 }
 
 .news-description {
   color: var(--text-secondary);
-  margin-bottom: var(--spacing-6);
+  margin-bottom: 20px;
   line-height: 1.6;
-  flex-grow: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.news-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: auto;
-  padding-top: var(--spacing-4);
-  border-top: 1px solid var(--border-light);
 }
 
 .news-link {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-2);
+  gap: 8px;
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 600;
-  font-size: var(--font-size-sm);
   transition: var(--transition);
-  padding: var(--spacing-2) var(--spacing-4);
-  border-radius: var(--border-radius);
-  background: rgba(102, 126, 234, 0.1);
-  border: 1px solid transparent;
 }
 
 .news-link:hover {
-  gap: var(--spacing-3);
-  background: var(--primary-color);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary-color);
+  gap: 12px;
+  color: var(--secondary-color);
 }
 
-.share-btn {
-  background: none;
-  border: 1px solid var(--border-light);
+/* Contact Section */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.contact-card {
+  background: var(--bg-card);
+  padding: 30px;
   border-radius: var(--border-radius);
-  padding: var(--spacing-2);
-  color: var(--text-muted);
-  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  text-align: center;
   transition: var(--transition);
-  width: 36px;
-  height: 36px;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+  font-size: 30px;
 }
 
-.share-btn:hover {
-  background: var(--bg-secondary);
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  margin-top: 30px;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Schedule Iframe */
+.schedule-container {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-top: 40px;
+}
+
+.schedule-iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+/* Footer Styles */
+.footer {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 80px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 30px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.footer-section h3.footer-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  position: relative;
+}
+
+.footer-section h3.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+}
+
+.footer-logo i {
+  font-size: 2.2rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border-radius: 12px;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  font-weight: 600;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.social-link.facebook:hover {
+  background: linear-gradient(135deg, #1877f2, #0e5ad4);
+  color: white;
+}
+
+.social-link.instagram:hover {
+  background: linear-gradient(135deg, #e4405f, #833ab4, #fd1d1d, #fcb045);
+  color: white;
+}
+
+.social-link i {
+  font-size: 1.2rem;
+  width: 20px;
+  text-align: center;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-contact p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.footer-contact i {
+  font-size: 1rem;
+  width: 18px;
   color: var(--primary-color);
-  border-color: var(--primary-color);
-  transform: scale(1.1);
 }
 
-/* Loading States */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px 30px;
+  text-align: center;
+}
+
+[data-theme="dark"] .footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.copyright {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.copyright p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.copyright strong {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Footer Responsive */
+@media (max-width: 768px) {
+  .footer-content {
+    padding: 40px 20px 30px;
+    gap: 30px;
+  }
+  
+  .footer-section {
+    text-align: center;
+  }
+  
+  .social-links {
+    align-items: center;
+  }
+  
+  .footer-bottom {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .footer-logo {
+    font-size: 1.8rem;
+  }
+  
+  .social-link {
+    padding: 10px 14px;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Loading Animation */
 .loading {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-4);
-  padding: var(--spacing-16);
+  gap: 15px;
+  padding: 40px;
   color: var(--text-secondary);
-  flex-direction: column;
 }
 
 .loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid var(--border-light);
-  border-top: 3px solid var(--primary-color);
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--text-secondary);
+  border-top: 2px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -539,617 +714,306 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* Skeleton Loading */
-.skeleton {
-  background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-tertiary) 50%, var(--bg-secondary) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-  border-radius: var(--border-radius);
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.skeleton-card {
-  background: var(--bg-card);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-6);
-  border: 1px solid var(--border-light);
-}
-
-.skeleton-badge {
-  height: 20px;
-  width: 80px;
-  margin-bottom: var(--spacing-4);
-}
-
-.skeleton-title {
-  height: 24px;
-  width: 90%;
-  margin-bottom: var(--spacing-3);
-}
-
-.skeleton-meta {
-  height: 16px;
-  width: 60%;
-  margin-bottom: var(--spacing-4);
-}
-
-.skeleton-description {
-  height: 16px;
-  width: 100%;
-  margin-bottom: var(--spacing-2);
-}
-
-.skeleton-description:last-of-type {
-  width: 80%;
-  margin-bottom: var(--spacing-6);
-}
-
-.skeleton-actions {
-  height: 36px;
-  width: 120px;
-}
-
-/* Desktop Enhancements */
-@media (min-width: 1440px) {
-  .news-section {
-    max-width: 1600px;
-  }
-  
-  .section-header {
-    padding: var(--spacing-12) 0;
-    margin-bottom: var(--spacing-20);
+/* Desktop Optimizations */
+@media (min-width: 1024px) {
+  .section {
+    padding: 80px 40px;
   }
   
   .section-title {
-    font-size: 4.5rem;
-    margin-bottom: var(--spacing-6);
+    font-size: 3.5rem;
   }
   
-  .section-subtitle {
-    font-size: var(--font-size-2xl);
-    max-width: 800px;
+  .content-card {
+    padding: 50px;
+  }
+  
+  .service-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
   }
   
   .news-grid {
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 35px;
+  }
+  
+  .contact-info {
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-10);
   }
   
-  .news-card {
-    min-height: 420px;
+  .footer-content {
+    padding: 80px 40px 50px;
   }
   
-  .news-filter {
-    gap: var(--spacing-4);
-    margin-bottom: var(--spacing-12);
+  .nav-menu {
+    width: 400px;
+    right: -400px;
+    padding: 100px 40px 40px;
   }
   
-  .filter-btn {
-    padding: var(--spacing-4) var(--spacing-6);
-    font-size: var(--font-size-base);
-    min-width: 120px;
-  }
-}
-
-@media (min-width: 1920px) {
-  .news-section {
-    max-width: 1800px;
+  .nav-link {
+    padding: 20px 25px;
+    font-size: 18px;
   }
   
-  .section-title {
-    font-size: 5rem;
+  .blog-post {
+    padding: 50px;
   }
   
-  .news-grid {
+  .tech-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-12);
-  }
-  
-  .news-card {
-    min-height: 450px;
   }
 }
 
-/* Large Desktop Optimizations */
-@media (min-width: 1200px) {
-  .header {
-    padding: var(--spacing-5) var(--spacing-8);
-  }
-  
-  .logo {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .logo i {
-    font-size: var(--font-size-4xl);
-  }
-  
-  .main {
-    padding: var(--spacing-12) var(--spacing-8);
-    margin-top: 90px;
-  }
-  
-  .news-grid {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: var(--spacing-8);
-  }
-  
-  .news-card {
-    min-height: 380px;
-    transition: var(--transition);
-  }
-  
-  .news-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: var(--shadow-xl);
-  }
-  
-  .news-content {
-    padding: var(--spacing-8);
-  }
-  
-  .news-title {
-    font-size: var(--font-size-2xl);
-    margin-bottom: var(--spacing-5);
-    line-height: 1.2;
-  }
-  
-  .news-description {
-    font-size: var(--font-size-lg);
-    line-height: 1.7;
-  }
-  
-  .news-badge {
-    padding: var(--spacing-2) var(--spacing-4);
-    font-size: var(--font-size-sm);
-    margin-bottom: var(--spacing-5);
-  }
-  
-  .news-meta {
-    margin-bottom: var(--spacing-6);
-  }
-  
-  .news-actions {
-    padding-top: var(--spacing-5);
-    margin-top: var(--spacing-6);
-  }
-  
-  .news-link {
-    padding: var(--spacing-3) var(--spacing-5);
-    font-size: var(--font-size-base);
-  }
-  
-  .share-btn {
-    width: 44px;
-    height: 44px;
-    font-size: var(--font-size-lg);
-  }
-  
-  /* Desktop Filter Enhancements */
-  .news-filter {
-    justify-content: center;
-    margin-bottom: var(--spacing-12);
-  }
-  
-  .filter-btn {
-    padding: var(--spacing-4) var(--spacing-6);
-    font-size: var(--font-size-base);
-    min-width: 100px;
-    position: relative;
-  }
-  
-  .filter-btn::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    transition: var(--transition);
-    transform: translateX(-50%);
-  }
-  
-  .filter-btn.active::after,
-  .filter-btn:hover::after {
-    width: 80%;
-  }
-  
-  /* Desktop Loading Improvements */
-  .loading {
-    padding: var(--spacing-20);
-  }
-  
-  .loading-spinner {
-    width: 60px;
-    height: 60px;
-    border-width: 4px;
-  }
-  
-  .skeleton-card {
-    min-height: 380px;
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .news-grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--spacing-6);
-  }
-}
-
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
-  .header {
-    padding: var(--spacing-3) var(--spacing-4);
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px;
   }
-
+  
   .logo {
-    font-size: var(--font-size-xl);
+    font-size: 24px;
   }
-
-  .logo i {
-    font-size: var(--font-size-2xl);
+  
+  .section {
+    padding: 40px 20px;
   }
-
-  .main {
-    padding: var(--spacing-6) var(--spacing-4);
-    margin-top: 70px;
-  }
-
+  
   .section-title {
-    font-size: var(--font-size-3xl);
+    font-size: 2.5rem;
   }
-
-  .section-subtitle {
-    font-size: var(--font-size-lg);
+  
+  .nav-menu {
+    width: 300px;
+    right: -300px;
   }
-
+  
+  .content-card {
+    padding: 30px 25px;
+  }
+  
+  .service-grid,
   .news-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-5);
-  }
-
-  .news-filter {
-    gap: var(--spacing-2);
-  }
-
-  .filter-btn {
-    padding: var(--spacing-2) var(--spacing-4);
-    font-size: var(--font-size-xs);
-  }
-
-  .news-content {
-    padding: var(--spacing-5);
-  }
-
-  .news-title {
-    font-size: var(--font-size-lg);
-  }
-
-  .news-meta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spacing-2);
-  }
-
-  .news-actions {
-    flex-direction: column;
-    gap: var(--spacing-3);
-    align-items: stretch;
-  }
-
-  .news-link {
-    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
-  .controls {
-    gap: var(--spacing-2);
-  }
-
-  .control-btn {
-    padding: var(--spacing-2) var(--spacing-3);
-    font-size: var(--font-size-xs);
-  }
-
-  .theme-toggle {
-    width: 50px;
-    height: 28px;
-  }
-
-  .theme-toggle::before {
-    width: 20px;
-    height: 20px;
-  }
-
-  [data-theme="dark"] .theme-toggle::before {
-    transform: translateX(20px);
-  }
-
-  .section-header {
-    margin-bottom: var(--spacing-10);
-  }
-
   .section-title {
-    font-size: var(--font-size-2xl);
-  }
-
-  .news-content {
-    padding: var(--spacing-4);
-  }
-}
-
-/* Advanced Desktop Interactions */
-@media (min-width: 1200px) {
-  /* Parallax effect for header */
-  .section-header {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .section-header::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
-    animation: float 20s ease-in-out infinite;
-    pointer-events: none;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-    50% { transform: translate(-50%, -50%) rotate(180deg); }
-  }
-  
-  /* Grid hover effects */
-  .news-grid {
-    perspective: 1000px;
-  }
-  
-  .news-card {
-    transform-style: preserve-3d;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  
-  .news-card:hover {
-    transform: translateY(-15px) rotateX(5deg) rotateY(2deg);
-    z-index: 10;
-  }
-  
-  /* Staggered hover effect for adjacent cards */
-  .news-card:hover + .news-card {
-    transform: translateY(-5px);
-  }
-  
-  /* Enhanced button interactions */
-  .filter-btn {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-origin: center;
-  }
-  
-  .filter-btn:hover {
-    transform: translateY(-3px) scale(1.05);
-  }
-  
-  .filter-btn:active {
-    transform: translateY(-1px) scale(0.98);
-  }
-  
-  /* News link advanced hover */
-  .news-link {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .news-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s;
-  }
-  
-  .news-link:hover::before {
-    left: 100%;
-  }
-  
-  /* Share button ripple effect */
-  .share-btn {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .share-btn::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(102, 126, 234, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s;
-  }
-  
-  .share-btn:hover::after {
-    width: 100px;
-    height: 100px;
-  }
-}
-
-/* Ultra-wide desktop (2560px+) */
-@media (min-width: 2560px) {
-  .news-section {
-    max-width: 2400px;
-  }
-  
-  .news-grid {
-    grid-template-columns: repeat(5, 1fr);
-    gap: var(--spacing-16);
-  }
-  
-  .section-title {
-    font-size: 6rem;
-  }
-  
-  .section-subtitle {
     font-size: 2rem;
-    max-width: 1000px;
   }
   
-  .news-card {
-    min-height: 500px;
+  .content-card {
+    padding: 25px 20px;
   }
   
-  .news-content {
-    padding: var(--spacing-10);
+  .controls {
+    gap: 10px;
+  }
+  
+  .control-btn {
+    padding: 8px 12px;
+    font-size: 13px;
   }
 }
 
-/* Desktop sidebar layout option */
-@media (min-width: 1400px) {
-  .news-layout-sidebar {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: var(--spacing-12);
-    align-items: start;
-  }
-  
-  .news-sidebar {
-    position: sticky;
-    top: 120px;
-    background: var(--bg-card);
-    border-radius: var(--border-radius-lg);
-    padding: var(--spacing-8);
-    border: 1px solid var(--border-light);
-    box-shadow: var(--shadow-md);
-  }
-  
-  .sidebar-section {
-    margin-bottom: var(--spacing-8);
-  }
-  
-  .sidebar-title {
-    font-size: var(--font-size-xl);
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: var(--spacing-4);
-  }
-  
-  .trending-item {
-    padding: var(--spacing-3) 0;
-    border-bottom: 1px solid var(--border-light);
-    cursor: pointer;
-    transition: var(--transition);
-  }
-  
-  .trending-item:hover {
-    color: var(--primary-color);
-    transform: translateX(5px);
-  }
-  
-  .trending-item:last-child {
-    border-bottom: none;
-  }
-  
-  .trending-title {
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    line-height: 1.4;
-    margin-bottom: var(--spacing-1);
-  }
-  
-  .trending-meta {
-    font-size: var(--font-size-xs);
-    color: var(--text-muted);
-  }
+/* Blog Section Styles */
+.blog-post {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Animation Classes */
-.fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+.blog-post::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
-.slide-up {
-  animation: slideUp 0.8s ease-out forwards;
+.blog-post:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
 }
 
-@keyframes slideUp {
-  from { 
-    opacity: 0; 
-    transform: translateY(30px); 
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
-  }
+.blog-meta span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Focus States for Accessibility */
-.control-btn:focus,
-.filter-btn:focus,
-.news-link:focus,
-.share-btn:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
+.blog-content h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  line-height: 1.3;
 }
 
-/* High Contrast Mode Support */
-@media (prefers-contrast: high) {
-  :root {
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
-    --shadow-md: 0 4px 6px rgba(0,0,0,0.3);
-    --shadow-lg: 0 10px 15px rgba(0,0,0,0.3);
-  }
+.blog-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 30px 0 15px 0;
+  color: var(--primary-color);
+  position: relative;
+  padding-left: 20px;
 }
 
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+.blog-content h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
 }
 
-/* Print Styles */
-@media print {
-  .header,
-  .news-filter,
-  .news-actions {
-    display: none;
-  }
-  
-  .news-card {
-    break-inside: avoid;
-    box-shadow: none;
-    border: 1px solid #000;
-  }
+.blog-content p {
+  margin-bottom: 20px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.blog-content ul {
+  margin: 20px 0 20px 30px;
+  color: var(--text-secondary);
+}
+
+.blog-content li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  position: relative;
+}
+
+.blog-content li::marker {
+  color: var(--primary-color);
+}
+
+.highlight-box {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border-left: 4px solid var(--primary-color);
+  padding: 25px;
+  margin: 30px 0;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  position: relative;
+}
+
+.highlight-box::before {
+  content: '💡';
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+}
+
+.highlight-box p {
+  margin-bottom: 0;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.tech-item {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.tech-item:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.tech-item i {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.tech-item h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 998;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 998;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 ```
 
   </style>
 </head>
 <body>
-  <header class="header">
+  <div class="overlay" id="overlay"></div>
+
+  <header>
     <div class="logo">
       <i class="fas fa-laptop-code"></i>
       Duck Soft
@@ -1159,37 +1023,64 @@ body {
         <i class="fas fa-globe"></i>
         <span id="lang-text">VN/EN</span>
       </button>
-      <div class="theme-toggle" onclick="toggleTheme()">
-        <i class="fas fa-sun theme-icon sun-icon"></i>
-        <i class="fas fa-moon theme-icon moon-icon"></i>
-      </div>
+      <button class="control-btn" onclick="toggleTheme()">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+      <button class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </header>
 
-  <main class="main">
-    <section class="news-section">
+  <nav class="nav-menu" id="navMenu">
+    <a href="#intro" class="nav-link" data-section="intro">
+      <i class="fas fa-home"></i>
+      <span data-i18n="menu_intro">Giới thiệu</span>
+    </a>
+    <a href="#news" class="nav-link" data-section="news">
+      <i class="fas fa-newspaper"></i>
+      <span data-i18n="menu_news">Tin tức</span>
+    </a>
+    <a href="#blog" class="nav-link" data-section="blog">
+      <i class="fas fa-blog"></i>
+      <span data-i18n="menu_blog">Blog</span>
+    </a>
+    <a href="#schedule" class="nav-link" data-section="schedule">
+      <i class="fas fa-calendar"></i>
+      <span data-i18n="menu_schedule">Lịch học</span>
+    </a>
+    <a href="#contact" class="nav-link" data-section="contact">
+      <i class="fas fa-envelope"></i>
+      <span data-i18n="menu_contact">Liên hệ</span>
+    </a>
+  </nav>
+
+  <main>
+    <!-- Intro Section -->
+    <section class="section active" id="intro">
       <div class="section-header">
-        <h1 class="section-title" data-i18n="news_title">Tin tức công nghệ</h1>
-        <p class="section-subtitle" data-i18n="news_subtitle">Cập nhật những xu hướng công nghệ mới nhất từ Việt Nam và thế giới</p>
+        <h1 class="section-title" data-i18n="intro_title">Chào mừng đến với Duck Soft</h1>
+        <p class="section-subtitle" data-i18n="intro_subtitle">Nền tảng công nghệ hiện đại, dễ tiếp cận</p>
       </div>
 
 ```
-  <div class="news-filter" id="newsFilter">
-    <button class="filter-btn active" data-filter="all">
-      <span data-i18n="filter_all">Tất cả</span>
-    </button>
-    <button class="filter-btn" data-filter="vietnam">
-      <span data-i18n="filter_vietnam">Việt Nam</span>
-    </button>
-    <button class="filter-btn" data-filter="ai">
-      <span data-i18n="filter_ai">AI & Công nghệ</span>
-    </button>
-    <button class="filter-btn" data-filter="policy">
-      <span data-i18n="filter_policy">Chính sách</span>
-    </button>
-    <button class="filter-btn" data-filter="global">
-      <span data-i18n="filter_global">Toàn cầu</span>
-    </button>
+  <div class="content-card">
+    <p data-i18n="intro_description">
+      Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo. Với giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.
+    </p>
+    
+    <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank" class="cta-button">
+      <i class="fab fa-facebook-messenger"></i>
+      <span data-i18n="contact_message">Gửi tin nhắn</span>
+    </a>
+  </div>
+</section>
+
+<!-- News Section -->
+<section class="section" id="news">
+  <div class="section-header">
+    <h1 class="section-title" data-i18n="news_title">Tin tức công nghệ</h1>
+    <p class="section-subtitle" data-i18n="news_subtitle">Cập nhật những xu hướng công nghệ mới nhất</p>
   </div>
   
   <div id="newsContent" class="loading">
@@ -1197,273 +1088,307 @@ body {
     <span data-i18n="loading_news">Đang tải tin tức...</span>
   </div>
 </section>
+
+<!-- Blog Section -->
+<section class="section" id="blog">
+  <div class="section-header">
+    <h1 class="section-title" data-i18n="blog_title">Blog cá nhân</h1>
+    <p class="section-subtitle" data-i18n="blog_subtitle">Chia sẻ hành trình và kinh nghiệm học tập</p>
+  </div>
+  
+  <div class="blog-post">
+    <div class="blog-meta">
+      <span><i class="fas fa-user"></i> <span data-i18n="blog_author">Dong Quang Duc</span></span>
+      <span><i class="fas fa-calendar"></i> <span data-i18n="blog_date">31 tháng 7, 2025</span></span>
+      <span><i class="fas fa-clock"></i> <span data-i18n="blog_read_time">5 phút đọc</span></span>
+    </div>
+    
+    <div class="blog-content">
+      <h2 data-i18n="blog_post_title">Tại sao tôi chọn học IT?</h2>
+      
+      <p data-i18n="blog_intro">
+        Trong thời đại số hóa hiện nay, việc chọn ngành Công nghệ Thông tin (IT) không chỉ là một quyết định nghề nghiệp mà còn là bước đệm quan trọng để bắt kịp xu thế phát triển của thế giới. Hãy cùng tôi khám phá những lý do khiến IT trở thành lựa chọn hoàn hảo cho tương lai.
+      </p>
+
+      <div class="highlight-box">
+        <p data-i18n="blog_quote">
+          "Công nghệ không chỉ thay đổi cách chúng ta làm việc, mà còn định hình cách chúng ta sống và tương tác với thế giới xung quanh."
+        </p>
+      </div>
+
+      <h3 data-i18n="blog_section1_title">1. Cơ hội nghề nghiệp vô tận</h3>
+      <p data-i18n="blog_section1_content">
+        IT là một trong những ngành có tốc độ tăng trưởng nhanh nhất hiện nay. Từ phát triển phần mềm, an ninh mạng, trí tuệ nhân tạo đến phân tích dữ liệu - mỗi lĩnh vực đều mở ra cơ hội nghề nghiệp hấp dẫn với mức lương cạnh tranh. Sự đa dạng này cho phép tôi khám phá và tìm ra đam mê thực sự của mình.
+      </p>
+
+      <h3 data-i18n="blog_section2_title">2. Tác động tích cực đến xã hội</h3>
+      <p data-i18n="blog_section2_content">
+        Công nghệ có khả năng giải quyết những vấn đề lớn của nhân loại. Từ ứng dụng y tế thông minh, giáo dục trực tuyến, đến các giải pháp môi trường - IT giúp tạo ra những sản phẩm có ý nghĩa. Tôi muốn trở thành một phần của quá trình này, góp phần xây dựng một thế giới tốt đẹp hơn thông qua công nghệ.
+      </p>
+
+      <div class="tech-grid">
+        <div class="tech-item">
+          <i class="fas fa-brain"></i>
+          <h4 data-i18n="tech_ai">Trí tuệ nhân tạo</h4>
+          <p data-i18n="tech_ai_desc">Tương lai của automation</p>
+        </div>
+        <div class="tech-item">
+          <i class="fas fa-mobile-alt"></i>
+          <h4 data-i18n="tech_mobile">Phát triển di động</h4>
+          <p data-i18n="tech_mobile_desc">Ứng dụng cho mọi người</p>
+        </div>
+        <div class="tech-item">
+          <i class="fas fa-shield-alt"></i>
+          <h4 data-i18n="tech_security">An ninh mạng</h4>
+          <p data-i18n="tech_security_desc">Bảo vệ dữ liệu</p>
+        </div>
+        <div class="tech-item">
+          <i class="fas fa-chart-line"></i>
+          <h4 data-i18n="tech_data">Phân tích dữ liệu</h4>
+          <p data-i18n="tech_data_desc">Insights từ Big Data</p>
+        </div>
+      </div>
+
+      <h3 data-i18n="blog_section3_title">3. Học tập liên tục và phát triển bản thân</h3>
+      <p data-i18n="blog_section3_content">
+        IT là ngành đòi hỏi việc học tập suốt đời. Mỗi ngày đều có công nghệ mới, framework mới, và xu hướng mới xuất hiện. Điều này không chỉ giữ cho công việc luôn thú vị mà còn thúc đẩy tôi phát triển tư duy logic, khả năng giải quyết vấn đề và sự sáng tạo.
+      </p>
+
+      <h3 data-i18n="blog_section4_title">4. Tính linh hoạt và tự do</h3>
+      <p data-i18n="blog_section4_content">
+        Với sự phát triển của công nghệ cloud computing và các công cụ làm việc từ xa, ngành IT mang lại sự linh hoạt tuyệt vời. Tôi có thể làm việc từ bất kỳ đâu, tham gia các dự án quốc tế, và có sự cân bằng tốt hơn giữa công việc và cuộc sống.
+      </p>
+
+      <div class="highlight-box">
+        <p data-i18n="blog_conclusion">
+          Chọn học IT không chỉ là việc theo đuổi một nghề nghiệp, mà là hành trình khám phá tiềm năng vô hạn của bản thân trong việc tạo ra những điều kỳ diệu bằng công nghệ.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Schedule Section -->
+<section class="section" id="schedule">
+  <div class="section-header">
+    <h1 class="section-title" data-i18n="schedule_title">Lịch học</h1>
+    <p class="section-subtitle" data-i18n="schedule_subtitle">Theo dõi lịch học và hoạt động</p>
+  </div>
+  
+  <div class="schedule-container">
+    <iframe 
+      class="schedule-iframe"
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQXR-6gIkWqGeimvb-RGAO5iBPKrUvdpoZlN1mnlKExONtXY6UYRXZFIxv39edWbQ/pubhtml?widget=true&amp;headers=false">
+    </iframe>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section" id="contact">
+  <div class="section-header">
+    <h1 class="section-title" data-i18n="contact_title">Liên hệ & Dịch vụ</h1>
+    <p class="section-subtitle" data-i18n="contact_subtitle">Khám phá các dịch vụ và công cụ của chúng tôi</p>
+  </div>
+  
+  <div class="service-grid" id="serviceGrid">
+    <!-- Services will be populated by JavaScript -->
+  </div>
+  
+  <div class="contact-info">
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <h3>Email</h3>
+      <p>contact.ducksoft@gmail.com</p>
+    </div>
+    
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fas fa-phone"></i>
+      </div>
+      <h3 data-i18n="phone">Điện thoại</h3>
+      <p>0796 032 313</p>
+    </div>
+    
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fab fa-facebook"></i>
+      </div>
+      <h3>Facebook</h3>
+      <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank" class="cta-button">
+        <i class="fab fa-facebook-messenger"></i>
+        <span data-i18n="visit_page">Truy cập trang</span>
+      </a>
+    </div>
+  </div>
+</section>
 ```
 
   </main>
 
+  <!-- Footer -->
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <i class="fas fa-laptop-code"></i>
+          Duck Soft
+        </div>
+        <p class="footer-description" data-i18n="footer_description">
+          Nền tảng công nghệ hiện đại, dễ tiếp cận cho mọi người
+        </p>
+      </div>
+
+```
+  <div class="footer-section">
+    <h3 class="footer-title" data-i18n="footer_connect">Kết nối với chúng tôi</h3>
+    <div class="social-links">
+      <a href="https://facebook.com/Mbbank22222006666666DQD" target="_blank" class="social-link facebook">
+        <i class="fab fa-facebook-f"></i>
+        <span>Facebook</span>
+      </a>
+      <a href="https://www.instagram.com/_quagducc.14?igsh=bWIzc2lua3plbTVo&utm_source=qr" target="_blank" class="social-link instagram">
+        <i class="fab fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="footer-section">
+    <h3 class="footer-title" data-i18n="footer_contact">Liên hệ</h3>
+    <div class="footer-contact">
+      <p><i class="fas fa-envelope"></i> contact.ducksoft@gmail.com</p>
+      <p><i class="fas fa-phone"></i> 0796 032 313</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer-bottom">
+  <div class="copyright">
+    <p>&copy; 2025 by <strong>Dong Quang Duc</strong>. <span data-i18n="footer_rights">Bảo lưu mọi quyền.</span></p>
+  </div>
+</div>
+```
+
+  </footer>
+
   <script>
-    // Enhanced i18n data
+    // Internationalization
     const i18nData = {
       vi: {
+        "intro_title": "Chào mừng đến với Duck Soft",
+        "intro_subtitle": "Nền tảng công nghệ hiện đại, dễ tiếp cận",
+        "intro_description": "Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo. Với giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.",
         "news_title": "Tin tức công nghệ",
-        "news_subtitle": "Cập nhật những xu hướng công nghệ mới nhất từ Việt Nam và thế giới",
+        "news_subtitle": "Cập nhật những xu hướng công nghệ mới nhất",
+        "schedule_title": "Lịch học",
+        "schedule_subtitle": "Theo dõi lịch học và hoạt động",
+        "contact_title": "Liên hệ & Dịch vụ",
+        "contact_subtitle": "Khám phá các dịch vụ và công cụ của chúng tôi",
+        "menu_intro": "Giới thiệu",
+        "menu_news": "Tin tức",
+        "menu_blog": "Blog",
+        "menu_schedule": "Lịch học",
+        "menu_contact": "Liên hệ",
         "loading_news": "Đang tải tin tức...",
+        "contact_message": "Gửi tin nhắn",
+        "phone": "Điện thoại",
+        "visit_page": "Truy cập trang",
         "read_more": "Xem chi tiết",
-        "share": "Chia sẻ",
-        "filter_all": "Tất cả",
-        "filter_vietnam": "Việt Nam", 
-        "filter_ai": "AI & Công nghệ",
-        "filter_policy": "Chính sách",
-        "filter_global": "Toàn cầu",
-        "no_news": "Không có tin tức nào trong danh mục này"
+        "footer_description": "Nền tảng công nghệ hiện đại, dễ tiếp cận cho mọi người",
+        "footer_connect": "Kết nối với chúng tôi",
+        "footer_contact": "Liên hệ",
+        "footer_rights": "Bảo lưu mọi quyền."
       },
       en: {
+        "intro_title": "Welcome to Duck Soft",
+        "intro_subtitle": "Modern, accessible technology platform",
+        "intro_description": "Duck Soft is a platform that helps you quickly access modern technologies such as AI, learning software, and creative tools. With a simple interface, bilingual support, and useful features, we aim to deliver a clear and efficient tech experience for everyone.",
         "news_title": "Technology News",
-        "news_subtitle": "Stay updated with the latest tech trends from Vietnam and around the world",
+        "news_subtitle": "Stay updated with the latest tech trends",
+        "schedule_title": "Study Schedule",
+        "schedule_subtitle": "Track your learning schedule and activities",
+        "contact_title": "Contact & Services",
+        "contact_subtitle": "Explore our services and tools",
+        "menu_intro": "Introduction",
+        "menu_news": "News",
+        "menu_schedule": "Schedule",
+        "menu_contact": "Contact",
         "loading_news": "Loading news...",
+        "contact_message": "Send Message",
+        "phone": "Phone",
+        "visit_page": "Visit Page",
         "read_more": "Read More",
-        "share": "Share",
-        "filter_all": "All",
-        "filter_vietnam": "Vietnam",
-        "filter_ai": "AI & Tech", 
-        "filter_policy": "Policy",
-        "filter_global": "Global",
-        "no_news": "No news found in this category"
+        "footer_description": "Modern, accessible technology platform for everyone",
+        "footer_connect": "Connect with us",
+        "footer_contact": "Contact",
+        "footer_rights": "All rights reserved."
       }
     };
 
-    // Enhanced news data with categories
-    const newsData = {
-      vi: [
-        {
-          title: "Việt Nam thông qua Luật Công nghiệp Công nghệ số đầu tiên trên thế giới",
-          description: "Việt Nam chính thức trở thành quốc gia đầu tiên ban hành luật riêng biệt về công nghiệp công nghệ số, được thông qua ngày 14/6/2025 với nhiều ưu đãi cho doanh nghiệp công nghệ.",
-          date: "2025-07-30",
-          category: "policy",
-          categoryName: "Chính sách",
-          source: "Vietnam Briefing",
-          link: "https://www.vietnam-briefing.com/news/vietnam-passes-first-ever-law-on-digital-technology-industry.html/",
-          tags: ["vietnam", "policy"]
-        },
-        {
-          title: "NVIDIA mở trung tâm R&D đầu tiên tại Việt Nam phát triển AI",
-          description: "NVIDIA công bố mở trung tâm nghiên cứu và phát triển đầu tiên tại Việt Nam, tăng cường hợp tác với chính phủ trong lĩnh vực trí tuệ nhân tạo và đào tạo nhân lực công nghệ cao.",
-          date: "2025-07-29",
-          category: "ai",
-          categoryName: "AI & Công nghệ",
-          source: "NVIDIA Newsroom",
-          link: "https://nvidianews.nvidia.com/news/nvidia-to-open-vietnam-r-d-center-to-bolster-ai-development",
-          tags: ["vietnam", "ai"]
-        },
-        {
-          title: "Ngành chip Việt Nam tăng trưởng mạnh nhờ chiến tranh thương mại Mỹ-Trung",
-          description: "Việt Nam đang nhanh chóng mở rộng tham vọng bán dẫn với các khoản đầu tư mới vào thiết kế chip, sản xuất wafer và phòng thí nghiệm đóng gói tiên tiến, hưởng lợi từ xu hướng chuyển dịch chuỗi cung ứng.",
-          date: "2025-07-28",
-          category: "ai",
-          categoryName: "AI & Công nghệ",
-          source: "Rest of World",
-          link: "https://restofworld.org/2025/vietnam-chip-industry-us-china-trade-war/",
-          tags: ["vietnam", "ai"]
-        },
-        {
-          title: "Trung Quốc công bố kế hoạch hành động AI toàn cầu",
-          description: "Trung Quốc phát hành kế hoạch hành động toàn cầu cho trí tuệ nhân tạo tại Hội nghị AI Thế giới ở Thượng Hải, tăng cường cuộc đua công nghệ với Mỹ và các nước phát triển khác.",
-          date: "2025-07-26",
-          category: "global",
-          categoryName: "Toàn cầu",
-          source: "CNBC",
-          link: "https://www.cnbc.com/2025/07/26/china-ai-action-plan.html",
-          tags: ["global", "ai"]
-        },
-        {
-          title: "Trump công bố kế hoạch AI: Loại bỏ 'rào cản đỏ' cho Silicon Valley",
-          description: "Chính quyền Trump tiết lộ gói sáng kiến AI nhằm củng cố vị thế lãnh đạo toàn cầu của Mỹ trong công nghệ ảnh hưởng như internet, với nhiều chính sách ưu đãi cho các công ty công nghệ.",
-          date: "2025-07-23",
-          category: "policy",
-          categoryName: "Chính sách",
-          source: "CNN Business",
-          link: "https://www.cnn.com/2025/07/23/tech/ai-action-plan-trump",
-          tags: ["global", "policy"]
-        },
-        {
-          title: "AI có khả năng tạo ra thị trường 4.8 nghìn tỷ USD vào 2033",
-          description: "Liên Hợp Quốc cảnh báo AI sẽ trở thành thị trường 4.8 nghìn tỷ USD nhưng lợi ích có thể chỉ thuộc về một số ít người nếu không hành động khẩn cấp để thu hẹp khoảng cách số.",
-          date: "2025-07-20",
-          category: "global",
-          categoryName: "Toàn cầu",
-          source: "UN News",
-          link: "https://news.un.org/en/story/2025/04/1161826",
-          tags: ["global", "ai"]
-        },
-        {
-          title: "Google giới thiệu AlphaGenome: AI hiểu biết genome con người",
-          description: "Google công bố mô hình trình tự DNA thống nhất mới AlphaGenome, tiến bộ trong dự đoán hiệu ứng biến thể điều hòa và hứa hẹn làm sáng tỏ chức năng genome, mở ra kỷ nguyên mới cho y học cá nhân hóa.",
-          date: "2025-07-18",
-          category: "ai",
-          categoryName: "AI & Công nghệ",
-          source: "Google AI Blog",
-          link: "https://blog.google/technology/ai/google-ai-updates-june-2025/",
-          tags: ["global", "ai"]
-        },
-        {
-          title: "Thị trường IoT Việt Nam dự kiến đạt 7.3 tỷ USD vào 2025",
-          description: "Theo TechSci và Cisco, từ mức hơn 2 tỷ USD năm 2019, thị trường IoT Việt Nam có thể đạt 7.3 tỷ USD vào 2025 với ứng dụng 5G IoT ngày càng rộng rãi trong smart city và industry 4.0.",
-          date: "2025-07-15",
-          category: "ai",
-          categoryName: "AI & Công nghệ",
-          source: "VietnamPlus",
-          link: "https://en.vietnamplus.vn/vietnams-technology-trends-in-20232025/266671.vnp",
-          tags: ["vietnam", "ai"]
-        }
-      ],
-      en: [
-        {
-          title: "Vietnam Passes World's First Digital Technology Industry Law",
-          description: "Vietnam officially becomes the first country to enact a standalone law dedicated exclusively to the digital technology industry, passed on June 14, 2025, with numerous incentives for tech companies.",
-          date: "2025-07-30",
-          category: "policy",
-          categoryName: "Policy",
-          source: "Vietnam Briefing",
-          link: "https://www.vietnam-briefing.com/news/vietnam-passes-first-ever-law-on-digital-technology-industry.html/",
-          tags: ["vietnam", "policy"]
-        },
-        {
-          title: "NVIDIA Opens First Vietnam R&D Center for AI Development",
-          description: "NVIDIA announces opening its first Vietnam research and development center, collaborating with the Vietnamese government to bolster AI development and high-tech workforce training.",
-          date: "2025-07-29",
-          category: "ai",
-          categoryName: "AI & Tech",
-          source: "NVIDIA Newsroom",
-          link: "https://nvidianews.nvidia.com/news/nvidia-to-open-vietnam-r-d-center-to-bolster-ai-development",
-          tags: ["vietnam", "ai"]
-        },
-        {
-          title: "US-China Trade War Supercharges Vietnam's Chip Industry",
-          description: "Vietnam rapidly scales semiconductor ambitions with new investments in chip design, wafer production, and advanced packaging lab, benefiting from supply chain diversification trends.",
-          date: "2025-07-28",
-          category: "ai",
-          categoryName: "AI & Tech",
-          source: "Rest of World",
-          link: "https://restofworld.org/2025/vietnam-chip-industry-us-china-trade-war/",
-          tags: ["vietnam", "ai"]
-        },
-        {
-          title: "China Releases AI Action Plan as Global Tech Race Heats Up",
-          description: "China unveiled a global action plan for artificial intelligence at the World AI Conference in Shanghai, intensifying competition with the US and other developed nations.",
-          date: "2025-07-26",
-          category: "global",
-          categoryName: "Global",
-          source: "CNBC",
-          link: "https://www.cnbc.com/2025/07/26/china-ai-action-plan.html",
-          tags: ["global", "ai"]
-        },
-        {
-          title: "Trump Reveals AI Plan: Remove 'Red Tape' for Silicon Valley",
-          description: "Trump administration unveils AI action plan with initiatives to cement US as global leader in technology as influential as the internet, with various incentives for tech companies.",
-          date: "2025-07-23",
-          category: "policy",
-          categoryName: "Policy",
-          source: "CNN Business",
-          link: "https://www.cnn.com/2025/07/23/tech/ai-action-plan-trump",
-          tags: ["global", "policy"]
-        },
-        {
-          title: "AI's $4.8 Trillion Future: UN Warns of Digital Divide",
-          description: "UN warns AI will become $4.8 trillion market by 2033 but benefits may remain with privileged few without urgent action to bridge digital divide and ensure equitable access.",
-          date: "2025-07-20",
-          category: "global",
-          categoryName: "Global",
-          source: "UN News",
-          link: "https://news.un.org/en/story/2025/04/1161826",
-          tags: ["global", "ai"]
-        },
-        {
-          title: "Google Introduces AlphaGenome: AI for Human Genome Understanding",
-          description: "Google unveils new unifying DNA sequence model AlphaGenome, advancing regulatory variant-effect prediction and promising insights into genome function, opening new era for personalized medicine.",
-          date: "2025-07-18",
-          category: "ai",
-          categoryName: "AI & Tech",
-          source: "Google AI Blog",
-          link: "https://blog.google/technology/ai/google-ai-updates-june-2025/",
-          tags: ["global", "ai"]
-        },
-        {
-          title: "Vietnam's IoT Market Expected to Reach $7.3B by 2025",
-          description: "According to TechSci and Cisco, Vietnam's IoT market could grow from $2B in 2019 to $7.3B by 2025, with 5G IoT applications expanding rapidly in smart cities and industry 4.0.",
-          date: "2025-07-15",
-          category: "ai",
-          categoryName: "AI & Tech",
-          source: "VietnamPlus",
-          link: "https://en.vietnamplus.vn/vietnams-technology-trends-in-20232025/266671.vnp",
-          tags: ["vietnam", "ai"]
-        }
-      ]
-    };
+    // Services data
+    const services = [
+      { name: "Grok", icon: "fas fa-robot", description: "AI Chatbot" },
+      { name: "Drive", icon: "fab fa-google-drive", description: "Cloud Storage" },
+      { name: "GPT", icon: "fas fa-brain", description: "AI Assistant" },
+      { name: "Meitu", icon: "fas fa-camera-retro", description: "Photo Editor" },
+      { name: "Elsa", icon: "fas fa-microphone-alt", description: "Speech Training" },
+      { name: "Capcut", icon: "fas fa-film", description: "Video Editor" },
+      { name: "Spotify", icon: "fab fa-spotify", description: "Music Streaming" },
+      { name: "Monica", icon: "fas fa-robot", description: "AI Assistant" },
+      { name: "Poe", icon: "fas fa-comments", description: "AI Chat Platform" },
+      { name: "Kling", icon: "fas fa-wand-magic-sparkles", description: "AI Video Generator" },
+      { name: "Hailou", icon: "fas fa-cloud-sun", description: "AI Platform" },
+      { name: "Heygen", icon: "fas fa-video", description: "AI Avatar Generator" },
+      { name: "Runway", icon: "fas fa-rocket", description: "AI Creative Suite" },
+      { name: "Minimax", icon: "fas fa-compress-arrows-alt", description: "AI Platform" },
+      { name: "Cursor", icon: "fas fa-code", description: "AI Code Editor" },
+      { name: "v0", icon: "fas fa-cube", description: "UI Generator" },
+      { name: "Bolt", icon: "fas fa-bolt", description: "Fast Development" }
+    ];
 
     // State management
     let currentLang = localStorage.getItem("lang") || "vi";
     let currentTheme = localStorage.getItem("theme") || "light";
-    let currentFilter = "all";
-    let allNews = [];
 
-    // Initialize app
+    // Initialize with better error handling
     document.addEventListener('DOMContentLoaded', function() {
-      applyTheme();
-      applyLanguage();
-      initializeFilters();
-      loadNews();
+      // Check if Font Awesome is loaded
+      checkFontAwesome();
       
-      // Initialize desktop features if on desktop
-      if (window.innerWidth >= 1200) {
-        setTimeout(initDesktopFeatures, 500);
-      }
+      applyLanguage();
+      applyTheme();
+      renderServices();
+      fetchNews();
+      initNavigation();
     });
 
-    // Add desktop layout toggle button for large screens
-    function addDesktopControls() {
-      if (window.innerWidth >= 1400) {
-        const controls = document.querySelector('.controls');
-        const layoutBtn = document.createElement('button');
-        layoutBtn.className = 'control-btn';
-        layoutBtn.innerHTML = '<i class="fas fa-columns"></i> <span>Layout</span>';
-        layoutBtn.onclick = toggleLayout;
-        controls.insertBefore(layoutBtn, controls.lastElementChild);
-      }
-    }
-
-    // Enhanced performance for desktop
-    function optimizeForDesktop() {
-      if (window.innerWidth >= 1200) {
-        // Enable hardware acceleration for smoother animations
-        document.querySelectorAll('.news-card').forEach(card => {
-          card.style.willChange = 'transform';
-        });
-        
-        // Prefetch hover states
-        const style = document.createElement('style');
-        style.textContent = `
-          .news-card { transform: translateZ(0); }
-          .filter-btn { transform: translateZ(0); }
-        `;
-        document.head.appendChild(style);
-      }
-    }
-
-    // Theme functions
-    function applyTheme() {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-    }
-
-    function toggleTheme() {
-      currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-      localStorage.setItem("theme", currentTheme);
-      applyTheme();
+    // Font Awesome check and fallback
+    function checkFontAwesome() {
+      const testElement = document.createElement('i');
+      testElement.className = 'fas fa-home';
+      testElement.style.position = 'absolute';
+      testElement.style.left = '-9999px';
+      document.body.appendChild(testElement);
       
-      // Add smooth transition effect
-      document.body.style.transition = 'all 0.3s ease';
       setTimeout(() => {
-        document.body.style.transition = '';
-      }, 300);
+        const computedStyle = window.getComputedStyle(testElement);
+        if (computedStyle.fontFamily.indexOf('Font Awesome') === -1) {
+          console.warn('Font Awesome not loaded, adding fallback');
+          loadFontAwesomeFallback();
+        }
+        document.body.removeChild(testElement);
+      }, 100);
+    }
+
+    function loadFontAwesomeFallback() {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+      link.crossOrigin = 'anonymous';
+      document.head.appendChild(link);
     }
 
     // Language functions
@@ -1477,133 +1402,235 @@ body {
           element.textContent = dict[key];
         }
       });
-      
-      // Update lang button text
-      document.getElementById('lang-text').textContent = currentLang === 'vi' ? 'EN' : 'VN';
     }
 
     function toggleLanguage() {
       currentLang = currentLang === "vi" ? "en" : "vi";
       localStorage.setItem("lang", currentLang);
       applyLanguage();
-      loadNews();
+      fetchNews();
     }
 
-    // Filter functions
-    function initializeFilters() {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const filter = btn.getAttribute('data-filter');
-          setActiveFilter(filter);
-          filterNews(filter);
+    // Theme functions
+    function applyTheme() {
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      const themeIcon = document.getElementById('theme-icon');
+      themeIcon.className = currentTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+    }
+
+    function toggleTheme() {
+      currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+      localStorage.setItem("theme", currentTheme);
+      applyTheme();
+    }
+
+    // Menu functions
+    function toggleMenu() {
+      const navMenu = document.getElementById('navMenu');
+      const overlay = document.getElementById('overlay');
+      
+      navMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    // Navigation
+    function initNavigation() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('.section');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const sectionId = link.getAttribute('data-section');
+          
+          // Remove active classes
+          sections.forEach(section => section.classList.remove('active'));
+          navLinks.forEach(navLink => navLink.classList.remove('active'));
+          
+          // Add active classes
+          document.getElementById(sectionId).classList.add('active');
+          link.classList.add('active');
+          
+          // Close menu
+          document.getElementById('navMenu').classList.remove('active');
+          document.getElementById('overlay').classList.remove('active');
+          
+          // Save current section
+          localStorage.setItem("currentSection", sectionId);
         });
       });
+
+      // Close menu when clicking overlay
+      document.getElementById('overlay').addEventListener('click', () => {
+        document.getElementById('navMenu').classList.remove('active');
+        document.getElementById('overlay').classList.remove('active');
+      });
+
+      // Restore saved section
+      const savedSection = localStorage.getItem("currentSection") || "intro";
+      const savedLink = document.querySelector(`[data-section="${savedSection}"]`);
+      if (savedLink) {
+        sections.forEach(section => section.classList.remove('active'));
+        navLinks.forEach(navLink => navLink.classList.remove('active'));
+        document.getElementById(savedSection).classList.add('active');
+        savedLink.classList.add('active');
+      }
     }
 
-    function setActiveFilter(filter) {
-      currentFilter = filter;
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
-    }
+    // Services rendering
+    function renderServices() {
+      const serviceGrid = document.getElementById('serviceGrid');
+      serviceGrid.innerHTML = '';
 
-    function filterNews(filter) {
-      const filteredNews = filter === 'all' ? allNews : allNews.filter(article => {
-        return article.category === filter || article.tags.includes(filter);
+      services.forEach((service, index) => {
+        const serviceItem = document.createElement('div');
+        serviceItem.className = 'service-item';
+        serviceItem.style.animationDelay = `${index * 0.1}s`;
+        
+        serviceItem.innerHTML = `
+          <div class="service-icon">
+            <i class="${service.icon}"></i>
+          </div>
+          <h3>${service.name}</h3>
+          <p class="service-description">${service.description}</p>
+        `;
+        
+        serviceGrid.appendChild(serviceItem);
       });
-      
-      renderNews(filteredNews);
     }
 
     // News functions
-    function loadNews() {
-      showLoading();
+    function generateNewsData() {
+      const newsData = {
+        vi: [
+          {
+            title: "Cách AI đang thay đổi ngành giáo dục",
+            description: "Trí tuệ nhân tạo đang tạo ra những bước đột phá trong việc cá nhân hóa học tập và nâng cao hiệu quả giảng dạy.",
+            date: "2025-07-30",
+            category: "Giáo dục"
+          },
+          {
+            title: "Xu hướng phát triển ứng dụng di động 2025",
+            description: "Khám phá những công nghệ mới và xu hướng thiết kế ứng dụng di động sẽ thống trị trong năm 2025.",
+            date: "2025-07-29",
+            category: "Phát triển"
+          },
+          {
+            title: "Bảo mật dữ liệu trong kỷ nguyên số",
+            description: "Tầm quan trọng của việc bảo vệ thông tin cá nhân và dữ liệu doanh nghiệp trong thế giới kết nối.",
+            date: "2025-07-28",
+            category: "Bảo mật"
+          },
+          {
+            title: "Công nghệ blockchain và tương lai tài chính",
+            description: "Phân tích tác động của blockchain đối với hệ thống tài chính toàn cầu và tiền điện tử.",
+            date: "2025-07-27",
+            category: "Blockchain"
+          },
+          {
+            title: "Thiết kế UX/UI hiện đại: Xu hướng 2025",
+            description: "Những nguyên tắc thiết kế mới và xu hướng giao diện người dùng được ưa chuộng nhất hiện nay.",
+            date: "2025-07-26",
+            category: "Thiết kế"
+          },
+          {
+            title: "Internet of Things và nhà thông minh",
+            description: "Cách IoT đang biến đổi cuộc sống hàng ngày và tạo ra những ngôi nhà thông minh, tiện nghi.",
+            date: "2025-07-25",
+            category: "IoT"
+          }
+        ],
+        en: [
+          {
+            title: "How AI is Transforming Education",
+            description: "Artificial intelligence is creating breakthroughs in personalized learning and improving teaching effectiveness.",
+            date: "2025-07-30",
+            category: "Education"
+          },
+          {
+            title: "Mobile App Development Trends 2025",
+            description: "Explore new technologies and design trends that will dominate mobile app development in 2025.",
+            date: "2025-07-29",
+            category: "Development"
+          },
+          {
+            title: "Data Security in the Digital Age",
+            description: "The importance of protecting personal information and business data in our connected world.",
+            date: "2025-07-28",
+            category: "Security"
+          },
+          {
+            title: "Blockchain Technology and Financial Future",
+            description: "Analyzing blockchain's impact on the global financial system and cryptocurrency adoption.",
+            date: "2025-07-27",
+            category: "Blockchain"
+          },
+          {
+            title: "Modern UX/UI Design: 2025 Trends",
+            description: "New design principles and user interface trends that are most popular today.",
+            date: "2025-07-26",
+            category: "Design"
+          },
+          {
+            title: "Internet of Things and Smart Homes",
+            description: "How IoT is transforming daily life and creating smart, convenient homes.",
+            date: "2025-07-25",
+            category: "IoT"
+          }
+        ]
+      };
+
+      return newsData[currentLang];
+    }
+
+    function fetchNews() {
+      const newsContent = document.getElementById('newsContent');
       
+      // Show loading
+      newsContent.innerHTML = `
+        <div class="loading">
+          <div class="loading-spinner"></div>
+          <span data-i18n="loading_news">${i18nData[currentLang]["loading_news"]}</span>
+        </div>
+      `;
+
       // Simulate loading delay
       setTimeout(() => {
-        allNews = newsData[currentLang];
-        filterNews(currentFilter);
-      }, 1500);
+        const newsData = generateNewsData();
+        renderNews(newsData);
+      }, 1000);
     }
 
-    function showLoading() {
+    function renderNews(newsData) {
       const newsContent = document.getElementById('newsContent');
       newsContent.innerHTML = '';
-      newsContent.className = 'loading';
-      
-      // Create skeleton loading
-      const skeletonGrid = document.createElement('div');
-      skeletonGrid.className = 'news-grid';
-      
-      for (let i = 0; i < 6; i++) {
-        const skeletonCard = document.createElement('div');
-        skeletonCard.className = 'skeleton-card';
-        skeletonCard.innerHTML = `
-          <div class="skeleton skeleton-badge"></div>
-          <div class="skeleton skeleton-title"></div>
-          <div class="skeleton skeleton-meta"></div>
-          <div class="skeleton skeleton-description"></div>
-          <div class="skeleton skeleton-description"></div>
-          <div class="skeleton skeleton-actions"></div>
-        `;
-        skeletonGrid.appendChild(skeletonCard);
-      }
-      
-      newsContent.appendChild(skeletonGrid);
-    }
-
-    function renderNews(articles) {
-      const newsContent = document.getElementById('newsContent');
-      newsContent.innerHTML = '';
-      newsContent.className = '';
-      
-      if (articles.length === 0) {
-        newsContent.innerHTML = `
-          <div class="loading">
-            <i class="fas fa-newspaper" style="font-size: 3rem; opacity: 0.3;"></i>
-            <span>${i18nData[currentLang]["no_news"]}</span>
-          </div>
-        `;
-        return;
-      }
       
       const newsGrid = document.createElement('div');
       newsGrid.className = 'news-grid';
 
-      articles.forEach((article, index) => {
+      newsData.forEach((article, index) => {
         const newsCard = document.createElement('div');
-        newsCard.className = 'news-card fade-in';
-        newsCard.style.animationDelay = `${index * 0.1}s`;
+        newsCard.className = 'news-card animate-in';
+        newsCard.style.animationDelay = `${index * 0.2}s`;
         
-        const formattedDate = new Date(article.date).toLocaleDateString(
-          currentLang === 'vi' ? 'vi-VN' : 'en-US', 
-          {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          }
-        );
+        const formattedDate = new Date(article.date).toLocaleDateString(currentLang === 'vi' ? 'vi-VN' : 'en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
 
         newsCard.innerHTML = `
           <div class="news-content">
-            <div class="news-badge">${article.categoryName}</div>
             <h3 class="news-title">${article.title}</h3>
             <div class="news-meta">
-              <span><i class="fas fa-calendar-alt"></i> ${formattedDate}</span>
-              <span><i class="fas fa-newspaper"></i> ${article.source}</span>
+              <span><i class="fas fa-calendar"></i> ${formattedDate}</span>
+              <span><i class="fas fa-tag"></i> ${article.category}</span>
             </div>
             <p class="news-description">${article.description}</p>
-            <div class="news-actions">
-              <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="news-link">
-                <span>${i18nData[currentLang]["read_more"]}</span>
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-              <button class="share-btn" onclick="shareArticle('${article.title}', '${article.link}')" title="${i18nData[currentLang]["share"]}">
-                <i class="fas fa-share-alt"></i>
-              </button>
-            </div>
+            <a href="#" class="news-link">
+              <span data-i18n="read_more">${i18nData[currentLang]["read_more"]}</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         `;
         
@@ -1611,78 +1638,22 @@ body {
       });
 
       newsContent.appendChild(newsGrid);
-      
-      // Add scroll reveal animation
-      observeElements();
     }
 
-    // Share function
-    function shareArticle(title, link) {
-      if (navigator.share) {
-        navigator.share({
-          title: title,
-          url: link
-        }).catch(console.error);
-      } else {
-        // Fallback: copy to clipboard
-        navigator.clipboard.writeText(link).then(() => {
-          showToast('Link copied to clipboard!');
-        }).catch(() => {
-          // Fallback for older browsers
-          const textArea = document.createElement('textarea');
-          textArea.value = link;
-          document.body.appendChild(textArea);
-          textArea.select();
-          document.execCommand('copy');
-          document.body.removeChild(textArea);
-          showToast('Link copied to clipboard!');
-        });
-      }
+    // Smooth scrolling for better UX
+    function smoothScrollTo(element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
 
-    // Toast notification
-    function showToast(message) {
-      const toast = document.createElement('div');
-      toast.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: var(--primary-color);
-        color: white;
-        padding: 12px 24px;
-        border-radius: 8px;
-        font-weight: 600;
-        z-index: 10000;
-        animation: slideInRight 0.3s ease, slideOutRight 0.3s ease 2.7s forwards;
-      `;
-      toast.textContent = message;
-      
-      const style = document.createElement('style');
-      style.textContent = `
-        @keyframes slideInRight {
-          from { transform: translateX(100%); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideOutRight {
-          from { transform: translateX(0); opacity: 1; }
-          to { transform: translateX(100%); opacity: 0; }
-        }
-      `;
-      document.head.appendChild(style);
-      document.body.appendChild(toast);
-      
-      setTimeout(() => {
-        document.body.removeChild(toast);
-        document.head.removeChild(style);
-      }, 3000);
-    }
-
-    // Scroll animations
+    // Add scroll animations
     function observeElements() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('slide-up');
+            entry.target.classList.add('animate-in');
           }
         });
       }, {
@@ -1690,72 +1661,58 @@ body {
         rootMargin: '0px 0px -50px 0px'
       });
 
-      document.querySelectorAll('.news-card').forEach(el => {
+      document.querySelectorAll('.content-card, .service-item, .news-card, .contact-card').forEach(el => {
         observer.observe(el);
       });
     }
 
-    // Performance optimizations
+    // Initialize animations after content loads
+    setTimeout(observeElements, 100);
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const navMenu = document.getElementById('navMenu');
+        const overlay = document.getElementById('overlay');
+        if (navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          overlay.classList.remove('active');
+        }
+      }
+    });
+
+    // Performance optimization: Debounce resize events
     let resizeTimeout;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
-        // Reflow if needed
+        // Rerender elements if needed
+        renderServices();
       }, 250);
     });
 
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Tab') {
-        document.body.classList.add('keyboard-navigation');
-      }
-    });
-
-    document.addEventListener('mousedown', () => {
-      document.body.classList.remove('keyboard-navigation');
-    });
+    // Add loading states for better UX
+    function showLoading(element) {
+      element.innerHTML = `
+        <div class="loading">
+          <div class="loading-spinner"></div>
+          <span>Loading...</span>
+        </div>
+      `;
+    }
 
     // Error handling
     window.addEventListener('error', (e) => {
       console.error('Application error:', e.error);
-      showToast('Something went wrong. Please refresh the page.');
     });
 
-    // Service worker for offline functionality (optional)
+    // Service worker registration for offline functionality (optional)
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', async () => {
-        try {
-          // Register service worker here if needed
-        } catch (error) {
-          console.log('Service worker registration failed');
-        }
+      window.addEventListener('load', () => {
+        // Service worker can be added here for offline functionality
       });
-    }
-
-    // Preload critical resources
-    function preloadImages() {
-      // Preload any critical images here
-    }
-
-    // Initialize performance monitoring
-    if ('PerformanceObserver' in window) {
-      const observer = new PerformanceObserver((list) => {
-        // Monitor performance metrics
-      });
-      observer.observe({entryTypes: ['navigation', 'paint']});
     }
   </script>
-
-  <style>
-    /* Additional keyboard navigation styles */
-    .keyboard-navigation .control-btn:focus,
-    .keyboard-navigation .filter-btn:focus,
-    .keyboard-navigation .news-link:focus,
-    .keyboard-navigation .share-btn:focus {
-      outline: 2px solid var(--primary-color);
-      outline-offset: 2px;
-    }
-  </style>
 
 </body>
 </html>
