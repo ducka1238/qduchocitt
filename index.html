@@ -5,7 +5,12 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Duck Soft - Công nghệ dễ hiểu</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome - Multiple fallbacks -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -53,11 +58,29 @@ body {
   overflow-x: hidden;
 }
 
-/* Font Awesome Fallback */
-.fa, .fas, .fab {
-  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", sans-serif !important;
+/* Font Awesome Fix - Force load with fallbacks */
+@font-face {
+  font-family: "Font Awesome 6 Free";
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2") format("woff2"),
+       url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff") format("woff");
   font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Brands";
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2") format("woff2"),
+       url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff") format("woff");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Icon fallbacks with Unicode */
+.fa, .fas, .fab {
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome", sans-serif !important;
+  font-weight: 900 !important;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   display: inline-block;
   font-style: normal;
   font-variant: normal;
@@ -66,9 +89,49 @@ body {
 }
 
 .fab {
-  font-family: "Font Awesome 6 Brands" !important;
-  font-weight: 400;
+  font-family: "Font Awesome 6 Brands", "Font Awesome 5 Brands", "FontAwesome", sans-serif !important;
+  font-weight: 400 !important;
 }
+
+/* Manual icon definitions as backup */
+.fa-laptop-code::before { content: "\f5fc"; }
+.fa-globe::before { content: "\f0ac"; }
+.fa-moon::before { content: "\f186"; }
+.fa-sun::before { content: "\f185"; }
+.fa-bars::before { content: "\f0c9"; }
+.fa-home::before { content: "\f015"; }
+.fa-newspaper::before { content: "\f1ea"; }
+.fa-blog::before { content: "\f781"; }
+.fa-calendar::before { content: "\f133"; }
+.fa-envelope::before { content: "\f0e0"; }
+.fa-phone::before { content: "\f095"; }
+.fa-facebook::before { content: "\f09a"; }
+.fa-facebook-f::before { content: "\f39e"; }
+.fa-instagram::before { content: "\f16d"; }
+.fa-facebook-messenger::before { content: "\f39f"; }
+.fa-robot::before { content: "\f544"; }
+.fa-google-drive::before { content: "\f3aa"; }
+.fa-brain::before { content: "\f5dc"; }
+.fa-camera-retro::before { content: "\f083"; }
+.fa-microphone-alt::before { content: "\f3c9"; }
+.fa-film::before { content: "\f008"; }
+.fa-spotify::before { content: "\f1bc"; }
+.fa-comments::before { content: "\f086"; }
+.fa-wand-magic-sparkles::before { content: "\e2ca"; }
+.fa-cloud-sun::before { content: "\f6c4"; }
+.fa-video::before { content: "\f03d"; }
+.fa-rocket::before { content: "\f135"; }
+.fa-compress-arrows-alt::before { content: "\f78c"; }
+.fa-code::before { content: "\f121"; }
+.fa-cube::before { content: "\f1b2"; }
+.fa-bolt::before { content: "\f0e7"; }
+.fa-user::before { content: "\f007"; }
+.fa-clock::before { content: "\f017"; }
+.fa-tag::before { content: "\f02b"; }
+.fa-arrow-right::before { content: "\f061"; }
+.fa-mobile-alt::before { content: "\f3cd"; }
+.fa-shield-alt::before { content: "\f3ed"; }
+.fa-chart-line::before { content: "\f201"; }
 
 /* Header Styles */
 header {
@@ -1365,30 +1428,82 @@ main {
       initNavigation();
     });
 
-    // Font Awesome check and fallback
+    // Enhanced Font Awesome loading with multiple fallbacks
     function checkFontAwesome() {
-      const testElement = document.createElement('i');
-      testElement.className = 'fas fa-home';
-      testElement.style.position = 'absolute';
-      testElement.style.left = '-9999px';
-      document.body.appendChild(testElement);
+      let attempts = 0;
+      const maxAttempts = 3;
       
-      setTimeout(() => {
-        const computedStyle = window.getComputedStyle(testElement);
-        if (computedStyle.fontFamily.indexOf('Font Awesome') === -1) {
-          console.warn('Font Awesome not loaded, adding fallback');
-          loadFontAwesomeFallback();
-        }
-        document.body.removeChild(testElement);
-      }, 100);
+      function testFontLoad() {
+        attempts++;
+        const testElement = document.createElement('i');
+        testElement.className = 'fas fa-home';
+        testElement.style.position = 'absolute';
+        testElement.style.left = '-9999px';
+        testElement.style.fontSize = '16px';
+        document.body.appendChild(testElement);
+        
+        setTimeout(() => {
+          const computedStyle = window.getComputedStyle(testElement, '::before');
+          const content = computedStyle.getPropertyValue('content');
+          
+          // Check if icon loaded properly (should not be "X" or empty)
+          if (content === '""' || content === 'none' || attempts >= maxAttempts) {
+            if (attempts < maxAttempts) {
+              console.warn(`Font Awesome loading attempt ${attempts} failed, retrying...`);
+              loadFontAwesomeFallback();
+              setTimeout(testFontLoad, 1000);
+            } else {
+              console.warn('Font Awesome failed to load after all attempts');
+              addIconFallbacks();
+            }
+          }
+          
+          document.body.removeChild(testElement);
+        }, 200);
+      }
+      
+      // Start testing after a short delay
+      setTimeout(testFontLoad, 500);
     }
 
     function loadFontAwesomeFallback() {
+      // Try alternative CDN
       const link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+      link.href = 'https://use.fontawesome.com/releases/v6.4.0/css/all.css';
       link.crossOrigin = 'anonymous';
       document.head.appendChild(link);
+    }
+
+    function addIconFallbacks() {
+      // Add text fallbacks if icons still don't work
+      const iconMap = {
+        'fa-laptop-code': '💻',
+        'fa-globe': '🌐',
+        'fa-moon': '🌙',
+        'fa-sun': '☀️',
+        'fa-bars': '☰',
+        'fa-home': '🏠',
+        'fa-newspaper': '📰',
+        'fa-blog': '📝',
+        'fa-calendar': '📅',
+        'fa-envelope': '✉️',
+        'fa-phone': '📞',
+        'fa-facebook': '📘',
+        'fa-facebook-f': '📘',
+        'fa-instagram': '📷',
+        'fa-facebook-messenger': '💬'
+      };
+      
+      Object.keys(iconMap).forEach(iconClass => {
+        const elements = document.querySelectorAll(`.${iconClass}`);
+        elements.forEach(el => {
+          if (el.textContent.trim() === '' || el.textContent === 'X') {
+            el.textContent = iconMap[iconClass];
+            el.style.fontFamily = 'system-ui, -apple-system, sans-serif';
+          }
+        });
+      });
     }
 
     // Language functions
