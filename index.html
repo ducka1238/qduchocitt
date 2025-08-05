@@ -1038,6 +1038,34 @@
       margin-bottom: 10px;
     }
 
+    /* Code Block Styles */
+    .code-block {
+      background: var(--bg-secondary);
+      border: 1px solid var(--bg-secondary);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      overflow-x: auto;
+    }
+
+    .code-block code {
+      color: var(--primary-color);
+      font-size: 14px;
+      line-height: 1.5;
+      display: block;
+      white-space: pre;
+    }
+
+    [data-theme="dark"] .code-block {
+      background: #1e1e1e;
+      border-color: #333;
+    }
+
+    [data-theme="dark"] .code-block code {
+      color: #9cdcfe;
+    }
+
     /* Overlay */
     .overlay {
       position: fixed;
@@ -1459,9 +1487,122 @@
       
       <div class="blog-post">
         <div class="blog-meta">
-          <span><i class="fas fa-user"></i> <span data-i18n="blog_author">Dong Quang Duc</span></span>
+          <span><i class="fas fa-user"></i> <span data-i18n="blog_author">Đồng Quang Đức</span></span>
+          <span><i class="fas fa-calendar"></i> <span data-i18n="blog_date">5 tháng 8, 2025</span></span>
+          <span><i class="fas fa-clock"></i> <span data-i18n="blog_read_time">3 phút đọc</span></span>
+          <span><i class="fas fa-tag"></i> <span data-i18n="blog_category">Sinh viên IT</span></span>
+        </div>
+        
+        <div class="blog-content">
+          <h2 data-i18n="blog_post_title_1">Những ngày đầu làm sinh viên IT</h2>
+          
+          <p data-i18n="blog_intro_1">
+            Xin chào! Mình là Đồng Quang Đức, hiện đang là sinh viên năm nhất ngành Công nghệ Thông tin. Hôm nay mình muốn chia sẻ về những trải nghiệm đầu tiên khi bước chân vào thế giới IT.
+          </p>
+
+          <h3 data-i18n="blog_section1_title_1">Cú sốc đầu tiên: "Code là gì?"</h3>
+          <p data-i18n="blog_section1_content_1">
+            Thật sự, trước khi vào đại học, mình chỉ biết máy tính để chơi game và lướt Facebook. Khi nghe từ "lập trình" lần đầu, mình tưởng tượng nó như trong phim - những dòng code xanh lá cây chạy trên màn hình đen. Thực tế thì... cũng đúng thôi, nhưng phức tạp hơn mình nghĩ rất nhiều!
+          </p>
+
+          <h3 data-i18n="blog_section2_title_1">Hello World - Dòng code đầu tiên</h3>
+          <p data-i18n="blog_section2_content_1">
+            Ai cũng bắt đầu với "Hello World" phải không? Mình còn nhớ cảm giác khi lần đầu viết được dòng code Python đơn giản:
+          </p>
+          
+          <div class="code-block">
+            <code>print("Hello World! Mình là Đức!")</code>
+          </div>
+          
+          <p data-i18n="blog_section2_content_2">
+            Khi nhấn Enter và thấy dòng chữ hiện ra, mình như được bắn lên mây vậy. Đó là lúc mình biết mình đã chọn đúng ngành rồi!
+          </p>
+
+          <div class="highlight-box">
+            <p data-i18n="blog_quote_1">
+              "Mỗi dòng code là một bước tiến. Mỗi lỗi là một bài học. Mỗi thành công là động lực để tiếp tục."
+            </p>
+          </div>
+
+          <h3 data-i18n="blog_section3_title_1">Những thử thách của tân sinh viên</h3>
+          <p data-i18n="blog_section3_content_1">
+            Thành thật mà nói, không phải lúc nào cũng smooth sailing. Có những lúc ngồi debug cả tiếng mà không tìm ra lỗi. Có những đêm thức khuya để hoàn thành assignment. Nhưng chính những thử thách này làm mình trưởng thành hơn.
+          </p>
+
+          <h3 data-i18n="blog_section4_title_1">Kế hoạch cho tương lai</h3>
+          <p data-i18n="blog_section4_content_1">
+            Mục tiêu của mình trong năm đầu: nắm vững nền tảng lập trình, học thêm web development, và có thể tham gia một số project nhỏ. Ai biết được, có thể sau này mình sẽ trở thành full-stack developer hoặc AI engineer!
+          </p>
+        </div>
+      </div>
+
+      <div class="blog-post">
+        <div class="blog-meta">
+          <span><i class="fas fa-user"></i> <span data-i18n="blog_author">Đồng Quang Đức</span></span>
+          <span><i class="fas fa-calendar"></i> <span data-i18n="blog_date_2">2 tháng 8, 2025</span></span>
+          <span><i class="fas fa-clock"></i> <span data-i18n="blog_read_time_2">4 phút đọc</span></span>
+          <span><i class="fas fa-tag"></i> <span data-i18n="blog_category_2">Tools & Tips</span></span>
+        </div>
+        
+        <div class="blog-content">
+          <h2 data-i18n="blog_post_title_2">Top 5 ứng dụng AI mà sinh viên IT phải biết</h2>
+          
+          <p data-i18n="blog_intro_2">
+            Là sinh viên IT thời đại 4.0, chúng ta có lợi thế lớn khi được tiếp cận với các công cụ AI mạnh mẽ. Hôm nay mình sẽ chia sẻ 5 ứng dụng AI mà mình sử dụng hàng ngày để học tập và làm việc hiệu quả hơn.
+          </p>
+
+          <div class="tech-grid">
+            <div class="tech-item">
+              <i class="fas fa-robot"></i>
+              <h4>ChatGPT</h4>
+              <p data-i18n="tech_chatgpt_desc">Trợ lý AI thông minh nhất</p>
+            </div>
+            <div class="tech-item">
+              <i class="fas fa-code"></i>
+              <h4>GitHub Copilot</h4>
+              <p data-i18n="tech_copilot_desc">AI pair programming</p>
+            </div>
+            <div class="tech-item">
+              <i class="fas fa-brain"></i>
+              <h4>Claude</h4>
+              <p data-i18n="tech_claude_desc">AI cho phân tích sâu</p>
+            </div>
+            <div class="tech-item">
+              <i class="fas fa-image"></i>
+              <h4>Midjourney</h4>
+              <p data-i18n="tech_midjourney_desc">Tạo hình ảnh từ text</p>
+            </div>
+          </div>
+
+          <h3 data-i18n="blog_ai_section1">1. ChatGPT - Người bạn học tập đắc lực</h3>
+          <p data-i18n="blog_ai_content1">
+            ChatGPT là công cụ mình sử dụng nhiều nhất. Từ giải thích khái niệm khó hiểu, debug code, đến brainstorm ý tưởng cho project. Mẹo: hãy hỏi cụ thể và đưa context đầy đủ để có câu trả lời tốt nhất.
+          </p>
+
+          <h3 data-i18n="blog_ai_section2">2. GitHub Copilot - Code assistant thông minh</h3>
+          <p data-i18n="blog_ai_content2">
+            Copilot như có một senior developer ngồi cạnh, gợi ý code khi mình đang viết. Đặc biệt hữu ích khi học ngôn ngữ mới hoặc implement algorithm phức tạp.
+          </p>
+
+          <h3 data-i18n="blog_ai_section3">3. Claude - AI với khả năng phân tích mạnh</h3>
+          <p data-i18n="blog_ai_content3">
+            Claude giúp mình phân tích document dài, tóm tắt paper khoa học, và giải thích các khái niệm phức tạp một cách dễ hiểu. Rất hữu ích cho việc research.
+          </p>
+
+          <div class="highlight-box">
+            <p data-i18n="blog_ai_tip">
+              💡 Mẹo: Đừng phụ thuộc hoàn toàn vào AI. Hãy sử dụng chúng như công cụ hỗ trợ và luôn tự kiểm tra, tự tư duy!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-post">
+        <div class="blog-meta">
+          <span><i class="fas fa-user"></i> <span data-i18n="blog_author">Đồng Quang Đức</span></span>
           <span><i class="fas fa-calendar"></i> <span data-i18n="blog_date">31 tháng 7, 2025</span></span>
           <span><i class="fas fa-clock"></i> <span data-i18n="blog_read_time">5 phút đọc</span></span>
+          <span><i class="fas fa-tag"></i> <span data-i18n="blog_category_3">Career</span></span>
         </div>
         
         <div class="blog-content">
@@ -1753,9 +1894,14 @@
         "news_subtitle": "Cập nhật những xu hướng công nghệ mới nhất",
         "blog_title": "Blog cá nhân",
         "blog_subtitle": "Chia sẻ hành trình và kinh nghiệm học tập",
-        "blog_author": "Dong Quang Duc",
+        "blog_author": "Đồng Quang Đức",
         "blog_date": "31 tháng 7, 2025",
         "blog_read_time": "5 phút đọc",
+        "blog_date_2": "2 tháng 8, 2025",
+        "blog_read_time_2": "4 phút đọc",
+        "blog_category": "Sinh viên IT",
+        "blog_category_2": "Tools & Tips",
+        "blog_category_3": "Career",
         "blog_post_title": "Tại sao tôi chọn học IT?",
         "blog_intro": "Trong thời đại số hóa hiện nay, việc chọn ngành Công nghệ Thông tin (IT) không chỉ là một quyết định nghề nghiệp mà còn là bước đệm quan trọng để bắt kịp xu thế phát triển của thế giới. Hãy cùng tôi khám phá những lý do khiến IT trở thành lựa chọn hoàn hảo cho tương lai.",
         "blog_quote": "\"Công nghệ không chỉ thay đổi cách chúng ta làm việc, mà còn định hình cách chúng ta sống và tương tác với thế giới xung quanh.\"",
@@ -1776,6 +1922,31 @@
         "blog_section4_title": "4. Tính linh hoạt và tự do",
         "blog_section4_content": "Với sự phát triển của công nghệ cloud computing và các công cụ làm việc từ xa, ngành IT mang lại sự linh hoạt tuyệt vời. Tôi có thể làm việc từ bất kỳ đâu, tham gia các dự án quốc tế, và có sự cân bằng tốt hơn giữa công việc và cuộc sống.",
         "blog_conclusion": "Chọn học IT không chỉ là việc theo đuổi một nghề nghiệp, mà là hành trình khám phá tiềm năng vô hạn của bản thân trong việc tạo ra những điều kỳ diệu bằng công nghệ.",
+        "blog_post_title_1": "Những ngày đầu làm sinh viên IT",
+        "blog_intro_1": "Xin chào! Mình là Đồng Quang Đức, hiện đang là sinh viên năm nhất ngành Công nghệ Thông tin. Hôm nay mình muốn chia sẻ về những trải nghiệm đầu tiên khi bước chân vào thế giới IT.",
+        "blog_section1_title_1": "Cú sốc đầu tiên: \"Code là gì?\"",
+        "blog_section1_content_1": "Thật sự, trước khi vào đại học, mình chỉ biết máy tính để chơi game và lướt Facebook. Khi nghe từ \"lập trình\" lần đầu, mình tưởng tượng nó như trong phim - những dòng code xanh lá cây chạy trên màn hình đen. Thực tế thì... cũng đúng thôi, nhưng phức tạp hơn mình nghĩ rất nhiều!",
+        "blog_section2_title_1": "Hello World - Dòng code đầu tiên",
+        "blog_section2_content_1": "Ai cũng bắt đầu với \"Hello World\" phải không? Mình còn nhớ cảm giác khi lần đầu viết được dòng code Python đơn giản:",
+        "blog_section2_content_2": "Khi nhấn Enter và thấy dòng chữ hiện ra, mình như được bắn lên mây vậy. Đó là lúc mình biết mình đã chọn đúng ngành rồi!",
+        "blog_quote_1": "\"Mỗi dòng code là một bước tiến. Mỗi lỗi là một bài học. Mỗi thành công là động lực để tiếp tục.\"",
+        "blog_section3_title_1": "Những thử thách của tân sinh viên",
+        "blog_section3_content_1": "Thành thật mà nói, không phải lúc nào cũng smooth sailing. Có những lúc ngồi debug cả tiếng mà không tìm ra lỗi. Có những đêm thức khuya để hoàn thành assignment. Nhưng chính những thử thách này làm mình trưởng thành hơn.",
+        "blog_section4_title_1": "Kế hoạch cho tương lai",
+        "blog_section4_content_1": "Mục tiêu của mình trong năm đầu: nắm vững nền tảng lập trình, học thêm web development, và có thể tham gia một số project nhỏ. Ai biết được, có thể sau này mình sẽ trở thành full-stack developer hoặc AI engineer!",
+        "blog_post_title_2": "Top 5 ứng dụng AI mà sinh viên IT phải biết",
+        "blog_intro_2": "Là sinh viên IT thời đại 4.0, chúng ta có lợi thế lớn khi được tiếp cận với các công cụ AI mạnh mẽ. Hôm nay mình sẽ chia sẻ 5 ứng dụng AI mà mình sử dụng hàng ngày để học tập và làm việc hiệu quả hơn.",
+        "tech_chatgpt_desc": "Trợ lý AI thông minh nhất",
+        "tech_copilot_desc": "AI pair programming",
+        "tech_claude_desc": "AI cho phân tích sâu",
+        "tech_midjourney_desc": "Tạo hình ảnh từ text",
+        "blog_ai_section1": "1. ChatGPT - Người bạn học tập đắc lực",
+        "blog_ai_content1": "ChatGPT là công cụ mình sử dụng nhiều nhất. Từ giải thích khái niệm khó hiểu, debug code, đến brainstorm ý tưởng cho project. Mẹo: hãy hỏi cụ thể và đưa context đầy đủ để có câu trả lời tốt nhất.",
+        "blog_ai_section2": "2. GitHub Copilot - Code assistant thông minh",
+        "blog_ai_content2": "Copilot như có một senior developer ngồi cạnh, gợi ý code khi mình đang viết. Đặc biệt hữu ích khi học ngôn ngữ mới hoặc implement algorithm phức tạp.",
+        "blog_ai_section3": "3. Claude - AI với khả năng phân tích mạnh",
+        "blog_ai_content3": "Claude giúp mình phân tích document dài, tóm tắt paper khoa học, và giải thích các khái niệm phức tạp một cách dễ hiểu. Rất hữu ích cho việc research.",
+        "blog_ai_tip": "💡 Mẹo: Đừng phụ thuộc hoàn toàn vào AI. Hãy sử dụng chúng như công cụ hỗ trợ và luôn tự kiểm tra, tự tư duy!",
         "schedule_title": "Lịch học",
         "schedule_subtitle": "Theo dõi lịch học và hoạt động",
         "contact_title": "Liên hệ & Dịch vụ",
@@ -1834,6 +2005,11 @@
         "blog_author": "Dong Quang Duc",
         "blog_date": "July 31, 2025",
         "blog_read_time": "5 min read",
+        "blog_date_2": "August 2, 2025",
+        "blog_read_time_2": "4 min read",
+        "blog_category": "IT Student",
+        "blog_category_2": "Tools & Tips",
+        "blog_category_3": "Career",
         "blog_post_title": "Why I chose to study IT?",
         "blog_intro": "In today's digital era, choosing to study Information Technology (IT) is not just a career decision but a crucial step to keep up with the world's development trends. Let's explore the reasons why IT is the perfect choice for the future.",
         "blog_quote": "\"Technology doesn't just change how we work, but also shapes how we live and interact with the world around us.\"",
@@ -1854,6 +2030,31 @@
         "blog_section4_title": "4. Flexibility and Freedom",
         "blog_section4_content": "With the rise of cloud computing and remote work tools, the IT industry offers great flexibility. I can work from anywhere, collaborate on international projects, and achieve a better work-life balance.",
         "blog_conclusion": "Choosing to study IT is not just about pursuing a career; it's a journey of discovering my unlimited potential in creating wonders with technology.",
+        "blog_post_title_1": "My First Days as an IT Student",
+        "blog_intro_1": "Hello! I'm Dong Quang Duc, currently a first-year Information Technology student. Today I want to share my first experiences stepping into the IT world.",
+        "blog_section1_title_1": "First Shock: \"What is Code?\"",
+        "blog_section1_content_1": "Honestly, before university, I only knew computers for gaming and browsing Facebook. When I first heard \"programming\", I imagined it like in movies - green lines of code running on black screens. Reality is... actually similar, but much more complex than I thought!",
+        "blog_section2_title_1": "Hello World - My First Line of Code",
+        "blog_section2_content_1": "Everyone starts with \"Hello World\", right? I still remember the feeling when I first wrote a simple Python code:",
+        "blog_section2_content_2": "When I pressed Enter and saw the text appear, I felt like I was flying! That's when I knew I had chosen the right field!",
+        "blog_quote_1": "\"Every line of code is a step forward. Every error is a lesson. Every success is motivation to continue.\"",
+        "blog_section3_title_1": "Challenges of a New Student",
+        "blog_section3_content_1": "To be honest, it's not always smooth sailing. There are times I debug for hours without finding the error. There are nights staying up late to complete assignments. But these challenges make me grow stronger.",
+        "blog_section4_title_1": "Plans for the Future",
+        "blog_section4_content_1": "My goals for the first year: master programming fundamentals, learn web development, and maybe participate in some small projects. Who knows, maybe I'll become a full-stack developer or AI engineer later!",
+        "blog_post_title_2": "Top 5 AI Apps Every IT Student Should Know",
+        "blog_intro_2": "As IT students in the 4.0 era, we have great advantages accessing powerful AI tools. Today I'll share 5 AI applications I use daily for more effective learning and working.",
+        "tech_chatgpt_desc": "Smartest AI assistant",
+        "tech_copilot_desc": "AI pair programming",
+        "tech_claude_desc": "AI for deep analysis",
+        "tech_midjourney_desc": "Text to image generation",
+        "blog_ai_section1": "1. ChatGPT - Reliable Learning Companion",
+        "blog_ai_content1": "ChatGPT is the tool I use most. From explaining difficult concepts, debugging code, to brainstorming project ideas. Tip: ask specifically and provide full context for the best answers.",
+        "blog_ai_section2": "2. GitHub Copilot - Smart Code Assistant",
+        "blog_ai_content2": "Copilot is like having a senior developer sitting next to you, suggesting code while you write. Especially useful when learning new languages or implementing complex algorithms.",
+        "blog_ai_section3": "3. Claude - AI with Strong Analysis Capabilities",
+        "blog_ai_content3": "Claude helps me analyze long documents, summarize scientific papers, and explain complex concepts in an understandable way. Very useful for research.",
+        "blog_ai_tip": "💡 Tip: Don't rely completely on AI. Use them as support tools and always verify and think for yourself!",
         "schedule_title": "Study Schedule",
         "schedule_subtitle": "Track your learning schedule and activities",
         "contact_title": "Contact & Services",
