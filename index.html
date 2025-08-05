@@ -416,7 +416,7 @@
     }
 
     .section {
-      padding: 60px 30px;
+      padding: 120px 30px 60px 30px; /* Increase top padding to avoid header overlap */
       max-width: 1200px;
       margin: 0 auto;
       display: none;
@@ -900,7 +900,7 @@
     /* Desktop Optimizations */
     @media (min-width: 1024px) {
       .section {
-        padding: 80px 40px;
+        padding: 140px 40px 80px 40px; /* More space on desktop */
       }
       
       .section-title {
@@ -951,7 +951,6 @@
 
     /* Mobile Responsive Design */
     @media (max-width: 768px) {
-    @media (max-width: 768px) {
       header {
         padding: 15px 20px;
       }
@@ -961,7 +960,7 @@
       }
       
       .section {
-        padding: 40px 20px;
+        padding: 100px 20px 40px 20px; /* Adjust top padding for mobile */
       }
       
       .section-title {
@@ -984,6 +983,10 @@
     }
 
     @media (max-width: 480px) {
+      .section {
+        padding: 90px 15px 30px 15px; /* More compact on very small screens */
+      }
+      
       .section-title {
         font-size: 2rem;
       }
@@ -2739,11 +2742,11 @@
           // Smooth scroll to section with offset for header
           setTimeout(() => {
             const headerHeight = 80;
-            const extraOffset = 20; // Additional spacing
+            const extraOffset = 40; // Additional spacing for comfortable reading
             const targetPosition = targetSection.offsetTop - headerHeight - extraOffset;
             
             window.scrollTo({
-              top: targetPosition,
+              top: Math.max(0, targetPosition), // Ensure we don't scroll to negative position
               behavior: 'smooth'
             });
           }, 100); // Small delay to ensure section is visible
