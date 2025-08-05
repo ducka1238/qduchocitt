@@ -1066,6 +1066,51 @@
       color: #9cdcfe;
     }
 
+    /* Read More Button Styles */
+    .read-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .read-more-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .read-more-btn:active {
+      transform: translateY(0);
+    }
+
+    .read-more-btn::after {
+      content: '▼';
+      font-size: 12px;
+      transition: var(--transition);
+    }
+
+    .read-more-btn.expanded::after {
+      content: '▲';
+    }
+
+    .blog-preview {
+      margin-bottom: 15px;
+    }
+
+    .blog-full-content {
+      margin-top: 20px;
+    }
+
     /* Overlay */
     .overlay {
       position: fixed;
@@ -1485,7 +1530,136 @@
         <p class="section-subtitle" data-i18n="blog_subtitle">Chia sẻ hành trình và kinh nghiệm học tập</p>
       </div>
       
-      <div class="blog-post">
+      <div class="blog-post" data-blog-id="1">
+        <div class="blog-meta">
+          <span><i class="fas fa-user"></i> <span data-i18n="blog_author">Đồng Quang Đức</span></span>
+          <span><i class="fas fa-calendar"></i> <span data-i18n="blog_date">8 tháng 8, 2025</span></span>
+          <span><i class="fas fa-clock"></i> <span data-i18n="blog_read_time_4">2 phút đọc</span></span>
+          <span><i class="fas fa-tag"></i> <span data-i18n="blog_category_4">Tips</span></span>
+        </div>
+        
+        <div class="blog-content">
+          <h2 data-i18n="blog_post_title_4">10 Mẹo học lập trình hiệu quả cho sinh viên</h2>
+          
+          <div class="blog-preview">
+            <p data-i18n="blog_intro_4">
+              Sau một thời gian học lập trình, mình đã tích lũy được một số kinh nghiệm và mẹo hay. Hôm nay mình sẽ chia sẻ 10 tips giúp bạn học code hiệu quả hơn!
+            </p>
+          </div>
+
+          <div class="blog-full-content" style="display: none;">
+            <p data-i18n="blog_intro_4">
+              Sau một thời gian học lập trình, mình đã tích lũy được một số kinh nghiệm và mẹo hay. Hôm nay mình sẽ chia sẻ 10 tips giúp bạn học code hiệu quả hơn!
+            </p>
+
+            <h3 data-i18n="blog_tip_section1">💡 Mẹo 1-3: Chuẩn bị học tập</h3>
+            <ul>
+              <li data-i18n="tip_1"><strong>Lập kế hoạch học:</strong> Chia nhỏ mục tiêu, học 1-2 tiếng/ngày đều đặn</li>
+              <li data-i18n="tip_2"><strong>Tạo môi trường tập trung:</strong> Tắt điện thoại, dọn dẹp workspace</li>
+              <li data-i18n="tip_3"><strong>Chọn ngôn ngữ đúng:</strong> Python cho beginner, JavaScript cho web</li>
+            </ul>
+
+            <h3 data-i18n="blog_tip_section2">🎯 Mẹo 4-6: Phương pháp học</h3>
+            <ul>
+              <li data-i18n="tip_4"><strong>Practice makes perfect:</strong> Code mỗi ngày, dù chỉ 30 phút</li>
+              <li data-i18n="tip_5"><strong>Đọc code của người khác:</strong> GitHub là kho báu vô tận</li>
+              <li data-i18n="tip_6"><strong>Debug thay vì copy-paste:</strong> Hiểu lỗi sẽ giúp bạn tiến bộ</li>
+            </ul>
+
+            <div class="highlight-box">
+              <p data-i18n="blog_quote_4">
+                "Code không chỉ là viết, mà còn là đọc, hiểu và sửa. Master cả 4 skills này!"
+              </p>
+            </div>
+
+            <h3 data-i18n="blog_tip_section3">🚀 Mẹo 7-10: Nâng cao kỹ năng</h3>
+            <ul>
+              <li data-i18n="tip_7"><strong>Build projects:</strong> Lý thuyết + thực hành = thành công</li>
+              <li data-i18n="tip_8"><strong>Join community:</strong> Facebook groups, Discord, Reddit</li>
+              <li data-i18n="tip_9"><strong>Document everything:</strong> Ghi chú, comment code rõ ràng</li>
+              <li data-i18n="tip_10"><strong>Never stop learning:</strong> Tech thay đổi nhanh, hãy cập nhật!</li>
+            </ul>
+          </div>
+
+          <button class="read-more-btn" onclick="toggleBlogContent(1)" data-i18n="read_more">Đọc thêm</button>
+        </div>
+      </div>
+
+      <div class="blog-post" data-blog-id="2">
+        <div class="blog-meta">
+          <span><i class="fas fa-user"></i> <span data-i18n="blog_author">Đồng Quang Đức</span></span>
+          <span><i class="fas fa-calendar"></i> <span data-i18n="blog_date_5">6 tháng 8, 2025</span></span>
+          <span><i class="fas fa-clock"></i> <span data-i18n="blog_read_time_5">3 phút đọc</span></span>
+          <span><i class="fas fa-tag"></i> <span data-i18n="blog_category_5">Study Tips</span></span>
+        </div>
+        
+        <div class="blog-content">
+          <h2 data-i18n="blog_post_title_5">Mẹo tối ưu hóa thời gian học cho sinh viên IT</h2>
+          
+          <div class="blog-preview">
+            <p data-i18n="blog_intro_5">
+              Làm sao để cân bằng giữa học đại học, tự học công nghệ mới và có thời gian nghỉ ngơi? Đây là những chiến lược time management mình đang áp dụng.
+            </p>
+          </div>
+
+          <div class="blog-full-content" style="display: none;">
+            <p data-i18n="blog_intro_5">
+              Làm sao để cân bằng giữa học đại học, tự học công nghệ mới và có thời gian nghỉ ngơi? Đây là những chiến lược time management mình đang áp dụng.
+            </p>
+
+            <h3 data-i18n="time_section1">⏰ Phương pháp Pomodoro cho dev</h3>
+            <p data-i18n="time_content1">
+              25 phút coding tập trung + 5 phút break. Sau 4 pomodoro = nghỉ 30 phút. Công thức này giúp mình maintain focus và tránh burnout.
+            </p>
+
+            <div class="tech-grid">
+              <div class="tech-item">
+                <i class="fas fa-clock"></i>
+                <h4 data-i18n="time_slot1">Sáng sớm</h4>
+                <p data-i18n="time_desc1">Học lý thuyết khó</p>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-laptop-code"></i>
+                <h4 data-i18n="time_slot2">Chiều</h4>
+                <p data-i18n="time_desc2">Practice coding</p>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-book"></i>
+                <h4 data-i18n="time_slot3">Tối</h4>
+                <p data-i18n="time_desc3">Review & ôn tập</p>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-bed"></i>
+                <h4 data-i18n="time_slot4">Cuối ngày</h4>
+                <p data-i18n="time_desc4">Relax & reflection</p>
+              </div>
+            </div>
+
+            <h3 data-i18n="time_section2">📱 Tools hỗ trợ học tập</h3>
+            <ul>
+              <li data-i18n="tool_1"><strong>Notion:</strong> Note-taking và task management all-in-one</li>
+              <li data-i18n="tool_2"><strong>Forest:</strong> App chặn điện thoại khi học</li>
+              <li data-i18n="tool_3"><strong>Anki:</strong> Flashcards cho việc ghi nhớ syntax</li>
+              <li data-i18n="tool_4"><strong>Toggl:</strong> Track thời gian học từng subject</li>
+            </ul>
+
+            <div class="highlight-box">
+              <p data-i18n="time_quote">
+                "Thời gian là tài nguyên quý nhất. Đầu tư thông minh sẽ mang lại hiệu quả gấp bội!"
+              </p>
+            </div>
+
+            <h3 data-i18n="time_section3">🎯 Weekly Planning Strategy</h3>
+            <p data-i18n="time_content2">
+              Mỗi Chủ nhật, mình dành 30 phút planning cho tuần mới: ưu tiên assignment urgent, lên kế hoạch học skill mới, và quan trọng là để thời gian cho việc "không làm gì" để tránh stress.
+            </p>
+          </div>
+
+          <button class="read-more-btn" onclick="toggleBlogContent(2)" data-i18n="read_more">Đọc thêm</button>
+        </div>
+      </div>
+
+      <div class="blog-post" data-blog-id="3">
         <div class="blog-meta">
           <span><i class="fas fa-user"></i> <span data-i18n="blog_author">Đồng Quang Đức</span></span>
           <span><i class="fas fa-calendar"></i> <span data-i18n="blog_date">5 tháng 8, 2025</span></span>
@@ -1496,47 +1670,57 @@
         <div class="blog-content">
           <h2 data-i18n="blog_post_title_1">Những ngày đầu làm sinh viên IT</h2>
           
-          <p data-i18n="blog_intro_1">
-            Xin chào! Mình là Đồng Quang Đức, hiện đang là sinh viên năm nhất ngành Công nghệ Thông tin. Hôm nay mình muốn chia sẻ về những trải nghiệm đầu tiên khi bước chân vào thế giới IT.
-          </p>
-
-          <h3 data-i18n="blog_section1_title_1">Cú sốc đầu tiên: "Code là gì?"</h3>
-          <p data-i18n="blog_section1_content_1">
-            Thật sự, trước khi vào đại học, mình chỉ biết máy tính để chơi game và lướt Facebook. Khi nghe từ "lập trình" lần đầu, mình tưởng tượng nó như trong phim - những dòng code xanh lá cây chạy trên màn hình đen. Thực tế thì... cũng đúng thôi, nhưng phức tạp hơn mình nghĩ rất nhiều!
-          </p>
-
-          <h3 data-i18n="blog_section2_title_1">Hello World - Dòng code đầu tiên</h3>
-          <p data-i18n="blog_section2_content_1">
-            Ai cũng bắt đầu với "Hello World" phải không? Mình còn nhớ cảm giác khi lần đầu viết được dòng code Python đơn giản:
-          </p>
-          
-          <div class="code-block">
-            <code>print("Hello World! Mình là Đức!")</code>
-          </div>
-          
-          <p data-i18n="blog_section2_content_2">
-            Khi nhấn Enter và thấy dòng chữ hiện ra, mình như được bắn lên mây vậy. Đó là lúc mình biết mình đã chọn đúng ngành rồi!
-          </p>
-
-          <div class="highlight-box">
-            <p data-i18n="blog_quote_1">
-              "Mỗi dòng code là một bước tiến. Mỗi lỗi là một bài học. Mỗi thành công là động lực để tiếp tục."
+          <div class="blog-preview">
+            <p data-i18n="blog_intro_1">
+              Xin chào! Mình là Đồng Quang Đức, hiện đang là sinh viên năm nhất ngành Công nghệ Thông tin. Hôm nay mình muốn chia sẻ về những trải nghiệm đầu tiên khi bước chân vào thế giới IT.
             </p>
           </div>
 
-          <h3 data-i18n="blog_section3_title_1">Những thử thách của tân sinh viên</h3>
-          <p data-i18n="blog_section3_content_1">
-            Thành thật mà nói, không phải lúc nào cũng smooth sailing. Có những lúc ngồi debug cả tiếng mà không tìm ra lỗi. Có những đêm thức khuya để hoàn thành assignment. Nhưng chính những thử thách này làm mình trưởng thành hơn.
-          </p>
+          <div class="blog-full-content" style="display: none;">
+            <p data-i18n="blog_intro_1">
+              Xin chào! Mình là Đồng Quang Đức, hiện đang là sinh viên năm nhất ngành Công nghệ Thông tin. Hôm nay mình muốn chia sẻ về những trải nghiệm đầu tiên khi bước chân vào thế giới IT.
+            </p>
 
-          <h3 data-i18n="blog_section4_title_1">Kế hoạch cho tương lai</h3>
-          <p data-i18n="blog_section4_content_1">
-            Mục tiêu của mình trong năm đầu: nắm vững nền tảng lập trình, học thêm web development, và có thể tham gia một số project nhỏ. Ai biết được, có thể sau này mình sẽ trở thành full-stack developer hoặc AI engineer!
-          </p>
+            <h3 data-i18n="blog_section1_title_1">Cú sốc đầu tiên: "Code là gì?"</h3>
+            <p data-i18n="blog_section1_content_1">
+              Thật sự, trước khi vào đại học, mình chỉ biết máy tính để chơi game và lướt Facebook. Khi nghe từ "lập trình" lần đầu, mình tưởng tượng nó như trong phim - những dòng code xanh lá cây chạy trên màn hình đen. Thực tế thì... cũng đúng thôi, nhưng phức tạp hơn mình nghĩ rất nhiều!
+            </p>
+
+            <h3 data-i18n="blog_section2_title_1">Hello World - Dòng code đầu tiên</h3>
+            <p data-i18n="blog_section2_content_1">
+              Ai cũng bắt đầu với "Hello World" phải không? Mình còn nhớ cảm giác khi lần đầu viết được dòng code Python đơn giản:
+            </p>
+            
+            <div class="code-block">
+              <code>print("Hello World! Mình là Đức!")</code>
+            </div>
+            
+            <p data-i18n="blog_section2_content_2">
+              Khi nhấn Enter và thấy dòng chữ hiện ra, mình như được bắn lên mây vậy. Đó là lúc mình biết mình đã chọn đúng ngành rồi!
+            </p>
+
+            <div class="highlight-box">
+              <p data-i18n="blog_quote_1">
+                "Mỗi dòng code là một bước tiến. Mỗi lỗi là một bài học. Mỗi thành công là động lực để tiếp tục."
+              </p>
+            </div>
+
+            <h3 data-i18n="blog_section3_title_1">Những thử thách của tân sinh viên</h3>
+            <p data-i18n="blog_section3_content_1">
+              Thành thật mà nói, không phải lúc nào cũng smooth sailing. Có những lúc ngồi debug cả tiếng mà không tìm ra lỗi. Có những đêm thức khuya để hoàn thành assignment. Nhưng chính những thử thách này làm mình trưởng thành hơn.
+            </p>
+
+            <h3 data-i18n="blog_section4_title_1">Kế hoạch cho tương lai</h3>
+            <p data-i18n="blog_section4_content_1">
+              Mục tiêu của mình trong năm đầu: nắm vững nền tảng lập trình, học thêm web development, và có thể tham gia một số project nhỏ. Ai biết được, có thể sau này mình sẽ trở thành full-stack developer hoặc AI engineer!
+            </p>
+          </div>
+
+          <button class="read-more-btn" onclick="toggleBlogContent(3)" data-i18n="read_more">Đọc thêm</button>
         </div>
       </div>
 
-      <div class="blog-post">
+      <div class="blog-post" data-blog-id="4">
         <div class="blog-meta">
           <span><i class="fas fa-user"></i> <span data-i18n="blog_author">Đồng Quang Đức</span></span>
           <span><i class="fas fa-calendar"></i> <span data-i18n="blog_date_2">2 tháng 8, 2025</span></span>
@@ -1547,57 +1731,67 @@
         <div class="blog-content">
           <h2 data-i18n="blog_post_title_2">Top 5 ứng dụng AI mà sinh viên IT phải biết</h2>
           
-          <p data-i18n="blog_intro_2">
-            Là sinh viên IT thời đại 4.0, chúng ta có lợi thế lớn khi được tiếp cận với các công cụ AI mạnh mẽ. Hôm nay mình sẽ chia sẻ 5 ứng dụng AI mà mình sử dụng hàng ngày để học tập và làm việc hiệu quả hơn.
-          </p>
-
-          <div class="tech-grid">
-            <div class="tech-item">
-              <i class="fas fa-robot"></i>
-              <h4>ChatGPT</h4>
-              <p data-i18n="tech_chatgpt_desc">Trợ lý AI thông minh nhất</p>
-            </div>
-            <div class="tech-item">
-              <i class="fas fa-code"></i>
-              <h4>GitHub Copilot</h4>
-              <p data-i18n="tech_copilot_desc">AI pair programming</p>
-            </div>
-            <div class="tech-item">
-              <i class="fas fa-brain"></i>
-              <h4>Claude</h4>
-              <p data-i18n="tech_claude_desc">AI cho phân tích sâu</p>
-            </div>
-            <div class="tech-item">
-              <i class="fas fa-image"></i>
-              <h4>Midjourney</h4>
-              <p data-i18n="tech_midjourney_desc">Tạo hình ảnh từ text</p>
-            </div>
-          </div>
-
-          <h3 data-i18n="blog_ai_section1">1. ChatGPT - Người bạn học tập đắc lực</h3>
-          <p data-i18n="blog_ai_content1">
-            ChatGPT là công cụ mình sử dụng nhiều nhất. Từ giải thích khái niệm khó hiểu, debug code, đến brainstorm ý tưởng cho project. Mẹo: hãy hỏi cụ thể và đưa context đầy đủ để có câu trả lời tốt nhất.
-          </p>
-
-          <h3 data-i18n="blog_ai_section2">2. GitHub Copilot - Code assistant thông minh</h3>
-          <p data-i18n="blog_ai_content2">
-            Copilot như có một senior developer ngồi cạnh, gợi ý code khi mình đang viết. Đặc biệt hữu ích khi học ngôn ngữ mới hoặc implement algorithm phức tạp.
-          </p>
-
-          <h3 data-i18n="blog_ai_section3">3. Claude - AI với khả năng phân tích mạnh</h3>
-          <p data-i18n="blog_ai_content3">
-            Claude giúp mình phân tích document dài, tóm tắt paper khoa học, và giải thích các khái niệm phức tạp một cách dễ hiểu. Rất hữu ích cho việc research.
-          </p>
-
-          <div class="highlight-box">
-            <p data-i18n="blog_ai_tip">
-              💡 Mẹo: Đừng phụ thuộc hoàn toàn vào AI. Hãy sử dụng chúng như công cụ hỗ trợ và luôn tự kiểm tra, tự tư duy!
+          <div class="blog-preview">
+            <p data-i18n="blog_intro_2">
+              Là sinh viên IT thời đại 4.0, chúng ta có lợi thế lớn khi được tiếp cận với các công cụ AI mạnh mẽ. Hôm nay mình sẽ chia sẻ 5 ứng dụng AI mà mình sử dụng hàng ngày để học tập và làm việc hiệu quả hơn.
             </p>
           </div>
+
+          <div class="blog-full-content" style="display: none;">
+            <p data-i18n="blog_intro_2">
+              Là sinh viên IT thời đại 4.0, chúng ta có lợi thế lớn khi được tiếp cận với các công cụ AI mạnh mẽ. Hôm nay mình sẽ chia sẻ 5 ứng dụng AI mà mình sử dụng hàng ngày để học tập và làm việc hiệu quả hơn.
+            </p>
+
+            <div class="tech-grid">
+              <div class="tech-item">
+                <i class="fas fa-robot"></i>
+                <h4>ChatGPT</h4>
+                <p data-i18n="tech_chatgpt_desc">Trợ lý AI thông minh nhất</p>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-code"></i>
+                <h4>GitHub Copilot</h4>
+                <p data-i18n="tech_copilot_desc">AI pair programming</p>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-brain"></i>
+                <h4>Claude</h4>
+                <p data-i18n="tech_claude_desc">AI cho phân tích sâu</p>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-image"></i>
+                <h4>Midjourney</h4>
+                <p data-i18n="tech_midjourney_desc">Tạo hình ảnh từ text</p>
+              </div>
+            </div>
+
+            <h3 data-i18n="blog_ai_section1">1. ChatGPT - Người bạn học tập đắc lực</h3>
+            <p data-i18n="blog_ai_content1">
+              ChatGPT là công cụ mình sử dụng nhiều nhất. Từ giải thích khái niệm khó hiểu, debug code, đến brainstorm ý tưởng cho project. Mẹo: hãy hỏi cụ thể và đưa context đầy đủ để có câu trả lời tốt nhất.
+            </p>
+
+            <h3 data-i18n="blog_ai_section2">2. GitHub Copilot - Code assistant thông minh</h3>
+            <p data-i18n="blog_ai_content2">
+              Copilot như có một senior developer ngồi cạnh, gợi ý code khi mình đang viết. Đặc biệt hữu ích khi học ngôn ngữ mới hoặc implement algorithm phức tạp.
+            </p>
+
+            <h3 data-i18n="blog_ai_section3">3. Claude - AI với khả năng phân tích mạnh</h3>
+            <p data-i18n="blog_ai_content3">
+              Claude giúp mình phân tích document dài, tóm tắt paper khoa học, và giải thích các khái niệm phức tạp một cách dễ hiểu. Rất hữu ích cho việc research.
+            </p>
+
+            <div class="highlight-box">
+              <p data-i18n="blog_ai_tip">
+                💡 Mẹo: Đừng phụ thuộc hoàn toàn vào AI. Hãy sử dụng chúng như công cụ hỗ trợ và luôn tự kiểm tra, tự tư duy!
+              </p>
+            </div>
+          </div>
+
+          <button class="read-more-btn" onclick="toggleBlogContent(4)" data-i18n="read_more">Đọc thêm</button>
         </div>
       </div>
 
-      <div class="blog-post">
+      <div class="blog-post" data-blog-id="5">
         <div class="blog-meta">
           <span><i class="fas fa-user"></i> <span data-i18n="blog_author">Đồng Quang Đức</span></span>
           <span><i class="fas fa-calendar"></i> <span data-i18n="blog_date">31 tháng 7, 2025</span></span>
@@ -1608,64 +1802,74 @@
         <div class="blog-content">
           <h2 data-i18n="blog_post_title">Tại sao tôi chọn học IT?</h2>
           
-          <p data-i18n="blog_intro">
-            Trong thời đại số hóa hiện nay, việc chọn ngành Công nghệ Thông tin (IT) không chỉ là một quyết định nghề nghiệp mà còn là bước đệm quan trọng để bắt kịp xu thế phát triển của thế giới. Hãy cùng tôi khám phá những lý do khiến IT trở thành lựa chọn hoàn hảo cho tương lai.
-          </p>
-
-          <div class="highlight-box">
-            <p data-i18n="blog_quote">
-              "Công nghệ không chỉ thay đổi cách chúng ta làm việc, mà còn định hình cách chúng ta sống và tương tác với thế giới xung quanh."
+          <div class="blog-preview">
+            <p data-i18n="blog_intro">
+              Trong thời đại số hóa hiện nay, việc chọn ngành Công nghệ Thông tin (IT) không chỉ là một quyết định nghề nghiệp mà còn là bước đệm quan trọng để bắt kịp xu thế phát triển của thế giới. Hãy cùng tôi khám phá những lý do khiến IT trở thành lựa chọn hoàn hảo cho tương lai.
             </p>
           </div>
 
-          <h3 data-i18n="blog_section1_title">1. Cơ hội nghề nghiệp vô tận</h3>
-          <p data-i18n="blog_section1_content">
-            IT là một trong những ngành có tốc độ tăng trưởng nhanh nhất hiện nay. Từ phát triển phần mềm, an ninh mạng, trí tuệ nhân tạo đến phân tích dữ liệu - mỗi lĩnh vực đều mở ra cơ hội nghề nghiệp hấp dẫn với mức lương cạnh tranh. Sự đa dạng này cho phép tôi khám phá và tìm ra đam mê thực sự của mình.
-          </p>
-
-          <h3 data-i18n="blog_section2_title">2. Tác động tích cực đến xã hội</h3>
-          <p data-i18n="blog_section2_content">
-            Công nghệ có khả năng giải quyết những vấn đề lớn của nhân loại. Từ ứng dụng y tế thông minh, giáo dục trực tuyến, đến các giải pháp môi trường - IT giúp tạo ra những sản phẩm có ý nghĩa. Tôi muốn trở thành một phần của quá trình này, góp phần xây dựng một thế giới tốt đẹp hơn thông qua công nghệ.
-          </p>
-
-          <div class="tech-grid">
-            <div class="tech-item">
-              <i class="fas fa-brain"></i>
-              <h4 data-i18n="tech_ai">Trí tuệ nhân tạo</h4>
-              <p data-i18n="tech_ai_desc">Tương lai của automation</p>
-            </div>
-            <div class="tech-item">
-              <i class="fas fa-mobile-alt"></i>
-              <h4 data-i18n="tech_mobile">Phát triển di động</h4>
-              <p data-i18n="tech_mobile_desc">Ứng dụng cho mọi người</p>
-            </div>
-            <div class="tech-item">
-              <i class="fas fa-shield-alt"></i>
-              <h4 data-i18n="tech_security">An ninh mạng</h4>
-              <p data-i18n="tech_security_desc">Bảo vệ dữ liệu</p>
-            </div>
-            <div class="tech-item">
-              <i class="fas fa-chart-line"></i>
-              <h4 data-i18n="tech_data">Phân tích dữ liệu</h4>
-              <p data-i18n="tech_data_desc">Insights từ Big Data</p>
-            </div>
-          </div>
-
-          <h3 data-i18n="blog_section3_title">3. Học tập liên tục và phát triển bản thân</h3>
-          <p data-i18n="blog_section3_content">
-            IT là ngành đòi hỏi việc học tập suốt đời. Mỗi ngày đều có công nghệ mới, framework mới, và xu hướng mới xuất hiện. Điều này không chỉ giữ cho công việc luôn thú vị mà còn thúc đẩy tôi phát triển tư duy logic, khả năng giải quyết vấn đề và sự sáng tạo.
-          </p>
-
-          <h3 data-i18n="blog_section4_title">4. Tính linh hoạt và tự do</h3>
-          <p data-i18n="blog_section4_content">
-            Với sự phát triển của công nghệ cloud computing và các công cụ làm việc từ xa, ngành IT mang lại sự linh hoạt tuyệt vời. Tôi có thể làm việc từ bất kỳ đâu, tham gia các dự án quốc tế, và có sự cân bằng tốt hơn giữa công việc và cuộc sống.
-          </p>
-
-          <div class="highlight-box">
-            <p data-i18n="blog_conclusion">
-              Chọn học IT không chỉ là việc theo đuổi một nghề nghiệp, mà là hành trình khám phá tiềm năng vô hạn của bản thân trong việc tạo ra những điều kỳ diệu bằng công nghệ.
+          <div class="blog-full-content" style="display: none;">
+            <p data-i18n="blog_intro">
+              Trong thời đại số hóa hiện nay, việc chọn ngành Công nghệ Thông tin (IT) không chỉ là một quyết định nghề nghiệp mà còn là bước đệm quan trọng để bắt kịp xu thế phát triển của thế giới. Hãy cùng tôi khám phá những lý do khiến IT trở thành lựa chọn hoàn hảo cho tương lai.
             </p>
+
+            <div class="highlight-box">
+              <p data-i18n="blog_quote">
+                "Công nghệ không chỉ thay đổi cách chúng ta làm việc, mà còn định hình cách chúng ta sống và tương tác với thế giới xung quanh."
+              </p>
+            </div>
+
+            <h3 data-i18n="blog_section1_title">1. Cơ hội nghề nghiệp vô tận</h3>
+            <p data-i18n="blog_section1_content">
+              IT là một trong những ngành có tốc độ tăng trưởng nhanh nhất hiện nay. Từ phát triển phần mềm, an ninh mạng, trí tuệ nhân tạo đến phân tích dữ liệu - mỗi lĩnh vực đều mở ra cơ hội nghề nghiệp hấp dẫn với mức lương cạnh tranh. Sự đa dạng này cho phép tôi khám phá và tìm ra đam mê thực sự của mình.
+            </p>
+
+            <h3 data-i18n="blog_section2_title">2. Tác động tích cực đến xã hội</h3>
+            <p data-i18n="blog_section2_content">
+              Công nghệ có khả năng giải quyết những vấn đề lớn của nhân loại. Từ ứng dụng y tế thông minh, giáo dục trực tuyến, đến các giải pháp môi trường - IT giúp tạo ra những sản phẩm có ý nghĩa. Tôi muốn trở thành một phần của quá trình này, góp phần xây dựng một thế giới tốt đẹp hơn thông qua công nghệ.
+            </p>
+
+            <div class="tech-grid">
+              <div class="tech-item">
+                <i class="fas fa-brain"></i>
+                <h4 data-i18n="tech_ai">Trí tuệ nhân tạo</h4>
+                <p data-i18n="tech_ai_desc">Tương lai của automation</p>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-mobile-alt"></i>
+                <h4 data-i18n="tech_mobile">Phát triển di động</h4>
+                <p data-i18n="tech_mobile_desc">Ứng dụng cho mọi người</p>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-shield-alt"></i>
+                <h4 data-i18n="tech_security">An ninh mạng</h4>
+                <p data-i18n="tech_security_desc">Bảo vệ dữ liệu</p>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-chart-line"></i>
+                <h4 data-i18n="tech_data">Phân tích dữ liệu</h4>
+                <p data-i18n="tech_data_desc">Insights từ Big Data</p>
+              </div>
+            </div>
+
+            <h3 data-i18n="blog_section3_title">3. Học tập liên tục và phát triển bản thân</h3>
+            <p data-i18n="blog_section3_content">
+              IT là ngành đòi hỏi việc học tập suốt đời. Mỗi ngày đều có công nghệ mới, framework mới, và xu hướng mới xuất hiện. Điều này không chỉ giữ cho công việc luôn thú vị mà còn thúc đẩy tôi phát triển tư duy logic, khả năng giải quyết vấn đề và sự sáng tạo.
+            </p>
+
+            <h3 data-i18n="blog_section4_title">4. Tính linh hoạt và tự do</h3>
+            <p data-i18n="blog_section4_content">
+              Với sự phát triển của công nghệ cloud computing và các công cụ làm việc từ xa, ngành IT mang lại sự linh hoạt tuyệt vời. Tôi có thể làm việc từ bất kỳ đâu, tham gia các dự án quốc tế, và có sự cân bằng tốt hơn giữa công việc và cuộc sống.
+            </p>
+
+            <div class="highlight-box">
+              <p data-i18n="blog_conclusion">
+                Chọn học IT không chỉ là việc theo đuổi một nghề nghiệp, mà là hành trình khám phá tiềm năng vô hạn của bản thân trong việc tạo ra những điều kỳ diệu bằng công nghệ.
+              </p>
+            </div>
           </div>
+
+          <button class="read-more-btn" onclick="toggleBlogContent(5)" data-i18n="read_more">Đọc thêm</button>
         </div>
       </div>
     </section>
@@ -1947,6 +2151,49 @@
         "blog_ai_section3": "3. Claude - AI với khả năng phân tích mạnh",
         "blog_ai_content3": "Claude giúp mình phân tích document dài, tóm tắt paper khoa học, và giải thích các khái niệm phức tạp một cách dễ hiểu. Rất hữu ích cho việc research.",
         "blog_ai_tip": "💡 Mẹo: Đừng phụ thuộc hoàn toàn vào AI. Hãy sử dụng chúng như công cụ hỗ trợ và luôn tự kiểm tra, tự tư duy!",
+        "blog_read_time_4": "2 phút đọc",
+        "blog_read_time_5": "3 phút đọc",
+        "blog_category_4": "Tips",
+        "blog_category_5": "Study Tips",
+        "blog_date_5": "6 tháng 8, 2025",
+        "blog_post_title_4": "10 Mẹo học lập trình hiệu quả cho sinh viên",
+        "blog_intro_4": "Sau một thời gian học lập trình, mình đã tích lũy được một số kinh nghiệm và mẹo hay. Hôm nay mình sẽ chia sẻ 10 tips giúp bạn học code hiệu quả hơn!",
+        "blog_tip_section1": "💡 Mẹo 1-3: Chuẩn bị học tập",
+        "tip_1": "Lập kế hoạch học: Chia nhỏ mục tiêu, học 1-2 tiếng/ngày đều đặn",
+        "tip_2": "Tạo môi trường tập trung: Tắt điện thoại, dọn dẹp workspace",
+        "tip_3": "Chọn ngôn ngữ đúng: Python cho beginner, JavaScript cho web",
+        "blog_tip_section2": "🎯 Mẹo 4-6: Phương pháp học",
+        "tip_4": "Practice makes perfect: Code mỗi ngày, dù chỉ 30 phút",
+        "tip_5": "Đọc code của người khác: GitHub là kho báu vô tận",
+        "tip_6": "Debug thay vì copy-paste: Hiểu lỗi sẽ giúp bạn tiến bộ",
+        "blog_quote_4": "Code không chỉ là viết, mà còn là đọc, hiểu và sửa. Master cả 4 skills này!",
+        "blog_tip_section3": "🚀 Mẹo 7-10: Nâng cao kỹ năng",
+        "tip_7": "Build projects: Lý thuyết + thực hành = thành công",
+        "tip_8": "Join community: Facebook groups, Discord, Reddit",
+        "tip_9": "Document everything: Ghi chú, comment code rõ ràng",
+        "tip_10": "Never stop learning: Tech thay đổi nhanh, hãy cập nhật!",
+        "blog_post_title_5": "Mẹo tối ưu hóa thời gian học cho sinh viên IT",
+        "blog_intro_5": "Làm sao để cân bằng giữa học đại học, tự học công nghệ mới và có thời gian nghỉ ngơi? Đây là những chiến lược time management mình đang áp dụng.",
+        "time_section1": "⏰ Phương pháp Pomodoro cho dev",
+        "time_content1": "25 phút coding tập trung + 5 phút break. Sau 4 pomodoro = nghỉ 30 phút. Công thức này giúp mình maintain focus và tránh burnout.",
+        "time_slot1": "Sáng sớm",
+        "time_desc1": "Học lý thuyết khó",
+        "time_slot2": "Chiều",
+        "time_desc2": "Practice coding",
+        "time_slot3": "Tối",
+        "time_desc3": "Review & ôn tập",
+        "time_slot4": "Cuối ngày",
+        "time_desc4": "Relax & reflection",
+        "time_section2": "📱 Tools hỗ trợ học tập",
+        "tool_1": "Notion: Note-taking và task management all-in-one",
+        "tool_2": "Forest: App chặn điện thoại khi học",
+        "tool_3": "Anki: Flashcards cho việc ghi nhớ syntax",
+        "tool_4": "Toggl: Track thời gian học từng subject",
+        "time_quote": "Thời gian là tài nguyên quý nhất. Đầu tư thông minh sẽ mang lại hiệu quả gấp bội!",
+        "time_section3": "🎯 Weekly Planning Strategy",
+        "time_content2": "Mỗi Chủ nhật, mình dành 30 phút planning cho tuần mới: ưu tiên assignment urgent, lên kế hoạch học skill mới, và quan trọng là để thời gian cho việc \"không làm gì\" để tránh stress.",
+        "read_more": "Đọc thêm",
+        "read_less": "Thu gọn",
         "schedule_title": "Lịch học",
         "schedule_subtitle": "Theo dõi lịch học và hoạt động",
         "contact_title": "Liên hệ & Dịch vụ",
@@ -2055,6 +2302,49 @@
         "blog_ai_section3": "3. Claude - AI with Strong Analysis Capabilities",
         "blog_ai_content3": "Claude helps me analyze long documents, summarize scientific papers, and explain complex concepts in an understandable way. Very useful for research.",
         "blog_ai_tip": "💡 Tip: Don't rely completely on AI. Use them as support tools and always verify and think for yourself!",
+        "blog_read_time_4": "2 min read",
+        "blog_read_time_5": "3 min read",
+        "blog_category_4": "Tips",
+        "blog_category_5": "Study Tips",
+        "blog_date_5": "August 6, 2025",
+        "blog_post_title_4": "10 Effective Programming Learning Tips for Students",
+        "blog_intro_4": "After some time learning programming, I've accumulated some experience and useful tips. Today I'll share 10 tips to help you learn coding more effectively!",
+        "blog_tip_section1": "💡 Tips 1-3: Study Preparation",
+        "tip_1": "Plan your learning: Break down goals, study 1-2 hours daily consistently",
+        "tip_2": "Create a focused environment: Turn off phone, clean workspace",
+        "tip_3": "Choose the right language: Python for beginners, JavaScript for web",
+        "blog_tip_section2": "🎯 Tips 4-6: Learning Methods",
+        "tip_4": "Practice makes perfect: Code daily, even just 30 minutes",
+        "tip_5": "Read others' code: GitHub is a treasure trove",
+        "tip_6": "Debug instead of copy-paste: Understanding errors helps you progress",
+        "blog_quote_4": "Code is not just writing, but also reading, understanding and fixing. Master all 4 skills!",
+        "blog_tip_section3": "🚀 Tips 7-10: Skill Enhancement",
+        "tip_7": "Build projects: Theory + practice = success",
+        "tip_8": "Join community: Facebook groups, Discord, Reddit",
+        "tip_9": "Document everything: Clear notes, comment code properly",
+        "tip_10": "Never stop learning: Tech changes fast, stay updated!",
+        "blog_post_title_5": "Time Optimization Tips for IT Students",
+        "blog_intro_5": "How to balance university studies, self-learning new technologies, and having time to rest? Here are time management strategies I'm applying.",
+        "time_section1": "⏰ Pomodoro Method for Developers",
+        "time_content1": "25 minutes focused coding + 5 minutes break. After 4 pomodoros = 30 minutes rest. This formula helps me maintain focus and avoid burnout.",
+        "time_slot1": "Early Morning",
+        "time_desc1": "Difficult theory",
+        "time_slot2": "Afternoon",
+        "time_desc2": "Practice coding",
+        "time_slot3": "Evening",
+        "time_desc3": "Review & recap",
+        "time_slot4": "End of day",
+        "time_desc4": "Relax & reflection",
+        "time_section2": "📱 Learning Support Tools",
+        "tool_1": "Notion: All-in-one note-taking and task management",
+        "tool_2": "Forest: App to block phone while studying",
+        "tool_3": "Anki: Flashcards for memorizing syntax",
+        "tool_4": "Toggl: Track learning time per subject",
+        "time_quote": "Time is the most precious resource. Smart investment brings exponential results!",
+        "time_section3": "🎯 Weekly Planning Strategy",
+        "time_content2": "Every Sunday, I spend 30 minutes planning for the new week: prioritize urgent assignments, plan new skill learning, and importantly, leave time for 'doing nothing' to avoid stress.",
+        "read_more": "Read more",
+        "read_less": "Read less",
         "schedule_title": "Study Schedule",
         "schedule_subtitle": "Track your learning schedule and activities",
         "contact_title": "Contact & Services",
@@ -2864,6 +3154,40 @@
       }
     }
 
+    // Blog Read More Functionality
+    function toggleBlogContent(blogId) {
+      const blogPost = document.querySelector(`[data-blog-id="${blogId}"]`);
+      const fullContent = blogPost.querySelector('.blog-full-content');
+      const readMoreBtn = blogPost.querySelector('.read-more-btn');
+      
+      if (fullContent.style.display === 'none') {
+        // Show full content
+        fullContent.style.display = 'block';
+        fullContent.style.opacity = '0';
+        fullContent.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+          fullContent.style.transition = 'all 0.3s ease';
+          fullContent.style.opacity = '1';
+          fullContent.style.transform = 'translateY(0)';
+        }, 10);
+        
+        readMoreBtn.classList.add('expanded');
+        readMoreBtn.innerHTML = `<span data-i18n="read_less">${i18nData[currentLang]["read_less"] || "Thu gọn"}</span>`;
+      } else {
+        // Hide full content
+        fullContent.style.opacity = '0';
+        fullContent.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+          fullContent.style.display = 'none';
+        }, 300);
+        
+        readMoreBtn.classList.remove('expanded');
+        readMoreBtn.innerHTML = `<span data-i18n="read_more">${i18nData[currentLang]["read_more"] || "Đọc thêm"}</span>`;
+      }
+    }
+
     // Update QR placeholders when language changes
     const originalToggleLanguage = toggleLanguage;
     toggleLanguage = function() {
@@ -2871,7 +3195,21 @@
       if (typeof updateQRPlaceholders === 'function') {
         updateQRPlaceholders();
       }
+      // Update read more buttons text
+      updateReadMoreButtons();
     };
+
+    function updateReadMoreButtons() {
+      const readMoreBtns = document.querySelectorAll('.read-more-btn');
+      const dict = i18nData[currentLang];
+      
+      readMoreBtns.forEach(btn => {
+        const isExpanded = btn.classList.contains('expanded');
+        const key = isExpanded ? 'read_less' : 'read_more';
+        const text = dict[key] || (isExpanded ? 'Thu gọn' : 'Đọc thêm');
+        btn.innerHTML = `<span data-i18n="${key}">${text}</span>`;
+      });
+    }
 
     // Service worker registration for offline functionality (optional)
     if ('serviceWorker' in navigator) {
