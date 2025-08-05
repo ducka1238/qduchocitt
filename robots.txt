@@ -1,0 +1,38 @@
+# Duck Soft - Robots.txt
+# Website: https://ducksoft.github.io/
+# Author: Đồng Quang Đức
+
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl
+Allow: /index.html
+Allow: /sitemap.xml
+
+# Disallow crawling of potential sensitive files
+Disallow: /private/
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /*.log
+Disallow: /temp/
+Disallow: /cache/
+
+# Allow specific crawling for important sections
+Allow: /#intro
+Allow: /#news  
+Allow: /#blog
+Allow: /#qr-generator
+Allow: /#schedule
+Allow: /#contact
+
+# Sitemap location
+Sitemap: https://ducksoft.github.io/sitemap.xml
+
+# Crawl-delay (optional - be nice to servers)
+Crawl-delay: 1
+
+# Additional notes for search engines
+# This is a personal blog and portfolio website
+# Content is available in Vietnamese and English
+# QR Generator tool is available for public use
