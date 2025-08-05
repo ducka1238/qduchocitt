@@ -411,8 +411,8 @@
 
     /* Main Content */
     main {
-      margin-top: 80px;
-      min-height: calc(100vh - 80px);
+      margin-top: 0; /* Remove main margin since sections have their own padding */
+      min-height: 100vh;
     }
 
     .section {
@@ -430,6 +430,11 @@
       display: block;
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Ensure intro section also has proper spacing */
+    #intro {
+      padding-top: 120px; /* Same spacing as other sections */
     }
 
     .section-header {
@@ -903,6 +908,10 @@
         padding: 140px 40px 80px 40px; /* More space on desktop */
       }
       
+      #intro {
+        padding-top: 140px; /* Consistent luxury spacing on desktop */
+      }
+      
       .section-title {
         font-size: 3.5rem;
       }
@@ -963,6 +972,10 @@
         padding: 100px 20px 40px 20px; /* Adjust top padding for mobile */
       }
       
+      #intro {
+        padding-top: 100px; /* Consistent with other sections on mobile */
+      }
+      
       .section-title {
         font-size: 2.5rem;
       }
@@ -985,6 +998,10 @@
     @media (max-width: 480px) {
       .section {
         padding: 90px 15px 30px 15px; /* More compact on very small screens */
+      }
+      
+      #intro {
+        padding-top: 90px; /* Consistent spacing on small screens */
       }
       
       .section-title {
