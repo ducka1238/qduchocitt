@@ -132,6 +132,8 @@
       transition: var(--transition);
       line-height: 1.6;
       overflow-x: hidden;
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px; /* Account for fixed header */
     }
 
     /* Font Awesome Fix - Force load with fallbacks */
@@ -365,9 +367,12 @@
     }
 
     .nav-link:hover,
-    .nav-link.active {
+    .nav-link.active,
+    .nav-link:focus {
       color: white;
       transform: translateX(5px);
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
     }
 
     .nav-link i {
@@ -933,6 +938,10 @@
 
     /* Mobile Responsive Design */
     @media (max-width: 768px) {
+      body {
+        scroll-padding-top: 90px; /* Smaller offset for mobile */
+      }
+      
       header {
         padding: 15px 20px;
       }
@@ -969,6 +978,10 @@
     }
 
     @media (max-width: 480px) {
+      body {
+        scroll-padding-top: 85px; /* Even smaller offset for small mobile */
+      }
+      
       main {
         margin-top: 85px;
       }
@@ -2686,6 +2699,12 @@
           document.getElementById(sectionId).classList.add('active');
           link.classList.add('active');
           
+          // Smooth scroll to section with header offset
+          const targetSection = document.getElementById(sectionId);
+          if (targetSection) {
+            smoothScrollTo(targetSection);
+          }
+          
           // Close menu
           document.getElementById('navMenu').classList.remove('active');
           document.getElementById('overlay').classList.remove('active');
@@ -2926,11 +2945,18 @@
     }
 
 
-    // Smooth scrolling for better UX
+    // Smooth scrolling for better UX with header offset
     function smoothScrollTo(element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+      const headerHeight = document.querySelector('header').offsetHeight;
+      const elementPosition = element.offsetTop;
+      
+      // Responsive offset - less space on mobile
+      const extraSpace = window.innerWidth <= 768 ? 10 : 20;
+      const offsetPosition = elementPosition - headerHeight - extraSpace;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
       });
     }
 
@@ -2963,6 +2989,36 @@
         if (navMenu.classList.contains('active')) {
           navMenu.classList.remove('active');
           overlay.classList.remove('active');
+        }
+      }
+      
+      // Arrow key navigation for sections
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        const currentSection = document.querySelector('.section.active');
+        const sections = Array.from(document.querySelectorAll('.section'));
+        const currentIndex = sections.indexOf(currentSection);
+        
+        let nextIndex;
+        if (e.key === 'ArrowUp') {
+          nextIndex = currentIndex > 0 ? currentIndex - 1 : sections.length - 1;
+        } else {
+          nextIndex = currentIndex < sections.length - 1 ? currentIndex + 1 : 0;
+        }
+        
+        const nextSection = sections[nextIndex];
+        const nextLink = document.querySelector(`[data-section="${nextSection.id}"]`);
+        
+        if (nextSection && nextLink) {
+          // Switch sections
+          sections.forEach(section => section.classList.remove('active'));
+          document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+          
+          nextSection.classList.add('active');
+          nextLink.classList.add('active');
+          
+          // Smooth scroll to section
+          smoothScrollTo(nextSection);
         }
       }
     });
