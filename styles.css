@@ -136,3 +136,126 @@ main {
     margin-top: 85px;
   }
 }
+
+/* Tools Pages Styles */
+.ai-tools-container,
+.learning-tools-container,
+.creative-tools-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
+}
+
+.ai-tools-container h1,
+.learning-tools-container h1,
+.creative-tools-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 40px;
+}
+
+.tools-grid {
+  display: grid;
+  gap: 40px;
+}
+
+.tool-category {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  box-shadow: var(--shadow-md);
+}
+
+.tool-category h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+}
+
+.tool-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.tool-item {
+  display: block;
+  text-decoration: none;
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.tool-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color);
+  background: var(--bg-card);
+}
+
+/* External Link Styles */
+.external-link {
+  position: relative;
+}
+
+.external-link::after {
+  content: "↗";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  opacity: 0.7;
+  transition: var(--transition);
+}
+
+.external-link:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.tool-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.tool-item h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.tool-item p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 0;
+}
+
+/* Responsive Tools */
+@media (max-width: 768px) {
+  .ai-tools-container h1,
+  .learning-tools-container h1,
+  .creative-tools-container h1 {
+    font-size: 2rem;
+  }
+  
+  .tool-items {
+    grid-template-columns: 1fr;
+  }
+  
+  .tool-category {
+    padding: 20px;
+  }
+}
