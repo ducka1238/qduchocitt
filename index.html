@@ -969,6 +969,117 @@
         padding: 8px 12px;
         font-size: 13px;
       }
+
+      /* Avatar responsive */
+      .avatar {
+        width: 120px;
+        height: 120px;
+      }
+
+      .personal-info h3 {
+        font-size: 1.5rem;
+      }
+
+      .personal-info p {
+        font-size: 1rem;
+      }
+
+      .personal-tags {
+        gap: 8px;
+      }
+
+      .personal-tag {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+      }
+    }
+
+    /* Avatar and Personal Info Styles */
+    .personal-intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .avatar-container {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid var(--primary-color);
+      box-shadow: var(--shadow-lg);
+      transition: var(--transition);
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    }
+
+    .avatar:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .avatar-badge {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: var(--accent-color);
+      color: white;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .personal-info {
+      margin-bottom: 30px;
+    }
+
+    .personal-info h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .personal-info p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+    }
+
+    .personal-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    .personal-tag {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .personal-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
     }
 
     /* Blog Section Styles */
@@ -1584,6 +1695,28 @@
       </div>
 
       <div class="content-card">
+        <!-- Personal Introduction -->
+        <div class="personal-intro">
+          <div class="avatar-container">
+            <img src="images/avatar.svg" alt="Đồng Quang Đức" class="avatar">
+            <div class="avatar-badge">
+              <i class="fas fa-code"></i>
+            </div>
+          </div>
+          
+          <div class="personal-info">
+            <h3>Đồng Quang Đức</h3>
+            <p>Sinh viên Công nghệ Thông tin</p>
+            <p>Nhà phát triển trẻ đam mê công nghệ</p>
+            
+            <div class="personal-tags">
+              <span class="personal-tag">Web Developer</span>
+              <span class="personal-tag">Student</span>
+              <span class="personal-tag">Tech Enthusiast</span>
+            </div>
+          </div>
+        </div>
+
         <p data-i18n="intro_description">
           Duck Soft là nền tảng giúp bạn tiếp cận nhanh chóng các công nghệ hiện đại như AI, phần mềm học tập, và các công cụ sáng tạo. Với giao diện đơn giản, hỗ trợ tiếng Việt – Anh và nhiều tiện ích, chúng tôi mong muốn mang đến trải nghiệm công nghệ dễ hiểu và hiệu quả cho mọi người.
         </p>
